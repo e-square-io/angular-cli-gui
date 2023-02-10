@@ -38,5 +38,34 @@
       "default"
     ],
     "sharedGlobals": []
+  },
+  "generators": {
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "none",
+      "strict": true,
+      "prefix": "ark",
+      "standalone": true
+    },
+    "@nrwl/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "strict": true,
+      "prefix": "ark",
+      "buildable": true,
+      "publishable": true,
+      "standalone": true
+    },
+    "@nrwl/angular:component": {
+      "style": "scss",
+      "standalone": true,
+      "changeDetection": "OnPush"
+    },
+    "@nrwl/nest:application": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    }
   }
 }

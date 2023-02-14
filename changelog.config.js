@@ -1,7 +1,6 @@
 module.exports = {
   disableEmoji: false,
   list: [
-    'package',
     'feat',
     'fix',
     'test',

@@ -1,0 +1,19 @@
+<form action="." [formGroup]="form" (ngSubmit)="submit()">
+  <div class="form-row">
+    <input
+      type="text"
+      name="component-name"
+      formControlName="name"
+      placeholder="The name of the component."
+    />
+  </div>
+  <div class="form-row">
+    <label>
+      <input type="checkbox" name="dry-run" formControlName="dryRun" />
+      Dry run. No changes will be made.
+    </label>
+  </div>
+  <div class="form-row">
+    <button type="submit">Go!</button>
+  </div>
+</form>

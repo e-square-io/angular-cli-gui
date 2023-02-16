@@ -8,6 +8,11 @@ export const appRoutes: Routes = [
     component: AppComponent,
     children: [
       {
+        path: '',
+        redirectTo: 'generators',
+        pathMatch: 'full',
+      },
+      {
         path: 'generators',
         loadComponent: () => import('@angular-cli-gui/generators').then(m => m.GeneratorsComponent),
       },

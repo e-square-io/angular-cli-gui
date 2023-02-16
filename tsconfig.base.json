@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@angular-cli-gui/configuration": ["libs/configuration/src/index.ts"],
+      "@angular-cli-gui/executors": ["libs/executors/src/index.ts"],
       "@angular-cli-gui/generators": ["libs/generators/src/index.ts"],
       "@angular-cli-gui/shared/data": ["libs/shared/data/src/index.ts"],
       "@angular-cli-gui/workspace-manager": [

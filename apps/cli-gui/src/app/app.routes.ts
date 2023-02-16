@@ -20,6 +20,10 @@ export const appRoutes: Routes = [
         path: 'configuration',
         loadComponent: () => import('@angular-cli-gui/configuration').then(m => m.ConfigurationComponent),
       },
+      {
+        path: 'executors',
+        loadComponent: () => import('@angular-cli-gui/executors').then(m => m.ExecutorsComponent),
+      },
     ],
   },
   {

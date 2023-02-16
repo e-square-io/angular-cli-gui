@@ -1,16 +1,24 @@
-import { Route } from '@angular/router';
+import { Routes } from '@angular/router';
 
-export const appRoutes: Route[] = [
+import { AppComponent } from './app.component';
+
+export const appRoutes: Routes = [
   {
-    path: 'generators',
-    loadChildren: () =>
-      import('./generators/generators.routes').then((m) => m.GENERATOR_ROUTES),
+    path: '',
+    component: AppComponent,
+    children: [
+      {
+        path: 'generators',
+        loadComponent: () => import('@angular-cli-gui/generators').then(m => m.GeneratorsComponent),
+      },
+      {
+        path: 'configuration',
+        loadComponent: () => import('@angular-cli-gui/configuration').then(m => m.ConfigurationComponent),
+      },
+    ],
   },
   {
-    path: 'workspace-settings',
-    loadComponent: () =>
-      import('./workspace-settings/workspace-settings.component').then(
-        (m) => m.WorkspaceSettingsComponent
-      ),
+    path: 'workspace-manager',
+    loadChildren: () => import('@angular-cli-gui/workspace-manager').then(m => m.WORKSPACE_MANAGER_ROUTES),
   },
 ];

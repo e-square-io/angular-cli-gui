@@ -15,7 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@angular-cli-gui/shared/data": ["libs/shared/data/src/index.ts"]
+      "@angular-cli-gui/configuration": ["libs/configuration/src/index.ts"],
+      "@angular-cli-gui/generators": ["libs/generators/src/index.ts"],
+      "@angular-cli-gui/shared/data": ["libs/shared/data/src/index.ts"],
+      "@angular-cli-gui/workspace-manager": [
+        "libs/workspace-manager/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

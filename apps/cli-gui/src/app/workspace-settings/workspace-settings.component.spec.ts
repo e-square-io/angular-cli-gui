@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WorkspaceSettingsComponent } from './workspace-settings.component';
@@ -8,7 +9,7 @@ describe('WorkspaceSettingsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [WorkspaceSettingsComponent],
+      imports: [WorkspaceSettingsComponent, HttpClientTestingModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(WorkspaceSettingsComponent);

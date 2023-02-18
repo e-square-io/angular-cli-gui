@@ -16,7 +16,7 @@ describe('AppController', () => {
   describe('getData', () => {
     it('should return "Welcome to cli-daemon!"', () => {
       const appController = app.get<AppController>(AppController);
-      expect(appController.getData()).toEqual({
+      expect(appController.getData()).resolves.toEqual({
         message: 'Welcome to cli-daemon!',
       });
     });

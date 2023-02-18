@@ -43,4 +43,8 @@ jobs:
       - uses: e-square-io/.github/.github/actions/nx-codecov@main
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          path: coverage/**
+          path: coverage/apps
+      - uses: e-square-io/.github/.github/actions/nx-codecov@main
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          path: coverage/libs

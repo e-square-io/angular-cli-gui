@@ -35,6 +35,7 @@ jobs:
   report:
     name: Upload Reports
     needs: [main]
+    runs-on: ubuntu-latest
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v2

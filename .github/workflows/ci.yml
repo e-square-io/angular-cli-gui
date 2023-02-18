@@ -32,15 +32,15 @@ jobs:
     with:
       number-of-agents: 3
 
-report:
-  name: Upload Reports
-  needs: [main]
-  steps:
-    - name: Download artifacts
-      uses: actions/download-artifact@v2
-      with:
-        name: nx-main-artifacts
-    - uses: e-square-io/.github/.github/actions/nx-codecov@main
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        path: coverage
+  report:
+    name: Upload Reports
+    needs: [main]
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: nx-main-artifacts
+      - uses: e-square-io/.github/.github/actions/nx-codecov@main
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          path: coverage

@@ -36,15 +36,19 @@ jobs:
     needs: [main]
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
       - name: Download artifacts
         uses: actions/download-artifact@v3
         with:
           name: nx-main-artifacts
-      - uses: e-square-io/.github/.github/actions/nx-codecov@main
+      - name: Upload apps coverage
+        uses: e-square-io/.github/.github/actions/nx-codecov@main
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           path: coverage/apps
-      - uses: e-square-io/.github/.github/actions/nx-codecov@main
+      - name: Upload libs coverage
+        uses: e-square-io/.github/.github/actions/nx-codecov@main
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           path: coverage/libs

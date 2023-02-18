@@ -2,5 +2,13 @@
 
 /dist
 /coverage
-
-index.html
+/codequality
+/.vscode
+/.husky
+/.angular
+/pnpm-lock.yaml
+/.pnpm-store
+/README.md
+CHANGELOG.md
+decorate-angular-cli.js
+docker-compose.yml

@@ -10,7 +10,9 @@ describe('WorkspaceSettingsController', () => {
       controllers: [WorkspaceSettingsController],
     }).compile();
 
-    controller = module.get<WorkspaceSettingsController>(WorkspaceSettingsController);
+    controller = module.get<WorkspaceSettingsController>(
+      WorkspaceSettingsController
+    );
   });
 
   it('should be defined', () => {

@@ -1,5 +1,6 @@
-import { IExecResult } from '@angular-cli-gui/shared/data';
 import { SpawnSyncReturns } from 'child_process';
+
+import { IExecResult } from '@angular-cli-gui/shared/data';
 
 import { stringToArray } from '../../utils';
 

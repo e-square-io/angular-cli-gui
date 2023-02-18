@@ -1,11 +1,11 @@
 import { NodeJsSyncHost } from '@angular-devkit/core/node';
 import {
-  readWorkspace,
-  // writeWorkspace,
   createWorkspaceHost,
-  WorkspaceDefinition,
+  // writeWorkspace,
   ProjectDefinition,
+  readWorkspace,
   TargetDefinition,
+  WorkspaceDefinition,
 } from '@angular-devkit/core/src/workspace';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
@@ -22,7 +22,9 @@ export class WorkspaceSettingsService {
     return Array.from(workspace.projects.keys());
   }
 
-  async readWorkspaceProject(name: string): Promise<ProjectDefinition | undefined> {
+  async readWorkspaceProject(
+    name: string
+  ): Promise<ProjectDefinition | undefined> {
     const workspace = await this.readWorkspace();
 
     return workspace?.projects?.get(name);
@@ -38,13 +40,21 @@ export class WorkspaceSettingsService {
     return Array.from(project.targets.keys());
   }
 
-  async readWorkspaceProjectTarget(projectName: string, targetName: string): Promise<TargetDefinition | undefined> {
+  async readWorkspaceProjectTarget(
+    projectName: string,
+    targetName: string
+  ): Promise<TargetDefinition | undefined> {
     const project = await this.readWorkspaceProject(projectName);
 
     return project?.targets.get(targetName);
   }
 
   private async readWorkspace(): Promise<WorkspaceDefinition> {
-    return (await readWorkspace(this.WORKSPACE_ROOT, createWorkspaceHost(new NodeJsSyncHost()))).workspace;
+    return (
+      await readWorkspace(
+        this.WORKSPACE_ROOT,
+        createWorkspaceHost(new NodeJsSyncHost())
+      )
+    ).workspace;
   }
 }

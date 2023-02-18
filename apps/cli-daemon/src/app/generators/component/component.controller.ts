@@ -1,10 +1,11 @@
 import { InternalServerErrorException } from '@nestjs/common';
-import { Body, Post, Logger } from '@nestjs/common';
+import { Body, Logger, Post } from '@nestjs/common';
 import { Controller } from '@nestjs/common';
 
-import { GenerateComponentDto } from './dto';
 import { ExecResult } from '../dto';
 import { GeneratorsService } from '../generators.service';
+
+import { GenerateComponentDto } from './dto';
 
 @Controller('generate/component')
 export class ComponentController {
@@ -13,9 +14,13 @@ export class ComponentController {
   constructor(private readonly generatorsService: GeneratorsService) {}
 
   @Post()
-  generateComponent(@Body() generateComponentDto: GenerateComponentDto): ExecResult {
+  generateComponent(
+    @Body() generateComponentDto: GenerateComponentDto
+  ): ExecResult {
     try {
-      return this.generatorsService.execSync(this.argsFromDto(generateComponentDto));
+      return this.generatorsService.execSync(
+        this.argsFromDto(generateComponentDto)
+      );
     } catch (err) {
       this.logger.error(err);
       throw new InternalServerErrorException();

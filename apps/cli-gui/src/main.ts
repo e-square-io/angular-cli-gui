@@ -6,12 +6,12 @@ import { provideRouter, withEnabledBlockingInitialNavigation } from '@angular/ro
 import { map } from 'rxjs';
 
 import { AppComponent } from './app/app.component';
-import { appRoutes } from './app/app.routes';
+import { APP_ROUTES } from './app/app.routes';
 import { CoreService } from './app/core/core.service';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideRouter(appRoutes, withEnabledBlockingInitialNavigation()),
+    provideRouter(APP_ROUTES, withEnabledBlockingInitialNavigation()),
     provideHttpClient(),
     provideAnimations(),
     {

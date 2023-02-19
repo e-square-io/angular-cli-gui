@@ -10,7 +10,7 @@ export interface CoreState {
   providedIn: 'root',
 })
 export class CoreService {
-  private coreState: CoreState = { projectNames: [] };
+  private coreState: CoreState = { projectNames: ['test'] };
   private readonly coreStateSubject$ = new BehaviorSubject(this.coreState);
 
   readonly coreState$ = this.coreStateSubject$.asObservable();

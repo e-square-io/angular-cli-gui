@@ -1,11 +1,14 @@
 <ng-container *ngIf="core.coreState$ | async as coreState">
   <header class="main-header">
     <div class="project-selector">
-      <select name="project-selector" id="project-selector">
-        <option *ngFor="let project of coreState.projectNames" value="project">
+      <mat-select name="project-selector" id="project-selector">
+        <mat-option
+          *ngFor="let project of coreState.projectNames"
+          [value]="project"
+        >
           {{ project }}
-        </option>
-      </select>
+        </mat-option>
+      </mat-select>
     </div>
   </header>
   <main>

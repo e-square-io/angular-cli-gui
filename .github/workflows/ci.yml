@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  main:
+    if: ${{ !contains(github.event.head_commit.message, 'chore(release)') }}
+    name: Nx Cloud - Main Job
+    uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.11.3
+    with:
+      main-branch-name: master
+      number-of-agents: 3
+      init-commands: |
+        pnpm exec nx-cloud start-ci-run --stop-agents-after="build" --agent-count=3
+      parallel-commands-on-agents: |
+        pnpm exec nx affected --target=lint --parallel=3
+        pnpm exec nx affected --target=test --parallel=3 --ci --code-coverage
+        pnpm exec nx affected --target=build --parallel=3
+      artifacts-path: |
+        dist
+        coverage
+
+  agents:
+    if: ${{ !contains(github.event.head_commit.message, 'chore(release)') }}
+    name: Nx Cloud - Agents
+    uses: nrwl/ci/.github/workflows/nx-cloud-agents.yml@v0.11.3
+    with:
+      number-of-agents: 3
+
+  report:
+    name: Upload Reports
+    needs: [main]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: nx-main-artifacts
+      - name: Upload apps coverage
+        uses: e-square-io/.github/.github/actions/nx-codecov@main
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          path: coverage/apps
+      - name: Upload libs coverage
+        uses: e-square-io/.github/.github/actions/nx-codecov@main
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          path: coverage/libs

@@ -1,6 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { IGenerateComponentArgs } from '@angular-cli-gui/shared/data';
 
 import { GeneratorsService } from '../generators.service';
@@ -20,11 +25,17 @@ interface GenerateComponentForm {
 })
 export class GenerateComponentComponent {
   readonly form = this.fb.group<GenerateComponentForm>({
-    name: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
+    name: new FormControl<string>('', {
+      nonNullable: true,
+      validators: [Validators.required],
+    }),
     dryRun: new FormControl<boolean>(true, { nonNullable: true }),
   });
 
-  constructor(private readonly fb: FormBuilder, private readonly generatorsService: GeneratorsService) {}
+  constructor(
+    private readonly fb: FormBuilder,
+    private readonly generatorsService: GeneratorsService
+  ) {}
 
   submit(): void {
     if (this.form.invalid) {
@@ -36,6 +47,8 @@ export class GenerateComponentComponent {
     };
 
     console.log('Generating...');
-    this.generatorsService.generateComponent(this.form.controls.name.value, args).subscribe(res => console.log(res));
+    this.generatorsService
+      .generateComponent(this.form.controls.name.value, args)
+      .subscribe((res) => console.log(res));
   }
 }

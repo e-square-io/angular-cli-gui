@@ -1,15 +1,44 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nrwl/nx", "@typescript-eslint", "prettier", "import"],
-  "extends": [
-    "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended"
-  ],
+  "plugins": ["import", "unused-imports", "@nrwl/nx"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
+        "unused-imports/no-unused-imports": "error",
+        "sort-imports": [
+          "error",
+          {
+            "ignoreCase": true,
+            "ignoreDeclarationSort": true
+          }
+        ],
+        "import/order": [
+          "error",
+          {
+            "groups": [
+              "builtin",
+              "external",
+              "internal",
+              "parent",
+              "sibling",
+              "index"
+            ],
+            "alphabetize": {
+              "order": "asc",
+              "caseInsensitive": true
+            },
+            "newlines-between": "always",
+            "pathGroups": [
+              {
+                "pattern": "@ad/**",
+                "group": "internal"
+              }
+            ],
+            "pathGroupsExcludedImportTypes": ["builtin"]
+          }
+        ],
         "@nrwl/nx/enforce-module-boundaries": [
           "error",
           {
@@ -22,36 +51,6 @@
               }
             ]
           }
-        ],
-        "prettier/prettier": [
-          "error",
-          {
-            "singleQuote": true,
-            "trailingComma": "all",
-            "arrowParens": "avoid",
-            "printWidth": 120,
-            "tabWidth": 2,
-            "eslintIntegration": true,
-            "bracketSpacing": true,
-            "arrow-body-style": "off",
-            "prefer-arrow-callback": "off"
-          }
-        ],
-        "import/order": [
-          "error",
-          {
-            "alphabetize": {
-              "order": "asc",
-              "caseInsensitive": true
-            },
-            "groups": [
-              [
-                "builtin",
-                "external"
-              ]
-            ],
-            "newlines-between": "always"
-          }
         ]
       }
     },
@@ -60,7 +59,7 @@
       "extends": ["plugin:@nrwl/nx/typescript"],
       "rules": {
         "@typescript-eslint/explicit-function-return-type": [
-          "error", 
+          "error",
           {
             "allowExpressions": true,
             "allowTypedFunctionExpressions": true,
@@ -72,7 +71,12 @@
           "warn",
           {
             "default": {
-              "memberTypes": ["private-field", "protected-field", "decorated-field", "public-field" ]
+              "memberTypes": [
+                "private-field",
+                "protected-field",
+                "decorated-field",
+                "public-field"
+              ]
             }
           }
         ],
@@ -80,11 +84,7 @@
           "error",
           {
             "selector": "interface",
-            "format": ["PascalCase"],
-            "custom": {
-              "regex": "^I[A-Z]",
-              "match": false
-            }
+            "format": ["PascalCase"]
           },
           {
             "selector": "class",
@@ -114,19 +114,17 @@
       "rules": {}
     },
     {
-      "files": ["*.spec.ts", "*.mock.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
+      "files": [
+        "*.spec.ts",
+        "*.mock.ts",
+        "*.spec.tsx",
+        "*.spec.js",
+        "*.spec.jsx"
+      ],
       "env": {
         "jest": true
       },
-      "rules": {
-        "max-lines-per-function": "off",
-        "max-len": "off",
-        "max-lines": "off",
-        "@typescript-eslint/no-explicit-any": "off",
-        "@typescript-eslint/no-empty-function": "off",
-        "@typescript-eslint/no-unused-vars": "off",
-        "@typescript-eslint/explicit-function-return-type": "off"
-      }
+      "rules": {}
     }
   ]
 }

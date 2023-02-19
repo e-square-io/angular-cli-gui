@@ -1,8 +1,8 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-dist
-tmp
+/dist
+/tmp
 /out-tsc
 
 # dependencies
@@ -28,10 +28,13 @@ node_modules
 /.sass-cache
 /connect.lock
 /coverage
+/codequality
 /libpeerconnection.log
 npm-debug.log
 yarn-error.log
 testem.log
+.env*.local
+documentation.json
 /typings
 
 # System Files
@@ -39,5 +42,3 @@ testem.log
 Thumbs.db
 
 .angular
-.env
-.dev.env

@@ -14,7 +14,8 @@
         "main": "apps/cli-daemon/src/main.ts",
         "tsConfig": "apps/cli-daemon/tsconfig.app.json",
         "assets": ["apps/cli-daemon/src/assets"],
-        "webpackConfig": "apps/cli-daemon/webpack.config.js"
+        "webpackConfig": "apps/cli-daemon/webpack.config.js",
+        "babelUpwardRootMode": true
       },
       "configurations": {
         "production": {

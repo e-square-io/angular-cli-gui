@@ -1,6 +1,9 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "npmScope": "angular-cli-gui",
+  "cli": {
+    "packageManager": "pnpm"
+  },
   "affected": {
     "defaultBase": "master"
   },

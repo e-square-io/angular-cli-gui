@@ -1,5 +1,5 @@
 import { IGenerateComponentArgs } from '@angular-cli-gui/shared/data';
-import { IsString, IsBoolean, IsOptional } from 'class-validator';
+import { IsBoolean, IsOptional, IsString } from 'class-validator';
 
 export class GenerateComponentDto implements IGenerateComponentArgs {
   @IsString({ message: 'Name is mandatory' })

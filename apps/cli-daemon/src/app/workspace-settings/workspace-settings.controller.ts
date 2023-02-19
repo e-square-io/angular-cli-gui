@@ -1,5 +1,15 @@
-import { ProjectDefinition, TargetDefinition } from '@angular-devkit/core/src/workspace';
-import { Controller, Get, Logger, Param, InternalServerErrorException, NotFoundException } from '@nestjs/common';
+import {
+  ProjectDefinition,
+  TargetDefinition,
+} from '@angular-devkit/core/src/workspace';
+import {
+  Controller,
+  Get,
+  InternalServerErrorException,
+  Logger,
+  NotFoundException,
+  Param,
+} from '@nestjs/common';
 
 import { WorkspaceSettingsService } from './workspace-settings.service';
 
@@ -7,7 +17,9 @@ import { WorkspaceSettingsService } from './workspace-settings.service';
 export class WorkspaceController {
   private readonly logger = new Logger(WorkspaceController.name);
 
-  constructor(private readonly workspaceSettingsService: WorkspaceSettingsService) {}
+  constructor(
+    private readonly workspaceSettingsService: WorkspaceSettingsService
+  ) {}
 
   @Get()
   getWorkspaceProjectNames(): Promise<string[]> {
@@ -21,11 +33,15 @@ export class WorkspaceController {
   }
 
   @Get(':projectName')
-  async getProject(@Param('projectName') projectName: string): Promise<ProjectDefinition> {
+  async getProject(
+    @Param('projectName') projectName: string
+  ): Promise<ProjectDefinition> {
     let project: ProjectDefinition | undefined;
 
     try {
-      project = await this.workspaceSettingsService.readWorkspaceProject(projectName);
+      project = await this.workspaceSettingsService.readWorkspaceProject(
+        projectName
+      );
     } catch (err) {
       this.logger.error(err);
 
@@ -40,9 +56,13 @@ export class WorkspaceController {
   }
 
   @Get(':projectName/target-names')
-  getProjectTargetNames(@Param('projectName') projectName: string): Promise<string[]> {
+  getProjectTargetNames(
+    @Param('projectName') projectName: string
+  ): Promise<string[]> {
     try {
-      return this.workspaceSettingsService.readWorkspaceProjectTargetNames(projectName);
+      return this.workspaceSettingsService.readWorkspaceProjectTargetNames(
+        projectName
+      );
     } catch (err) {
       this.logger.error(err);
 
@@ -53,12 +73,15 @@ export class WorkspaceController {
   @Get(':projectName/target/:targetName')
   async getProjectTarget(
     @Param('projectName') projectName: string,
-    @Param('targetName') targetName: string,
+    @Param('targetName') targetName: string
   ): Promise<TargetDefinition> {
     let target: TargetDefinition | undefined;
 
     try {
-      target = await this.workspaceSettingsService.readWorkspaceProjectTarget(projectName, targetName);
+      target = await this.workspaceSettingsService.readWorkspaceProjectTarget(
+        projectName,
+        targetName
+      );
     } catch (err) {
       this.logger.error(err);
 

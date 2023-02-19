@@ -14,5 +14,7 @@ import { WorkspaceSettingsService } from './workspace-settings.service';
 export class WorkspaceSettingsComponent {
   angularJson$ = this.workspaceSettingsService.readWorkspaceProjectNames();
 
-  constructor(private readonly workspaceSettingsService: WorkspaceSettingsService) {}
+  constructor(
+    private readonly workspaceSettingsService: WorkspaceSettingsService
+  ) {}
 }

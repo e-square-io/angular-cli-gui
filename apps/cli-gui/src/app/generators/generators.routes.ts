@@ -10,7 +10,9 @@ export const GENERATOR_ROUTES: Routes = [
       {
         path: 'component',
         loadComponent: () =>
-          import('./generate-component/generate-component.component').then(m => m.GenerateComponentComponent),
+          import('./generate-component/generate-component.component').then(
+            (m) => m.GenerateComponentComponent
+          ),
       },
     ],
   },

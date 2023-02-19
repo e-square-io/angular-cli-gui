@@ -1,7 +1,8 @@
-import { Injectable } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import { spawnSync, SpawnSyncOptionsWithBufferEncoding } from 'child_process';
 import { resolve as pathResolve } from 'path';
+
+import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 
 import { ExecResult } from './dto';
 

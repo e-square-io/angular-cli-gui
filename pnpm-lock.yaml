@@ -10,6 +10,7 @@ importers:
       '@angular-eslint/eslint-plugin-template': ~15.0.0
       '@angular-eslint/template-parser': ~15.0.0
       '@angular/animations': ~15.1.0
+      '@angular/cdk': ^15.1.5
       '@angular/cli': ~15.1.0
       '@angular/common': ~15.1.0
       '@angular/compiler': ~15.1.0
@@ -17,6 +18,7 @@ importers:
       '@angular/core': ~15.1.0
       '@angular/forms': ~15.1.0
       '@angular/language-service': ~15.1.0
+      '@angular/material': ^15.1.5
       '@angular/platform-browser': ~15.1.0
       '@angular/platform-browser-dynamic': ~15.1.0
       '@angular/router': ~15.1.0
@@ -73,12 +75,14 @@ importers:
       typescript: ~4.8.2
       zone.js: ~0.11.4
     dependencies:
-      '@angular-devkit/core': 15.1.6
+      '@angular-devkit/core': 15.1.6_chokidar@3.5.3
       '@angular/animations': 15.1.5_@angular+core@15.1.5
+      '@angular/cdk': 15.1.5_oznblskr5qbtvt766x35xnlopy
       '@angular/common': 15.1.5_w2a4ar2ssyezibn6c65i4snjzu
       '@angular/compiler': 15.1.5_@angular+core@15.1.5
       '@angular/core': 15.1.5_rxjs@7.5.7+zone.js@0.11.8
       '@angular/forms': 15.1.5_kkteiffnjutwxhimrtvkwyrg3a
+      '@angular/material': 15.1.5_xahqoguynyhnke6c3b3o6r7aru
       '@angular/platform-browser': 15.1.5_s7kwnqxnlkypgp4vtemlnxkbmi
       '@angular/platform-browser-dynamic': 15.1.5_pzachiwybhx467gapqhrlestmm
       '@angular/router': 15.1.5_kkteiffnjutwxhimrtvkwyrg3a
@@ -98,20 +102,20 @@ importers:
       '@angular-eslint/eslint-plugin': 15.0.0_oy7hgmlo6357d5kkcjbkfgtg4q
       '@angular-eslint/eslint-plugin-template': 15.0.0_oy7hgmlo6357d5kkcjbkfgtg4q
       '@angular-eslint/template-parser': 15.0.0_oy7hgmlo6357d5kkcjbkfgtg4q
-      '@angular/cli': 15.1.6
+      '@angular/cli': 15.1.6_chokidar@3.5.3
       '@angular/compiler-cli': 15.1.5_4dhd3kzleoe6yecgeixihz776m
       '@angular/language-service': 15.1.5
       '@commitlint/cli': 17.4.4
       '@commitlint/config-conventional': 17.4.4
       '@jscutlery/semver': 2.30.1_@nrwl+devkit@15.7.2
-      '@nestjs/schematics': 9.0.4_typescript@4.8.4
+      '@nestjs/schematics': 9.0.4_ar2on76c45aosuucycxzxivxgm
       '@nestjs/testing': 9.3.9_yqmogfxzeu633isbftgaoi4ho4
       '@nrwl/angular': 15.7.2_x7sdad3pwpnqdqty7zyjoh5hvm
       '@nrwl/devkit': 15.7.2_nx@15.7.2+typescript@4.8.4
       '@nrwl/eslint-plugin-nx': 15.7.2_ofn4rmygoapnmhpctbw4ymdf34
       '@nrwl/jest': 15.7.2_67p7cacr4gnfcvla6bxz3d2qke
       '@nrwl/linter': 15.7.2_zi76drywmf6jzoveavhbcackhi
-      '@nrwl/nest': 15.7.2_mgopgrqbztbsw3ogcsrrzdddqi
+      '@nrwl/nest': 15.7.2_fm2corhclvovj5zkkdafw2zdnm
       '@nrwl/node': 15.7.2_mgopgrqbztbsw3ogcsrrzdddqi
       '@nrwl/nx-cloud': 15.0.3
       '@nrwl/webpack': 15.7.2_wg44dqkavgbmeppfz7r4ieu3uu
@@ -161,16 +165,6 @@ packages:
     dependencies:
       '@jridgewell/gen-mapping': 0.1.1
       '@jridgewell/trace-mapping': 0.3.17
-    dev: true
-
-  /@angular-devkit/architect/0.1501.6:
-    resolution: {integrity: sha512-u07zZFlfrg0Qn4mu5M9Nz0pH2Yd2028XF/73980PsZMxwkSm4diF08v4bHk3UyR7yPT7phwvt4znj6ryZhx1gw==}
-    engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
-    dependencies:
-      '@angular-devkit/core': 15.1.6
-      rxjs: 6.6.7
-    transitivePeerDependencies:
-      - chokidar
     dev: true
 
   /@angular-devkit/architect/0.1501.6_chokidar@3.5.3:
@@ -307,7 +301,7 @@ packages:
       - chokidar
     dev: true
 
-  /@angular-devkit/core/15.0.4:
+  /@angular-devkit/core/15.0.4_chokidar@3.5.3:
     resolution: {integrity: sha512-4ITpRAevd652SxB+qNesIQ9qfbm7wT5UBU5kJOPPwGL77I21g8CQpkmV1n5VSacPvC9Zbz90feOWexf7w7JzcA==}
     engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
     peerDependencies:
@@ -318,25 +312,11 @@ packages:
     dependencies:
       ajv: 8.11.0
       ajv-formats: 2.1.1_ajv@8.11.0
+      chokidar: 3.5.3
       jsonc-parser: 3.2.0
       rxjs: 6.6.7
       source-map: 0.7.4
     dev: true
-
-  /@angular-devkit/core/15.1.6:
-    resolution: {integrity: sha512-jGgxyRjecVf6lEyqDxz7ltMEndNPxIg720pk6r40fgsu0dU8w9vjJSJe7k0XdJiXVRcN6wZa/J5nO/xcwWVIsA==}
-    engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
-    peerDependencies:
-      chokidar: ^3.5.2
-    peerDependenciesMeta:
-      chokidar:
-        optional: true
-    dependencies:
-      ajv: 8.12.0
-      ajv-formats: 2.1.1_ajv@8.12.0
-      jsonc-parser: 3.2.0
-      rxjs: 6.6.7
-      source-map: 0.7.4
 
   /@angular-devkit/core/15.1.6_chokidar@3.5.3:
     resolution: {integrity: sha512-jGgxyRjecVf6lEyqDxz7ltMEndNPxIg720pk6r40fgsu0dU8w9vjJSJe7k0XdJiXVRcN6wZa/J5nO/xcwWVIsA==}
@@ -353,13 +333,12 @@ packages:
       jsonc-parser: 3.2.0
       rxjs: 6.6.7
       source-map: 0.7.4
-    dev: true
 
-  /@angular-devkit/schematics/15.0.4:
+  /@angular-devkit/schematics/15.0.4_chokidar@3.5.3:
     resolution: {integrity: sha512-/gXiLFS0+xFdx6wPoBpe/c6/K9I5edMpaASqPf4XheKtrsSvL+qTlIi3nsbfItzOiDXbaBmlbxGfkMHz/yg0Ig==}
     engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
     dependencies:
-      '@angular-devkit/core': 15.0.4
+      '@angular-devkit/core': 15.0.4_chokidar@3.5.3
       jsonc-parser: 3.2.0
       magic-string: 0.26.7
       ora: 5.4.1
@@ -368,11 +347,11 @@ packages:
       - chokidar
     dev: true
 
-  /@angular-devkit/schematics/15.1.6:
+  /@angular-devkit/schematics/15.1.6_chokidar@3.5.3:
     resolution: {integrity: sha512-cwmJFpS43zrdlmfwfHIxG/Nzg5rzFdtKrHx64ZXxNFm6JdyK2JTs/qrHUwv1FYWAcqhdiHn+00jYklMmvsvPOA==}
     engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
     dependencies:
-      '@angular-devkit/core': 15.1.6
+      '@angular-devkit/core': 15.1.6_chokidar@3.5.3
       jsonc-parser: 3.2.0
       magic-string: 0.27.0
       ora: 5.4.1
@@ -452,15 +431,30 @@ packages:
       '@angular/core': 15.1.5_rxjs@7.5.7+zone.js@0.11.8
       tslib: 2.5.0
 
-  /@angular/cli/15.1.6:
+  /@angular/cdk/15.1.5_oznblskr5qbtvt766x35xnlopy:
+    resolution: {integrity: sha512-hybUkjvLJcr+WKMMN4uo8aa+kwg4ExTrSBDgUUqsCD0zvcpNwWPRgHeXTNawAZVWV6iBOaHgX6O3XZmsWcs5Rg==}
+    peerDependencies:
+      '@angular/common': ^15.0.0 || ^16.0.0
+      '@angular/core': ^15.0.0 || ^16.0.0
+      rxjs: ^6.5.3 || ^7.4.0
+    dependencies:
+      '@angular/common': 15.1.5_w2a4ar2ssyezibn6c65i4snjzu
+      '@angular/core': 15.1.5_rxjs@7.5.7+zone.js@0.11.8
+      rxjs: 7.5.7
+      tslib: 2.5.0
+    optionalDependencies:
+      parse5: 7.1.2
+    dev: false
+
+  /@angular/cli/15.1.6_chokidar@3.5.3:
     resolution: {integrity: sha512-GmC9jZK2ipUWj0dlfTI5oEYia4y1fLfO3AtAKU5CylNYrGyB+DRytKY8Bx6Fs4kaNBY8V8YnyLi7E/78gziMdg==}
     engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
     hasBin: true
     dependencies:
-      '@angular-devkit/architect': 0.1501.6
-      '@angular-devkit/core': 15.1.6
-      '@angular-devkit/schematics': 15.1.6
-      '@schematics/angular': 15.1.6
+      '@angular-devkit/architect': 0.1501.6_chokidar@3.5.3
+      '@angular-devkit/core': 15.1.6_chokidar@3.5.3
+      '@angular-devkit/schematics': 15.1.6_chokidar@3.5.3
+      '@schematics/angular': 15.1.6_chokidar@3.5.3
       '@yarnpkg/lockfile': 1.1.0
       ansi-colors: 4.1.3
       ini: 3.0.1
@@ -583,6 +577,74 @@ packages:
     resolution: {integrity: sha512-jdvWZXcAn5Cei21HT8LhdKWMXcSzARURJXSFuX27IAfq74Jy9Z0et9QgHNDymX78N2Ti1/ZgjbdLNusDPvun0Q==}
     engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0}
     dev: true
+
+  /@angular/material/15.1.5_xahqoguynyhnke6c3b3o6r7aru:
+    resolution: {integrity: sha512-1N+pylZ7aoyh8/+kbiE/ks2IFUqzCtEyZTohTCm+MEXISUr2fU5c3k7uW5jRF3mjkmBeKycGe5haaOA8N2VZkw==}
+    peerDependencies:
+      '@angular/animations': ^15.0.0 || ^16.0.0
+      '@angular/cdk': 15.1.5
+      '@angular/common': ^15.0.0 || ^16.0.0
+      '@angular/core': ^15.0.0 || ^16.0.0
+      '@angular/forms': ^15.0.0 || ^16.0.0
+      '@angular/platform-browser': ^15.0.0 || ^16.0.0
+      rxjs: ^6.5.3 || ^7.4.0
+    dependencies:
+      '@angular/animations': 15.1.5_@angular+core@15.1.5
+      '@angular/cdk': 15.1.5_oznblskr5qbtvt766x35xnlopy
+      '@angular/common': 15.1.5_w2a4ar2ssyezibn6c65i4snjzu
+      '@angular/core': 15.1.5_rxjs@7.5.7+zone.js@0.11.8
+      '@angular/forms': 15.1.5_kkteiffnjutwxhimrtvkwyrg3a
+      '@angular/platform-browser': 15.1.5_s7kwnqxnlkypgp4vtemlnxkbmi
+      '@material/animation': 15.0.0-canary.684e33d25.0
+      '@material/auto-init': 15.0.0-canary.684e33d25.0
+      '@material/banner': 15.0.0-canary.684e33d25.0
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/button': 15.0.0-canary.684e33d25.0
+      '@material/card': 15.0.0-canary.684e33d25.0
+      '@material/checkbox': 15.0.0-canary.684e33d25.0
+      '@material/chips': 15.0.0-canary.684e33d25.0
+      '@material/circular-progress': 15.0.0-canary.684e33d25.0
+      '@material/data-table': 15.0.0-canary.684e33d25.0
+      '@material/density': 15.0.0-canary.684e33d25.0
+      '@material/dialog': 15.0.0-canary.684e33d25.0
+      '@material/dom': 15.0.0-canary.684e33d25.0
+      '@material/drawer': 15.0.0-canary.684e33d25.0
+      '@material/elevation': 15.0.0-canary.684e33d25.0
+      '@material/fab': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/floating-label': 15.0.0-canary.684e33d25.0
+      '@material/form-field': 15.0.0-canary.684e33d25.0
+      '@material/icon-button': 15.0.0-canary.684e33d25.0
+      '@material/image-list': 15.0.0-canary.684e33d25.0
+      '@material/layout-grid': 15.0.0-canary.684e33d25.0
+      '@material/line-ripple': 15.0.0-canary.684e33d25.0
+      '@material/linear-progress': 15.0.0-canary.684e33d25.0
+      '@material/list': 15.0.0-canary.684e33d25.0
+      '@material/menu': 15.0.0-canary.684e33d25.0
+      '@material/menu-surface': 15.0.0-canary.684e33d25.0
+      '@material/notched-outline': 15.0.0-canary.684e33d25.0
+      '@material/radio': 15.0.0-canary.684e33d25.0
+      '@material/ripple': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/segmented-button': 15.0.0-canary.684e33d25.0
+      '@material/select': 15.0.0-canary.684e33d25.0
+      '@material/shape': 15.0.0-canary.684e33d25.0
+      '@material/slider': 15.0.0-canary.684e33d25.0
+      '@material/snackbar': 15.0.0-canary.684e33d25.0
+      '@material/switch': 15.0.0-canary.684e33d25.0
+      '@material/tab': 15.0.0-canary.684e33d25.0
+      '@material/tab-bar': 15.0.0-canary.684e33d25.0
+      '@material/tab-indicator': 15.0.0-canary.684e33d25.0
+      '@material/tab-scroller': 15.0.0-canary.684e33d25.0
+      '@material/textfield': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      '@material/tooltip': 15.0.0-canary.684e33d25.0
+      '@material/top-app-bar': 15.0.0-canary.684e33d25.0
+      '@material/touch-target': 15.0.0-canary.684e33d25.0
+      '@material/typography': 15.0.0-canary.684e33d25.0
+      rxjs: 7.5.7
+      tslib: 2.5.0
+    dev: false
 
   /@angular/platform-browser-dynamic/15.1.5_pzachiwybhx467gapqhrlestmm:
     resolution: {integrity: sha512-pPnNyXqnkeUcFAy6DHxeC26dS/Te55Lnf+Yjn3ijvxM6bUcLkdhoIUKEuuMRPOrRiBLk4Ha/rSCzr2GpJPlZog==}
@@ -3020,6 +3082,657 @@ packages:
     resolution: {integrity: sha512-uSvJdwQU5nK+Vdf6zxcWAY2A8r7uqe+gePwLWzJ+fsQehq18pc0I2hJKwypZ2aLM90+Er9u1xn4iLJPZ+xlL4g==}
     engines: {node: '>=8'}
 
+  /@material/animation/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-5osi1z4JQIXcklPALbH/zTfOm2pDzHt9Fxm7ZyURy250xIZj6QjULRzPTnzOhC2ropfix9ra2Cfggbf0dcRbEQ==}
+    dependencies:
+      tslib: 2.5.0
+    dev: false
+
+  /@material/auto-init/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-OigQTmrVzkcGvxNjOaIe5oItTFPgrO9xLewvharDI6m6yvO1z7OBnkcW+sFN6ggLNYNxd0O1u9v64vMsmeDABQ==}
+    dependencies:
+      '@material/base': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/banner/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-PqtGp3KWzdu58rWv/DIvSfe38m5YKOBbAAbBinSvgadBb/da+IE1t5F7YPNKE1T5lJsQBGVUYx6QBIeXm+aI/A==}
+    dependencies:
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/button': 15.0.0-canary.684e33d25.0
+      '@material/dom': 15.0.0-canary.684e33d25.0
+      '@material/elevation': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/ripple': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/shape': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      '@material/tokens': 15.0.0-canary.684e33d25.0
+      '@material/typography': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/base/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-oOaqb/SfjWwTKsdJUZmeh/Qrs41nIJI0N+zELsxnvbGjSIN1ZMAKYZFPMahqvC68OJ6+5CvJM8PoTNs5l+B8IQ==}
+    dependencies:
+      tslib: 2.5.0
+    dev: false
+
+  /@material/button/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-Nkekk4edeX+ObVOa7UlwavaHdmckPV5wU4SAJf3iA3R61cmz+KsgAgpzfcwv5WfNhIlc2nLu8QYEecpHdo9d/w==}
+    dependencies:
+      '@material/density': 15.0.0-canary.684e33d25.0
+      '@material/dom': 15.0.0-canary.684e33d25.0
+      '@material/elevation': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/focus-ring': 15.0.0-canary.684e33d25.0
+      '@material/ripple': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/shape': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      '@material/tokens': 15.0.0-canary.684e33d25.0
+      '@material/touch-target': 15.0.0-canary.684e33d25.0
+      '@material/typography': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/card/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-xhyB7XX5KkEiCEqwSPkl58ZGYL6xFdnY62zimyBXJRG/Eaa0Swj3kW20hVCpt4f7c9Zmp8Se27rg8vnKmhvO3g==}
+    dependencies:
+      '@material/dom': 15.0.0-canary.684e33d25.0
+      '@material/elevation': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/ripple': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/shape': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      '@material/tokens': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/checkbox/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-NFpM3TS924PmVsk2KQLNU95OYCf8ZwYgzeqfnAexU0bEfjUJXINBun2Go0AaeOUMjuvWUe+byjrXgv8SFYbMUA==}
+    dependencies:
+      '@material/animation': 15.0.0-canary.684e33d25.0
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/density': 15.0.0-canary.684e33d25.0
+      '@material/dom': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/focus-ring': 15.0.0-canary.684e33d25.0
+      '@material/ripple': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      '@material/touch-target': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/chips/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-z4ajQ4NnsAQ/Si9tZ4xmxzjj2Qb+vW++4QjCjjjwAGIZbCe0xglAnMh2t66XLJUxt7RoKZuZVEO7ZqcFZpvJFQ==}
+    dependencies:
+      '@material/animation': 15.0.0-canary.684e33d25.0
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/checkbox': 15.0.0-canary.684e33d25.0
+      '@material/density': 15.0.0-canary.684e33d25.0
+      '@material/dom': 15.0.0-canary.684e33d25.0
+      '@material/elevation': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/focus-ring': 15.0.0-canary.684e33d25.0
+      '@material/ripple': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/shape': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      '@material/tokens': 15.0.0-canary.684e33d25.0
+      '@material/touch-target': 15.0.0-canary.684e33d25.0
+      '@material/typography': 15.0.0-canary.684e33d25.0
+      safevalues: 0.3.4
+      tslib: 2.5.0
+    dev: false
+
+  /@material/circular-progress/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-G6qD0nGNtEUwWnAMJuA9INYFpZoKtx7KFjBaPF4Ol2YLHtmShALNAYyn54TMAK8AZ2IpW08PXjGS7Ye88vrdEQ==}
+    dependencies:
+      '@material/animation': 15.0.0-canary.684e33d25.0
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/dom': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/progress-indicator': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/data-table/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-+wDw1DDDFfAsKAMzs84f/5GCjux39zjNfW8tL4wFbkWNwewmQrG9zaQMJhBpVOtLCrM8Gj6SOgOANqgqoCjvGg==}
+    dependencies:
+      '@material/animation': 15.0.0-canary.684e33d25.0
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/checkbox': 15.0.0-canary.684e33d25.0
+      '@material/density': 15.0.0-canary.684e33d25.0
+      '@material/dom': 15.0.0-canary.684e33d25.0
+      '@material/elevation': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/icon-button': 15.0.0-canary.684e33d25.0
+      '@material/linear-progress': 15.0.0-canary.684e33d25.0
+      '@material/list': 15.0.0-canary.684e33d25.0
+      '@material/menu': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/select': 15.0.0-canary.684e33d25.0
+      '@material/shape': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      '@material/tokens': 15.0.0-canary.684e33d25.0
+      '@material/touch-target': 15.0.0-canary.684e33d25.0
+      '@material/typography': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/density/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-661yEVRMGrlq6S6WuSbPRO+ZwpdUOg2glCc7y96doM6itSLOa3UEAldjOLfsYZVB74GnKCiuDp//QmfoRyYTfA==}
+    dependencies:
+      tslib: 2.5.0
+    dev: false
+
+  /@material/dialog/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-szn0dHnfeQTSOC6SSRSGAzX6Tnx+4NnSMUwNkXm+3bwjds8ZVK26+DXwLrP5f3ID5F1K5sFsRf2INo5/TNTHyQ==}
+    dependencies:
+      '@material/animation': 15.0.0-canary.684e33d25.0
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/button': 15.0.0-canary.684e33d25.0
+      '@material/dom': 15.0.0-canary.684e33d25.0
+      '@material/elevation': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/icon-button': 15.0.0-canary.684e33d25.0
+      '@material/ripple': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/shape': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      '@material/tokens': 15.0.0-canary.684e33d25.0
+      '@material/touch-target': 15.0.0-canary.684e33d25.0
+      '@material/typography': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/dom/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-7pEJLYov+tGgfuD8mZxoVU6rWtPI8ppjTAhz+F27Hz9FG0JETMWTKpDPBXLnKvX7vhIxL83GvZ9geNHCe8Hfog==}
+    dependencies:
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/drawer/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-/KMckLf1PYU/H3PXnS4e0aFl03qG3JlSv4LGgX6juJufcONqGTl/m63EMO/L/eUy6H1CRrXmVDjik/jzHLyDhg==}
+    dependencies:
+      '@material/animation': 15.0.0-canary.684e33d25.0
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/dom': 15.0.0-canary.684e33d25.0
+      '@material/elevation': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/list': 15.0.0-canary.684e33d25.0
+      '@material/ripple': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/shape': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      '@material/typography': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/elevation/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-WDF8SsRtq3rXUbVVbd9K4DUijIPH0bUFSOreVYxudpuxAfTlDS5+aeS1EK9UIBFYLuba4u5wVT2tDv6e1RTfrQ==}
+    dependencies:
+      '@material/animation': 15.0.0-canary.684e33d25.0
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/fab/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-KCu87rWOKEAe9vZcAm6K8XazYSWPNjMG+OhrbPjHW6bCO7as1YCgtmkBkhff7csY/rFmcVpIy884xtUfLmSudQ==}
+    dependencies:
+      '@material/animation': 15.0.0-canary.684e33d25.0
+      '@material/dom': 15.0.0-canary.684e33d25.0
+      '@material/elevation': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/focus-ring': 15.0.0-canary.684e33d25.0
+      '@material/ripple': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/shape': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      '@material/tokens': 15.0.0-canary.684e33d25.0
+      '@material/touch-target': 15.0.0-canary.684e33d25.0
+      '@material/typography': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/feature-targeting/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-HyH1erNTSjS63sigNSUMaCd0nJhTNdDFeC+myrxwtDaQm+uYJ8troCNtQM3g6mx0XATNtX5aTOoPmrM6yVVi1A==}
+    dependencies:
+      tslib: 2.5.0
+    dev: false
+
+  /@material/floating-label/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-f7TPp6bKpGvV3sYYiZHSGlrixXKkXXITW3Esp7KB9jRq42c0H82novmdwvY0eTef4ootmA2JEysr78KQfHBUPg==}
+    dependencies:
+      '@material/animation': 15.0.0-canary.684e33d25.0
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/dom': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      '@material/typography': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/focus-ring/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-ikw2RVUfgzXChpWIzPH1VzRvTjYb5ZKj4H+CZf7jqPUXMstFOZg90Bp7ARLZHqYiyNMuUq3zUTHozS6iHorSqg==}
+    dependencies:
+      '@material/dom': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+    dev: false
+
+  /@material/form-field/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-vpF9N/uq5no/7+8GAbEH0868FhOuBgxAWRr1Sfb+jthKfBr8OS/wPU/AHzZHdHdAm7PQynbeOXfDsX2dI//PDA==}
+    dependencies:
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/ripple': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      '@material/typography': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/icon-button/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-wMI+XGzmIN/o2ePBKg2hLyx7H4pXCRAyyIKMQS1FMp1UKa2tYmiHVX/V8skhKwCqxg3i6Ls/LxMjfPxTR18WvQ==}
+    dependencies:
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/density': 15.0.0-canary.684e33d25.0
+      '@material/dom': 15.0.0-canary.684e33d25.0
+      '@material/elevation': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/focus-ring': 15.0.0-canary.684e33d25.0
+      '@material/ripple': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      '@material/touch-target': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/image-list/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-Ol+uaHYBe5R/cgzlfh5ONnMVX0wO6fV74JMUcQCQlxP6lXau/edARo4tkRc7A7UJUkU3VRv0EpEjLoCRNUPGaA==}
+    dependencies:
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/shape': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      '@material/typography': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/layout-grid/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-ALXE1mqFNb/RB2lVRQ3/r1Aufw2mFZnOjRE+boYDVepmAG/xWyPCyaGoavELJF5l4GAb0tXi8wA/8HeGbLOpuA==}
+    dependencies:
+      tslib: 2.5.0
+    dev: false
+
+  /@material/line-ripple/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-7hRx8C/e9i0P6pgQpNOMfTwSS2r1fwEvBL72QDVGLtLuoKKwsjjgP6Z0Jat/GeHJe87u9LQvGBoD4upt+of/HA==}
+    dependencies:
+      '@material/animation': 15.0.0-canary.684e33d25.0
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/linear-progress/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-iJclt7mKmcMk6pqD7ocXKfCWZhqBoODp7N593jYlxVpTJuEz2wiVAjZUDn/YGj/Uz3CRH+2YFfOiLr9pwWjhDg==}
+    dependencies:
+      '@material/animation': 15.0.0-canary.684e33d25.0
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/dom': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/progress-indicator': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/list/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-rQ+FCSdzmwTcT00IYE0uRV3CS4oGSccKFl9hkcF+aHFW61L7ORh/SCGUDPrEfQFrFkMn5f8qroVJjpUAMXBz4g==}
+    dependencies:
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/density': 15.0.0-canary.684e33d25.0
+      '@material/dom': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/ripple': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/shape': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      '@material/tokens': 15.0.0-canary.684e33d25.0
+      '@material/typography': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/menu-surface/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-RVO5GAYcfWPaKwxsF/NhUAmrYXQCQBKvRQW0TIlbmAJz6lcFeTs6YZqF3u1C7qrL3ZQGz+sur/7ywj6QU0oMow==}
+    dependencies:
+      '@material/animation': 15.0.0-canary.684e33d25.0
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/elevation': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/shape': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/menu/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-r7wzDLSGSI9629/mfpvsMzkVxpmV75kcD3IrW0Pcu6/Bv/1xi0EvjcUXzNJJoQlwN4Zj35Ymz/PCjZkIDIz68Q==}
+    dependencies:
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/dom': 15.0.0-canary.684e33d25.0
+      '@material/elevation': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/list': 15.0.0-canary.684e33d25.0
+      '@material/menu-surface': 15.0.0-canary.684e33d25.0
+      '@material/ripple': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/shape': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      '@material/tokens': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/notched-outline/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-9YHcBkvJLPVYzkHcWoTpBZAFrEd+j1hjhGxLhh0LuNrZe8VroUkZD1TTnUAPHRG3os6EqEWWaKb0RN+aPIF2yQ==}
+    dependencies:
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/floating-label': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/shape': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/progress-indicator/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-c0icji4faeNWUoqGENGC7Hav0Puxh0RwXIDVizffaUxKIGbajpIp5+4Zop73fK/xFLGMB/npg7TbP+aCGjQ3fw==}
+    dependencies:
+      tslib: 2.5.0
+    dev: false
+
+  /@material/radio/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-U3Eh8sNUA8trDla1Bq8Bo02foxYvtoewaKeF8A8tAju81XZ4jRiftfOsOWZDZEHCVbbCB2QwvutvFlnay5n+Aw==}
+    dependencies:
+      '@material/animation': 15.0.0-canary.684e33d25.0
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/density': 15.0.0-canary.684e33d25.0
+      '@material/dom': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/focus-ring': 15.0.0-canary.684e33d25.0
+      '@material/ripple': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      '@material/touch-target': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/ripple/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-RyePu7SjIm/OuyyEieZ/gxiPYkNZOZHeid72WRcN9ofdlljj2pifcdPvcfZA+v/DMS33xo5GjG2L/Qj6ClWrKw==}
+    dependencies:
+      '@material/animation': 15.0.0-canary.684e33d25.0
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/dom': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/rtl/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-NqdJl8Ayupp1Th+vCNCpVQHbUFOuF7TCte9LD1norTIBUF/QizIxWby2W5uUEiPbnh5j9PmE1CJtfLwKun3pcw==}
+    dependencies:
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/segmented-button/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-bEGgg8vgXNLyukyV8HRjFMuQ6t6nm5LQ4Pgm22um61Yc8qyi0BOqV41OR4SVdUrUqZxh1aVD+p+4NN03+LfQXw==}
+    dependencies:
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/elevation': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/ripple': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      '@material/touch-target': 15.0.0-canary.684e33d25.0
+      '@material/typography': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/select/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-kf178/2TeEinTv0mgmSBcmmExQ2h7a7dtR1E3WuqQgisJ/R6+zVLMkC2CnfIyzxYX2vkuUTG0ue3Reh/6XiqSg==}
+    dependencies:
+      '@material/animation': 15.0.0-canary.684e33d25.0
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/density': 15.0.0-canary.684e33d25.0
+      '@material/dom': 15.0.0-canary.684e33d25.0
+      '@material/elevation': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/floating-label': 15.0.0-canary.684e33d25.0
+      '@material/line-ripple': 15.0.0-canary.684e33d25.0
+      '@material/list': 15.0.0-canary.684e33d25.0
+      '@material/menu': 15.0.0-canary.684e33d25.0
+      '@material/menu-surface': 15.0.0-canary.684e33d25.0
+      '@material/notched-outline': 15.0.0-canary.684e33d25.0
+      '@material/ripple': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/shape': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      '@material/tokens': 15.0.0-canary.684e33d25.0
+      '@material/typography': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/shape/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-aEelpaTFmpnCji3TUGP9bVCS/bRVjUmLTHBPZtuu1gOrUVVtJ6kYOg73dZNJF+XOoNL2yOX/LRcKwsop29tptA==}
+    dependencies:
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/slider/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-WVyK+2pSNSZmj07M2K/a3TADoQ9FBCndfNC/vE7/wGIg4dddJJK5KvQ+yruf9R2cSzTL/S1sZ5WpyyeM8E9HTw==}
+    dependencies:
+      '@material/animation': 15.0.0-canary.684e33d25.0
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/dom': 15.0.0-canary.684e33d25.0
+      '@material/elevation': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/ripple': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      '@material/tokens': 15.0.0-canary.684e33d25.0
+      '@material/typography': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/snackbar/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-itO+DCkOannZzR1/cCHcqAm7ifhuFvXmDItNoA8qLEcAyJDJJRkhpwj3XQ01yuo9gBFcSctp7Txt7e+Hncm/Jg==}
+    dependencies:
+      '@material/animation': 15.0.0-canary.684e33d25.0
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/button': 15.0.0-canary.684e33d25.0
+      '@material/dom': 15.0.0-canary.684e33d25.0
+      '@material/elevation': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/icon-button': 15.0.0-canary.684e33d25.0
+      '@material/ripple': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/shape': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      '@material/tokens': 15.0.0-canary.684e33d25.0
+      '@material/typography': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/switch/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-Jxi0gl92yvvZZsAPxvVHzXx2ga+T/djMow98jvEczmpUorWnAhgiCr9CsSSRoosahWyRB8NLZOxUQrACxvffjw==}
+    dependencies:
+      '@material/animation': 15.0.0-canary.684e33d25.0
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/density': 15.0.0-canary.684e33d25.0
+      '@material/dom': 15.0.0-canary.684e33d25.0
+      '@material/elevation': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/focus-ring': 15.0.0-canary.684e33d25.0
+      '@material/ripple': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/shape': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      '@material/tokens': 15.0.0-canary.684e33d25.0
+      safevalues: 0.3.4
+      tslib: 2.5.0
+    dev: false
+
+  /@material/tab-bar/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-SW/cMaDsIGGkM1ag3A7GJRlmr8eXmObWsvitQJzh6Azr5zzZtSI+GQygkMesAEE1gbpqOVN8d40rh3H7VVIAcA==}
+    dependencies:
+      '@material/animation': 15.0.0-canary.684e33d25.0
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/density': 15.0.0-canary.684e33d25.0
+      '@material/elevation': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/tab': 15.0.0-canary.684e33d25.0
+      '@material/tab-indicator': 15.0.0-canary.684e33d25.0
+      '@material/tab-scroller': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      '@material/tokens': 15.0.0-canary.684e33d25.0
+      '@material/typography': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/tab-indicator/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-kKICqSPqOlaf0lzaFFCmuOqPXJC+cK48Qmsc+m5o6fJhkmuZRCYpIwB2JeP+uZSOq/bTH+SrPtCtnVlgWg6ksA==}
+    dependencies:
+      '@material/animation': 15.0.0-canary.684e33d25.0
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/tab-scroller/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-H6EU/TSiK/M2DyyORX5GEtXD9rKYxTMHC2VxsNWARPMFJGzgeW2ugYkFv+rKI1/c0bs0CJ4e+qFnOlBsQXZvyQ==}
+    dependencies:
+      '@material/animation': 15.0.0-canary.684e33d25.0
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/dom': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/tab': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/tab/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-WQL3wj9syHNcfe8KbgGGUcA34M8C/xZ+n0Fkkh8Kk6puVwaU+xqUNihsxPY6YzKpmh4PZ4oJaBdiN8zvFT1zqQ==}
+    dependencies:
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/elevation': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/focus-ring': 15.0.0-canary.684e33d25.0
+      '@material/ripple': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/tab-indicator': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      '@material/tokens': 15.0.0-canary.684e33d25.0
+      '@material/typography': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/textfield/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-OvgpDXjvpyJTtAWskO69IDybFvDNzr9w2PN/Fk7yFm+uNVupaWz1Ew8lZ4gGslaTNSVmh2XcsvmzxcLINSiiNg==}
+    dependencies:
+      '@material/animation': 15.0.0-canary.684e33d25.0
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/density': 15.0.0-canary.684e33d25.0
+      '@material/dom': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/floating-label': 15.0.0-canary.684e33d25.0
+      '@material/line-ripple': 15.0.0-canary.684e33d25.0
+      '@material/notched-outline': 15.0.0-canary.684e33d25.0
+      '@material/ripple': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/shape': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      '@material/tokens': 15.0.0-canary.684e33d25.0
+      '@material/typography': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/theme/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-AZxaXXAvRKzAi20RlMxzt2U5UmkCWyv7DMWEBXsxtG5Tk54mi1HsbVUp3fxDPTlmL7Pq8p1/DESg/o7TgRCVlw==}
+    dependencies:
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/tokens/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-wVwbQOTCXDPKYPdHQHLr026y36MMFelID1CmbfRk6mSol4O8yE9U0fXcShfRDW8Qo5E3X31w9c2A6T3neJY7wQ==}
+    dependencies:
+      '@material/elevation': 15.0.0-canary.684e33d25.0
+    dev: false
+
+  /@material/tooltip/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-dtm26QjxyQdinc8btgz6yys07b7bUW4FZgNF2EBPeGrICrPg7jf+JEvDziz5g8VMaTBQLOQRSCGy0MKuRlOjLw==}
+    dependencies:
+      '@material/animation': 15.0.0-canary.684e33d25.0
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/button': 15.0.0-canary.684e33d25.0
+      '@material/dom': 15.0.0-canary.684e33d25.0
+      '@material/elevation': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/shape': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      '@material/tokens': 15.0.0-canary.684e33d25.0
+      '@material/typography': 15.0.0-canary.684e33d25.0
+      safevalues: 0.3.4
+      tslib: 2.5.0
+    dev: false
+
+  /@material/top-app-bar/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-1M+oupUxflfW7u81P1XlxoLZB8bLzwtpKofIfDNRbEsiKhlLTERJR3Yak3BGE9xakNMysAaBHlkb5MrN5bNPFw==}
+    dependencies:
+      '@material/animation': 15.0.0-canary.684e33d25.0
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/elevation': 15.0.0-canary.684e33d25.0
+      '@material/ripple': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/shape': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      '@material/typography': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/touch-target/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-zdE69Slg8+T7sTn1OwqZ6H7WBYac9mxJ/JlJqfTqthzIjZRcCxBSYymQJcDHjsrPnUojOtr9U4Tpm5YZ96TEkQ==}
+    dependencies:
+      '@material/base': 15.0.0-canary.684e33d25.0
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/rtl': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
+  /@material/typography/15.0.0-canary.684e33d25.0:
+    resolution: {integrity: sha512-aVnvgMwcfNa/K4wujzpKDIxjGl2hbkEL+m+OKDSQqWYjKcP9QrbzCXJruJBqxrBoPRHLbqo47k5f9uT8raSgjw==}
+    dependencies:
+      '@material/feature-targeting': 15.0.0-canary.684e33d25.0
+      '@material/theme': 15.0.0-canary.684e33d25.0
+      tslib: 2.5.0
+    dev: false
+
   /@nestjs/common/9.3.9_weizl6uyifxeltqqggsn4erezy:
     resolution: {integrity: sha512-GshTD9Xz+wD2em6NyzU4NXw5IXMUmapgDgD+iuj6XL0258hvDwODmNk37mBBnZvTZlqER+krvIUKnS34etqF/A==}
     peerDependencies:
@@ -3107,13 +3820,13 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@nestjs/schematics/9.0.4_typescript@4.8.4:
+  /@nestjs/schematics/9.0.4_ar2on76c45aosuucycxzxivxgm:
     resolution: {integrity: sha512-egurCfAc4e5i1r2TmeAF0UrOKejFmT5oTdv4b7HcOVPupc3QGU7CbEfGleL3mkM5AjrixTQeMxU9bJ00ttAbGg==}
     peerDependencies:
       typescript: ^4.3.5
     dependencies:
-      '@angular-devkit/core': 15.0.4
-      '@angular-devkit/schematics': 15.0.4
+      '@angular-devkit/core': 15.0.4_chokidar@3.5.3
+      '@angular-devkit/schematics': 15.0.4_chokidar@3.5.3
       fs-extra: 11.1.0
       jsonc-parser: 3.2.0
       pluralize: 8.0.0
@@ -3265,8 +3978,8 @@ packages:
         optional: true
     dependencies:
       '@angular-devkit/build-angular': 15.1.6_ojas33k22lfnlqqu4jcy4nc43q
-      '@angular-devkit/core': 15.1.6
-      '@angular-devkit/schematics': 15.1.6
+      '@angular-devkit/core': 15.1.6_chokidar@3.5.3
+      '@angular-devkit/schematics': 15.1.6_chokidar@3.5.3
       '@nrwl/cypress': 15.7.2_iewltepy45s5cyhsd2ythsmlha
       '@nrwl/devkit': 15.7.2_nx@15.7.2+typescript@4.8.4
       '@nrwl/jest': 15.7.2_67p7cacr4gnfcvla6bxz3d2qke
@@ -3274,7 +3987,7 @@ packages:
       '@nrwl/webpack': 15.7.2_wg44dqkavgbmeppfz7r4ieu3uu
       '@nrwl/workspace': 15.7.2_3joxs7tzhkrjjacnd53qs32tau
       '@phenomnomnominal/tsquery': 4.1.1_typescript@4.8.4
-      '@schematics/angular': 15.1.6
+      '@schematics/angular': 15.1.6_chokidar@3.5.3
       chalk: 4.1.2
       chokidar: 3.5.3
       enquirer: 2.3.6
@@ -3468,10 +4181,10 @@ packages:
       - typescript
     dev: true
 
-  /@nrwl/nest/15.7.2_mgopgrqbztbsw3ogcsrrzdddqi:
+  /@nrwl/nest/15.7.2_fm2corhclvovj5zkkdafw2zdnm:
     resolution: {integrity: sha512-YTG37XoX0DUoWbPE/CP+tTXa+aD+bjtkRTR7I5e4/E8K7RRIqaJWf21ni56FD3mek7ACq6GxEu1hrrPfY9LE+g==}
     dependencies:
-      '@nestjs/schematics': 9.0.4_typescript@4.8.4
+      '@nestjs/schematics': 9.0.4_ar2on76c45aosuucycxzxivxgm
       '@nrwl/devkit': 15.7.2_nx@15.7.2+typescript@4.8.4
       '@nrwl/js': 15.7.2_iewltepy45s5cyhsd2ythsmlha
       '@nrwl/linter': 15.7.2_zi76drywmf6jzoveavhbcackhi
@@ -3838,12 +4551,12 @@ packages:
       rollup: 3.17.0
     dev: true
 
-  /@schematics/angular/15.1.6:
+  /@schematics/angular/15.1.6_chokidar@3.5.3:
     resolution: {integrity: sha512-y2kIQ1wJL0wR6v/LM5+PFJUivrYtdaIJVRdOXLLWl0AB5aLwObiWgLzAuBsbGm/9//WPPhw9PglS5EFFxTBDzg==}
     engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
     dependencies:
-      '@angular-devkit/core': 15.1.6
-      '@angular-devkit/schematics': 15.1.6
+      '@angular-devkit/core': 15.1.6_chokidar@3.5.3
+      '@angular-devkit/schematics': 15.1.6_chokidar@3.5.3
       jsonc-parser: 3.2.0
     transitivePeerDependencies:
       - chokidar
@@ -4704,7 +5417,6 @@ packages:
     dependencies:
       normalize-path: 3.0.0
       picomatch: 2.3.1
-    dev: true
 
   /append-field/1.0.0:
     resolution: {integrity: sha512-klpgFSWLW1ZEs8svjfb7g4qWY0YS5imI82dTg+QahUvJ8YqAY0P10Uk8tTyh9ZGuYEZEMaeJYCF5BFuX552hsw==}
@@ -5040,7 +5752,6 @@ packages:
   /binary-extensions/2.2.0:
     resolution: {integrity: sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==}
     engines: {node: '>=8'}
-    dev: true
 
   /bl/4.1.0:
     resolution: {integrity: sha512-1W07cM9gS6DcLperZfFSj+bWLtaPGSOHWhPiGzXmvVJbRLdG82sH/Kn8EtW1VqWVA54AKf2h5k5BbnIbwF3h6w==}
@@ -5100,7 +5811,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       fill-range: 7.0.1
-    dev: true
 
   /browser-process-hrtime/1.0.0:
     resolution: {integrity: sha512-9o5UecI3GhkpM6DrXr69PblIuWxPKk9Y0jHBRhdocZ2y7YECBFCsHm79Pr3OyR2AvjhDkabFJaDJMYRazHgsow==}
@@ -5313,7 +6023,6 @@ packages:
       readdirp: 3.6.0
     optionalDependencies:
       fsevents: 2.3.2
-    dev: true
 
   /chownr/2.0.0:
     resolution: {integrity: sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==}
@@ -6469,6 +7178,12 @@ packages:
     resolution: {integrity: sha512-p92if5Nz619I0w+akJrLZH0MX0Pb5DX39XOwQTtXSdQQOaYH03S1uIQp4mhOZtAXrxq4ViO67YTiLBo2638o9A==}
     dev: true
 
+  /entities/4.4.0:
+    resolution: {integrity: sha512-oYp7156SP8LkeGD0GF85ad1X9Ai79WtRsZ2gxJqtBuzH+98YUV6jkHEKlZkMbcrjJjIVJNIDP/3WL9wQkoPbWA==}
+    engines: {node: '>=0.12'}
+    dev: false
+    optional: true
+
   /env-paths/2.2.1:
     resolution: {integrity: sha512-+h1lkLKhZMTYjog1VEpJNG7NZJWcuc2DDk/qsqSTRRCOXiLjeQ1d1/udrUGhqMxUgAlwKNZ0cf2uqan5GLuS2A==}
     engines: {node: '>=6'}
@@ -7133,7 +7848,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       to-regex-range: 5.0.1
-    dev: true
 
   /finalhandler/1.2.0:
     resolution: {integrity: sha512-5uXcUVftlQMFnWC9qu/svkWv3GTd2PfUhK/3PLkYNAe7FbqJMt3515HaxE6eRL74GdsriiwujiawdaB1BpEISg==}
@@ -7316,7 +8030,6 @@ packages:
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
     requiresBuild: true
-    dev: true
     optional: true
 
   /function-bind/1.1.1:
@@ -7445,7 +8158,6 @@ packages:
     engines: {node: '>= 6'}
     dependencies:
       is-glob: 4.0.3
-    dev: true
 
   /glob-parent/6.0.2:
     resolution: {integrity: sha512-XxwI8EOhVQgWp6iDL+3b0r86f4d6AX6zSU55HfB4ydCEuXLXc5FcYeOu+nnGftS4TEju/11rt4KJPTMgbfmv4A==}
@@ -8047,7 +8759,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       binary-extensions: 2.2.0
-    dev: true
 
   /is-boolean-object/1.1.2:
     resolution: {integrity: sha512-gDYaKHJmnj4aWxyj6YHyXVpdQawtVLHU5cb+eztPGczf6cjuTdwve5ZIEfgXqH4e57An1D1AKf8CZ3kYrQRqYA==}
@@ -8091,7 +8802,6 @@ packages:
   /is-extglob/2.1.1:
     resolution: {integrity: sha512-SbKbANkN603Vi4jEZv49LeVJMn4yGwsbzZworEoyEiutsN3nJYdbO36zfhGJ6QEDpOZIFkDtnq5JRxmvl3jsoQ==}
     engines: {node: '>=0.10.0'}
-    dev: true
 
   /is-fullwidth-code-point/3.0.0:
     resolution: {integrity: sha512-zymm5+u+sCsSWyD9qNaejV3DFvhCKclKdizYaJUuHA83RLjb7nSuGnddCHGv0hk+KY7BMAlsWeK4Ueg6EV6XQg==}
@@ -8113,7 +8823,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       is-extglob: 2.1.1
-    dev: true
 
   /is-interactive/1.0.0:
     resolution: {integrity: sha512-2HvIEKRoqS62guEC+qBjpvRubdX910WCMuJTZ+I9yvqKU2/12eSL549HMwtabb4oupdj2sMP50k+XJfB/8JE6w==}
@@ -8147,7 +8856,6 @@ packages:
   /is-number/7.0.0:
     resolution: {integrity: sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==}
     engines: {node: '>=0.12.0'}
-    dev: true
 
   /is-obj/2.0.0:
     resolution: {integrity: sha512-drqDG3cbczxxEJRoOXcOjtdp1J/lyp1mNn0xaznRs8+muBhgQcrnbspox5X5fOw0HnMnbfDzvnEMEtqDEJEo8w==}
@@ -9959,7 +10667,6 @@ packages:
   /normalize-path/3.0.0:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
     engines: {node: '>=0.10.0'}
-    dev: true
 
   /normalize-range/0.1.2:
     resolution: {integrity: sha512-bdok/XvKII3nUpklnV6P2hxtMNrCboOjAcyBuQnWEhO665FwrSNRxU+AqpsyvO6LgGYPspN+lu5CLtw4jPRKNA==}
@@ -10432,6 +11139,14 @@ packages:
     resolution: {integrity: sha512-Ofn/CTFzRGTTxwpNEs9PP93gXShHcTq255nzRYSKe8AkVpZY7e1fpmTfOyoIvjP5HG7Z2ZM7VS9PPhQGW2pOpw==}
     dev: true
 
+  /parse5/7.1.2:
+    resolution: {integrity: sha512-Czj1WaSVpaoj0wbhMzLmWD69anp2WH7FXMB9n1Sy8/ZFF9jolSQVMu1Ij5WIyGmcBmhk7EOndpO4mIpihVqAXw==}
+    requiresBuild: true
+    dependencies:
+      entities: 4.4.0
+    dev: false
+    optional: true
+
   /parseurl/1.3.3:
     resolution: {integrity: sha512-CiyeOxFT/JZyN5m0z9PfXw4SCBJ6Sygz1Dpl0wqjlhDEGGBP1GnsUVEL0p63hoG1fcj3fHynXi9NYO4nWOL+qQ==}
     engines: {node: '>= 0.8'}
@@ -10490,7 +11205,6 @@ packages:
   /picomatch/2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
-    dev: true
 
   /pidtree/0.6.0:
     resolution: {integrity: sha512-eG2dWTVw5bzqGRztnHExczNxt5VGsE6OwTeCG3fdUf9KBsZzO3R5OIIIzWR+iZA0NtZ+RDVdaoE2dK1cn6jH4g==}
@@ -11512,7 +12226,6 @@ packages:
     engines: {node: '>=8.10.0'}
     dependencies:
       picomatch: 2.3.1
-    dev: true
 
   /redent/3.0.0:
     resolution: {integrity: sha512-6tDA8g98We0zd0GvVeMT9arEOnTw9qM03L9cJXaCjrip1OO764RDBLBfrB4cwzNGDj5OA5ioymC9GkizgWJDUg==}
@@ -11735,6 +12448,10 @@ packages:
 
   /safer-buffer/2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
+
+  /safevalues/0.3.4:
+    resolution: {integrity: sha512-LRneZZRXNgjzwG4bDQdOTSbze3fHm1EAKN/8bePxnlEZiBmkYEDggaHbuvHI9/hoqHbGfsEA7tWS9GhYHZBBsw==}
+    dev: false
 
   /sass-loader/12.6.0_sass@1.58.3+webpack@5.75.0:
     resolution: {integrity: sha512-oLTaH0YCtX4cfnJZxKSLAyglED0naiYfNG1iXfU5w1LNZ+ukoA5DtyDIN5zmKVZwYNJP4KRc5Y3hkWga+7tYfA==}
@@ -12656,7 +13373,6 @@ packages:
     engines: {node: '>=8.0'}
     dependencies:
       is-number: 7.0.0
-    dev: true
 
   /toidentifier/1.0.1:
     resolution: {integrity: sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==}

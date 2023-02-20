@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class SessionService {
-  private _cwd = __dirname;
+  private _cwd = process.cwd();
 
   get cwd(): string {
     return this._cwd;

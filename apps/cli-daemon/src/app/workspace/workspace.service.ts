@@ -17,11 +17,11 @@ import {
 
 import { SessionService } from '../session/session.service';
 
-export const BAD_PATH_EXCEPTION =
-  'Unable to determine format for workspace path.';
-export const NOT_ANGULAR_WORKSPACE =
-  'Unable to locate a workspace file for workspace path. Are you missing an `angular.json`' +
-  ' or `.angular.json` file?';
+import {
+  ANGULAR_WORKSPACE_NOT_FOUND,
+  BAD_PATH_EXCEPTION,
+  NOT_ANGULAR_WORKSPACE,
+} from './entities';
 
 @Injectable()
 export class WorkspaceService {
@@ -44,7 +44,7 @@ export class WorkspaceService {
         case BAD_PATH_EXCEPTION:
           throw new BadRequestException(BAD_PATH_EXCEPTION);
         case NOT_ANGULAR_WORKSPACE:
-          throw new NotFoundException('Angular workspace not found.');
+          throw new NotFoundException(ANGULAR_WORKSPACE_NOT_FOUND);
         default:
           this.logger.error(errorMessage);
           throw new InternalServerErrorException(err);

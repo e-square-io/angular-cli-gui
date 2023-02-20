@@ -1,7 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
-import { WorkspaceController } from './workspace-settings.controller';
-import { WorkspaceSettingsService } from './workspace-settings.service';
+import { createSessionServiceMock } from '../../../testing';
+import { SessionService } from '../session/session.service';
+
+import { WorkspaceController } from './workspace.controller';
+import { WorkspaceService } from './workspace.service';
 
 describe('WorkspaceSettingsController', () => {
   let controller: WorkspaceController;
@@ -11,15 +14,18 @@ describe('WorkspaceSettingsController', () => {
       controllers: [WorkspaceController],
       providers: [
         {
-          provide: WorkspaceSettingsService,
+          provide: WorkspaceService,
           useValue: {
             readWorkspaceProject: jest.fn(),
             readWorkspace: jest.fn(),
             readWorkspaceProjectNames: jest.fn(),
             readWorkspaceProjectTarget: jest.fn(),
             readWorkspaceProjectTargetNames: jest.fn(),
-            WORKSPACE_ROOT: '',
           },
+        },
+        {
+          provide: SessionService,
+          useValue: createSessionServiceMock(),
         },
       ],
     }).compile();

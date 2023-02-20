@@ -2,7 +2,8 @@ import { spawnSync, SpawnSyncOptionsWithBufferEncoding } from 'child_process';
 import { resolve as pathResolve } from 'path';
 
 import { Injectable } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+
+import { SessionService } from '../session/session.service';
 
 import { ExecResult } from './dto';
 
@@ -10,11 +11,11 @@ export const NG = 'npx ng g';
 
 @Injectable()
 export class GeneratorsService {
-  constructor(private readonly configService: ConfigService) {}
+  constructor(private readonly sessionService: SessionService) {}
 
   execSync(args?: string[]): ExecResult {
     const options: SpawnSyncOptionsWithBufferEncoding = {
-      cwd: pathResolve(this.configService.get<string>('WORKSPACE_ROOT') || '.'),
+      cwd: pathResolve(this.sessionService.cwd),
       env: process.env,
       shell: true,
     };

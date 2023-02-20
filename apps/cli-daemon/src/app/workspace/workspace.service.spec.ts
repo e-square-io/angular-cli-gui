@@ -3,15 +3,15 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { createSessionServiceMock } from '../../../testing';
 import { SessionService } from '../session/session.service';
 
-import { GeneratorsService } from './generators.service';
+import { WorkspaceService } from './workspace.service';
 
-describe('GeneratorsService', () => {
-  let service: GeneratorsService;
+describe('WorkspaceSettingsService', () => {
+  let service: WorkspaceService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
-        GeneratorsService,
+        WorkspaceService,
         {
           provide: SessionService,
           useValue: createSessionServiceMock(),
@@ -19,7 +19,7 @@ describe('GeneratorsService', () => {
       ],
     }).compile();
 
-    service = module.get<GeneratorsService>(GeneratorsService);
+    service = module.get<WorkspaceService>(WorkspaceService);
   });
 
   it('should be defined', () => {

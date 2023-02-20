@@ -1,21 +1,16 @@
-import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { Global, Module } from '@nestjs/common';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { GeneratorsModule } from './generators/generators.module';
-import { WorkspaceSettingsModule } from './workspace-settings/workspace-settings.module';
+import { SessionService } from './session/session.service';
+import { WorkspaceModule } from './workspace/workspace.module';
 
+@Global()
 @Module({
-  imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
-      envFilePath: 'apps/cli-daemon/.dev.env',
-    }),
-    WorkspaceSettingsModule,
-    GeneratorsModule,
-  ],
+  imports: [WorkspaceModule, GeneratorsModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, SessionService],
+  exports: [SessionService],
 })
 export class AppModule {}

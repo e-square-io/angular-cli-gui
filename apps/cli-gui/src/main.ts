@@ -2,19 +2,16 @@ import { HttpClient, provideHttpClient } from '@angular/common/http';
 import { APP_INITIALIZER } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import {
-  provideRouter,
-  withEnabledBlockingInitialNavigation,
-} from '@angular/router';
+import { provideRouter, withEnabledBlockingInitialNavigation } from '@angular/router';
 import { map } from 'rxjs';
 
 import { AppComponent } from './app/app.component';
-import { appRoutes } from './app/app.routes';
+import { APP_ROUTES } from './app/app.routes';
 import { CoreService } from './app/core/core.service';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideRouter(appRoutes, withEnabledBlockingInitialNavigation()),
+    provideRouter(APP_ROUTES, withEnabledBlockingInitialNavigation()),
     provideHttpClient(),
     provideAnimations(),
     {
@@ -32,4 +29,4 @@ bootstrapApplication(AppComponent, {
       multi: true,
     },
   ],
-}).catch((err) => console.error(err));
+}).catch(err => console.error(err));

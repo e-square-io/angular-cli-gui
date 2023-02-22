@@ -1,6 +1,6 @@
 :host {
     .menu-item {
         justify-content: left;
-        width: 10rem;
+        width: var(--menu-item-width);
     }
 }

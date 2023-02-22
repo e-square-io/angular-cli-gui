@@ -13,9 +13,11 @@ import {
   Post,
 } from '@nestjs/common';
 
+import { ExecResult } from '../generators/dto';
 import { SessionService } from '../session/session.service';
 
 import { WorkspaceConnectDto } from './dto';
+import { WorkspaceCreateDto } from './dto/workspace-create.dto';
 import { WorkspaceService } from './workspace.service';
 
 @Controller('workspace')
@@ -32,6 +34,17 @@ export class WorkspaceController {
     const path = body.path;
     await this.workspaceService.readWorkspace(path);
     this.sessionService.setCwd(path);
+  }
+
+  @Post('create')
+  create(@Body() body: WorkspaceCreateDto): ExecResult {
+    try {
+      this.sessionService.setCwd(body.path);
+      return this.workspaceService.execSync(this.ngNewArgsFromDto(body));
+    } catch (err) {
+      this.logger.error(err);
+      throw new InternalServerErrorException();
+    }
   }
 
   @Get('workspace-path')
@@ -101,5 +114,25 @@ export class WorkspaceController {
     }
 
     return target;
+  }
+
+  private ngNewArgsFromDto(dto: WorkspaceCreateDto): string[] {
+    const { name, options } = dto;
+    const args: string[] = [name];
+
+    const ngNewOptions = options.map((option) => {
+      // If the option value is undefined, assume it's a boolean flag and include only the option name
+      const optionValue = option.value !== undefined ? ` ${option.value}` : '';
+
+      // If the option is interactive, set it to false
+      if (option.name.includes('--interactive')) {
+        return `--interactive=false`;
+      }
+
+      // Otherwise, include the option name and value (if any)
+      return `${option.name}${optionValue}`;
+    });
+
+    return args.concat(ngNewOptions);
   }
 }

@@ -1,7 +1,6 @@
 import { NodeJsSyncHost } from '@angular-devkit/core/node';
 import {
   createWorkspaceHost,
-  // writeWorkspace,
   readWorkspace as devKitReadWorkspace,
   ProjectDefinition,
   TargetDefinition,
@@ -15,6 +14,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 
+import { NgCommandExecutorBase } from '../abstract/ng-command-executor.base';
 import { SessionService } from '../session/session.service';
 
 import {
@@ -23,11 +23,17 @@ import {
   NOT_ANGULAR_WORKSPACE_EXCEPTION,
 } from './entities';
 
+export const ng = 'npx ng new';
+
 @Injectable()
-export class WorkspaceService {
+export class WorkspaceService extends NgCommandExecutorBase {
+  readonly ng = ng;
+
   private readonly logger = new Logger(WorkspaceService.name);
 
-  constructor(private readonly sessionService: SessionService) {}
+  constructor(sessionService: SessionService) {
+    super(sessionService);
+  }
 
   async readWorkspace(path: string): Promise<WorkspaceDefinition> {
     try {

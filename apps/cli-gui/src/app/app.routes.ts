@@ -14,20 +14,32 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: 'generators',
-        loadComponent: () => import('@angular-cli-gui/generators').then(m => m.GeneratorsComponent),
+        loadChildren: () =>
+          import('./generators/generators.routes').then(
+            (m) => m.GENERATOR_ROUTES
+          ),
       },
       {
         path: 'configuration',
-        loadComponent: () => import('@angular-cli-gui/configuration').then(m => m.ConfigurationComponent),
+        loadComponent: () =>
+          import('@angular-cli-gui/configuration').then(
+            (m) => m.ConfigurationComponent
+          ),
       },
       {
         path: 'executors',
-        loadComponent: () => import('@angular-cli-gui/executors').then(m => m.ExecutorsComponent),
+        loadComponent: () =>
+          import('@angular-cli-gui/executors').then(
+            (m) => m.ExecutorsComponent
+          ),
       },
     ],
   },
   {
     path: 'workspace-manager',
-    loadChildren: () => import('@angular-cli-gui/workspace-manager').then(m => m.WORKSPACE_MANAGER_ROUTES),
+    loadChildren: () =>
+      import('@angular-cli-gui/workspace-manager').then(
+        (m) => m.WORKSPACE_MANAGER_ROUTES
+      ),
   },
 ];

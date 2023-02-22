@@ -1,1 +1,12 @@
-<p>generators works!</p>
+<div class="container">
+    <nav class="side-nav">
+     <div *ngFor="let menuItem of menuItems"
+          class="side-nav-item" >
+        <a routerLink="./component">{{menuItem}}</a>
+     </div>
+    </nav>
+    <section class="content">
+      <router-outlet></router-outlet>
+    </section>
+</div>
+  

@@ -1,6 +1,7 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { RouterOutlet } from '@angular/router';
+
 import { GeneratorsMenuComponent } from './generators-menu/generators-menu.component';
 
 @Component({
@@ -11,5 +12,4 @@ import { GeneratorsMenuComponent } from './generators-menu/generators-menu.compo
   styleUrls: ['./generators.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GeneratorsComponent {
-}
+export class GeneratorsComponent {}

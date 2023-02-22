@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
-@import './assets/material';
-@import './assets/core/reset';
-@import './assets/core/common-imports';
+@import './styles/material';
+@import './styles/core/reset';
+@import './styles/core/_variables';
 
 html,
 body {

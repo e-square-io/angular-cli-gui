@@ -1,12 +1,9 @@
-<div class="container">
-    <nav class="side-nav">
-     <div *ngFor="let menuItem of menuItems"
-          class="side-nav-item" >
-        <a routerLink="./component">{{menuItem}}</a>
-     </div>
-    </nav>
-    <section class="content">
+<mat-sidenav-container class="container">
+    <mat-sidenav opened="true" mode="side">
+        <cli-generators-menu></cli-generators-menu>
+    </mat-sidenav>
+    <mat-sidenav-content class="content">
       <router-outlet></router-outlet>
-    </section>
-</div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
   

@@ -1,16 +1,15 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { GeneratorsMenuComponent } from './generators-menu/generators-menu.component';
 
 @Component({
   selector: 'cli-generators',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive, RouterOutlet],
+  imports: [RouterOutlet, MatSidenavModule, GeneratorsMenuComponent],
   templateUrl: './generators.component.html',
   styleUrls: ['./generators.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GeneratorsComponent {
-
-  menuItems = ['Component', 'Directive', 'Module', 'Pipe'];
-
 }

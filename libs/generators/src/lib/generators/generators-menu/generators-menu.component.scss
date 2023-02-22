@@ -1,0 +1,14 @@
+:host {
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        height: 100%;
+    }
+
+    .menu-item {
+        width: 100%;
+        justify-content: left;
+        width: 10rem;
+    }
+}

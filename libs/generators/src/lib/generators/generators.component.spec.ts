@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { GeneratorsComponent } from './generators.component';
 
@@ -8,7 +9,7 @@ describe('GeneratorsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [GeneratorsComponent],
+      imports: [GeneratorsComponent, NoopAnimationsModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(GeneratorsComponent);

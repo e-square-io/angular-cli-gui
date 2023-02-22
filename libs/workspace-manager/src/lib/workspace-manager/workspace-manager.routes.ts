@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
-import { WorkspaceManagerComponent } from '@angular-cli-gui/workspace-manager';
+
+import { WorkspaceManagerComponent } from './workspace-manager.component';
 
 export const WORKSPACE_MANAGER_ROUTES: Routes = [
   {
@@ -14,18 +15,24 @@ export const WORKSPACE_MANAGER_ROUTES: Routes = [
       {
         path: 'workspaces-list',
         loadComponent: () =>
-          import('./features/workspaces-list/workspaces-list.component').then(m => m.WorkspacesListComponent),
+          import('./features/workspaces-list/workspaces-list.component').then(
+            (m) => m.WorkspacesListComponent
+          ),
       },
 
       {
         path: 'create-workspace',
         loadComponent: () =>
-          import('./features/create-workspace/create-workspace.component').then(m => m.CreateWorkspaceComponent),
+          import('./features/create-workspace/create-workspace.component').then(
+            (m) => m.CreateWorkspaceComponent
+          ),
       },
       {
         path: 'connect-workspace',
         loadComponent: () =>
-          import('./features/connect-workspace/connect-workspace.component').then(m => m.ConnectWorkspaceComponent),
+          import(
+            './features/connect-workspace/connect-workspace.component'
+          ).then((m) => m.ConnectWorkspaceComponent),
       },
     ],
   },

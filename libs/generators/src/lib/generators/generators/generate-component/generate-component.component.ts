@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { IGenerateComponentArgs } from '@angular-cli-gui/shared/data';
 
-import { GeneratorsService } from '../generators.service';
+import { GeneratorsService } from '../../../services/generatos-service/generators.service';
 
 interface GenerateComponentForm {
   name: FormControl<string>;

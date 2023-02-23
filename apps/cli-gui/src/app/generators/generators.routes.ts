@@ -1,8 +1,7 @@
 import { Routes } from '@angular/router';
+import { GeneratorsComponent } from '@angular-cli-gui/generators';
 
-import { GeneratorsComponent } from './generators.component';
-
-export const GENERATOR_ROUTES: Routes = [
+const GENERATOR_ROUTES: Routes = [
   {
     path: '',
     component: GeneratorsComponent,
@@ -10,10 +9,11 @@ export const GENERATOR_ROUTES: Routes = [
       {
         path: 'component',
         loadComponent: () =>
-          import('./generate-component/generate-component.component').then(
+          import('@angular-cli-gui/generators').then(
             (m) => m.GenerateComponentComponent
           ),
       },
     ],
   },
 ];
+export default GENERATOR_ROUTES;

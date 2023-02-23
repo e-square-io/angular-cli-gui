@@ -132,7 +132,7 @@ export class WorkspaceController {
       const optionValue = option.value !== undefined ? ` ${option.value}` : '';
 
       // If the option is interactive, set it to false
-      if (option.name.includes('--interactive')) {
+      if (option.name === '--interactive') {
         return `--interactive=false`;
       }
 

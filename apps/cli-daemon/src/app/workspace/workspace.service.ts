@@ -1,7 +1,6 @@
 import { NodeJsSyncHost } from '@angular-devkit/core/node';
 import {
   createWorkspaceHost,
-  // writeWorkspace,
   readWorkspace as devKitReadWorkspace,
   ProjectDefinition,
   TargetDefinition,
@@ -23,11 +22,13 @@ import {
   NOT_ANGULAR_WORKSPACE_EXCEPTION,
 } from './entities';
 
+export const ng = 'npx ng new';
+
 @Injectable()
 export class WorkspaceService {
   private readonly logger = new Logger(WorkspaceService.name);
-
-  constructor(private readonly sessionService: SessionService) {}
+  readonly ng = ng;
+  constructor(private sessionService: SessionService) {}
 
   async readWorkspace(path: string): Promise<WorkspaceDefinition> {
     try {

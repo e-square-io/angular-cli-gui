@@ -6,5 +6,6 @@ import { GeneratorsService } from './generators.service';
 @Module({
   controllers: [ComponentController],
   providers: [GeneratorsService],
+  exports: [GeneratorsService],
 })
 export class GeneratorsModule {}

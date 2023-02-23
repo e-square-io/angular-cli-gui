@@ -1,1 +1,12 @@
-<p>connect-workspace works!</p>
+<form
+  [formGroup]="form"
+  class="connect-workspace-form"
+  (submit)="connectWorkspace($event)"
+>
+  <h2 class="mat-title">Connect your Angular workspace</h2>
+  <mat-form-field class="workspace-path-field" appearance="outline">
+    <mat-label>The absolute path to your workspace</mat-label>
+    <input formControlName="path" matInput type="text" />
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit">Connect</button>
+</form>

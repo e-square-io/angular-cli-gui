@@ -8,6 +8,11 @@ export const APP_ROUTES: Routes = [
     canActivate: [currentWorkspaceGuard],
     children: [
       {
+        path: '',
+        redirectTo: 'generators',
+        pathMatch: 'full',
+      },
+      {
         path: 'generators',
         loadComponent: () =>
           import('@angular-cli-gui/generators').then(
@@ -27,10 +32,6 @@ export const APP_ROUTES: Routes = [
           import('@angular-cli-gui/executors').then(
             (m) => m.ExecutorsComponent
           ),
-      },
-      {
-        path: '**',
-        redirectTo: 'generators',
       },
     ],
   },

@@ -6,10 +6,7 @@ export const APP_ROUTES: Routes = [
     children: [
       {
         path: 'generators',
-        loadChildren: () =>
-          import('./generators/generators.routes').then(
-            (m) => m.GENERATOR_ROUTES
-          ),
+        loadChildren: () => import('./generators/generators.routes'),
       },
       {
         path: 'configuration',

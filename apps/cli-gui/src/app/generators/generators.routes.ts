@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { GeneratorsComponent } from '@angular-cli-gui/generators';
 
-export const GENERATOR_ROUTES: Routes = [
+const GENERATOR_ROUTES: Routes = [
   {
     path: '',
     component: GeneratorsComponent,
@@ -16,3 +16,4 @@ export const GENERATOR_ROUTES: Routes = [
     ],
   },
 ];
+export default GENERATOR_ROUTES;

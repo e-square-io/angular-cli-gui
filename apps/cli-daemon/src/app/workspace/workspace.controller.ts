@@ -14,6 +14,8 @@ import {
 } from '@nestjs/common';
 
 import { ExecResult } from '../generators/dto';
+import { GeneratorsService } from '../generators/generators.service';
+import { CREATE_WORKSPACE_COMMAND } from '../ng-commands';
 import { SessionService } from '../session/session.service';
 
 import { WorkspaceConnectDto } from './dto';
@@ -26,7 +28,8 @@ export class WorkspaceController {
 
   constructor(
     private readonly sessionService: SessionService,
-    private readonly workspaceService: WorkspaceService
+    private readonly workspaceService: WorkspaceService,
+    private readonly generatorsService: GeneratorsService
   ) {}
 
   @Post('connect')
@@ -40,7 +43,12 @@ export class WorkspaceController {
   create(@Body() body: WorkspaceCreateDto): ExecResult {
     try {
       this.sessionService.setCwd(body.path);
-      return this.workspaceService.execSync(this.ngNewArgsFromDto(body));
+      // TODO using execSync is just for DEMO purposes, should be replaced with execAsync as soon as
+      //  it's implemented
+      return this.generatorsService.execSync(
+        this.ngNewArgsFromDto(body),
+        CREATE_WORKSPACE_COMMAND
+      );
     } catch (err) {
       this.logger.error(err);
       throw new InternalServerErrorException();
@@ -116,8 +124,7 @@ export class WorkspaceController {
     return target;
   }
 
-  private ngNewArgsFromDto(dto: WorkspaceCreateDto): string[] {
-    const { name, options } = dto;
+  private ngNewArgsFromDto({ name, options }: WorkspaceCreateDto): string[] {
     const args: string[] = [name];
 
     const ngNewOptions = options.map((option) => {

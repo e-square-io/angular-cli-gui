@@ -5,15 +5,8 @@ export const APP_ROUTES: Routes = [
     path: '',
     children: [
       {
-        path: '**',
-        redirectTo: 'generators',
-      },
-      {
         path: 'generators',
-        loadComponent: () =>
-          import('@angular-cli-gui/generators').then(
-            (m) => m.GeneratorsComponent
-          ),
+        loadChildren: () => import('./generators/generators.routes'),
       },
       {
         path: 'configuration',
@@ -28,6 +21,10 @@ export const APP_ROUTES: Routes = [
           import('@angular-cli-gui/executors').then(
             (m) => m.ExecutorsComponent
           ),
+      },
+      {
+        path: '**',
+        redirectTo: 'generators',
       },
     ],
   },

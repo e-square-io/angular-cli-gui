@@ -1,17 +1,9 @@
 import { Routes } from '@angular/router';
 
-import { AppComponent } from './app.component';
-
 export const APP_ROUTES: Routes = [
   {
     path: '',
-    component: AppComponent,
     children: [
-      {
-        path: '',
-        redirectTo: 'generators',
-        pathMatch: 'full',
-      },
       {
         path: 'generators',
         loadChildren: () =>
@@ -32,6 +24,10 @@ export const APP_ROUTES: Routes = [
           import('@angular-cli-gui/executors').then(
             (m) => m.ExecutorsComponent
           ),
+      },
+      {
+        path: '**',
+        redirectTo: 'generators',
       },
     ],
   },

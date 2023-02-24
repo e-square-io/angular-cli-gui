@@ -1,7 +1,11 @@
 <mat-nav-list>
-    <div mat-list-item *ngFor="let menuItem of menuItems">
-        <a mat-button
-           class="menu-item" 
-           color="primary">{{menuItem}}</a>
-    </div>
+  <div mat-list-item *ngFor="let menuItem of menuItems">
+    <a
+      mat-button
+      class="menu-item"
+      color="primary"
+      (click)="navigate(menuItem)"
+      >{{ menuItem }}</a
+    >
+  </div>
 </mat-nav-list>

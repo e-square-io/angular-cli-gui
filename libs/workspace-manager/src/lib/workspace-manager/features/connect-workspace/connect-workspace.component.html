@@ -1,7 +1,7 @@
 <form
   [formGroup]="form"
   class="connect-workspace-form"
-  (submit)="connectWorkspace($event)"
+  (ngSubmit)="connectWorkspace()"
 >
   <h2 class="mat-title">Connect your Angular workspace</h2>
   <mat-form-field class="workspace-path-field" appearance="outline">

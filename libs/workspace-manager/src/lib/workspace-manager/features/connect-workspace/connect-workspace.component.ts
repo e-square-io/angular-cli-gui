@@ -28,8 +28,7 @@ export class ConnectWorkspaceComponent {
     { updateOn: 'submit' }
   );
 
-  connectWorkspace($event: SubmitEvent): void {
-    $event.preventDefault();
+  connectWorkspace(): void {
     if (!this.form.valid) return;
     const path = this.form.controls.path.value ?? '';
     this.connectService.connectWorkspace(path).subscribe();

@@ -13,5 +13,7 @@ import { CoreService } from './core/core.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(readonly core: CoreService) {}
+  constructor(readonly core: CoreService) {
+    console.log('App initialized');
+  }
 }

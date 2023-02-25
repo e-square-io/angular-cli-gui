@@ -2,7 +2,10 @@ import { HttpClient, provideHttpClient } from '@angular/common/http';
 import { APP_INITIALIZER } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { provideRouter, withEnabledBlockingInitialNavigation } from '@angular/router';
+import {
+  provideRouter,
+  withEnabledBlockingInitialNavigation,
+} from '@angular/router';
 import { map } from 'rxjs';
 
 import { AppComponent } from './app/app.component';
@@ -29,4 +32,4 @@ bootstrapApplication(AppComponent, {
       multi: true,
     },
   ],
-}).catch(err => console.error(err));
+}).catch((err) => console.error(err));

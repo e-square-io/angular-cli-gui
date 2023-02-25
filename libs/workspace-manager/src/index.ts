@@ -1,2 +1,2 @@
-export * from './lib/workspace-manager/workspace-manager.component';
-export * from './lib/workspace-manager/workspace-manager.routes';
+export * from './lib/features/workspace-manager/workspace-manager.component';
+export * from './lib/features/workspace-manager/workspace-manager.routes';

@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
 import { createSessionServiceMock } from '../../../testing';
+import { GeneratorsService } from '../generators/generators.service';
 import { SessionService } from '../session/session.service';
 
 import { WorkspaceController } from './workspace.controller';
@@ -13,6 +14,12 @@ describe('WorkspaceSettingsController', () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [WorkspaceController],
       providers: [
+        {
+          provide: GeneratorsService,
+          useValue: {
+            execSync: jest.fn(),
+          },
+        },
         {
           provide: WorkspaceService,
           useValue: {

@@ -1,5 +1,5 @@
 <ng-container *ngIf="core.coreState$ | async as coreState">
-  <header class="main-header" *ngIf="coreState.projectNames.length">
+  <header class="main-header" *ngIf="coreState.projectNames?.length">
     <div class="project-selector">
       <mat-select name="project-selector" id="project-selector">
         <mat-option

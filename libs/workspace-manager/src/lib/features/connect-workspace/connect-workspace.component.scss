@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  flex: 1;
+}
+
+.connect-workspace-form {
+  display: grid;
+  place-content: center;
+  width: 100%;
+
+  .workspace-path-field {
+    min-width: 350px;
+  }
+}

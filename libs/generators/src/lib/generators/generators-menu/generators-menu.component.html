@@ -4,7 +4,7 @@
       mat-button
       class="menu-item"
       color="primary"
-      (click)="navigate(menuItem)"
+      [routerLink]="['/generators', menuItem]"
       >{{ menuItem }}</a
     >
   </div>

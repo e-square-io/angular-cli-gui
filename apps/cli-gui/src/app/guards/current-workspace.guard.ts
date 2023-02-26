@@ -14,7 +14,7 @@ export const currentWorkspaceGuard = (): Observable<boolean> => {
   const core = inject(CoreService);
   const retrySubject = new Subject<void>();
   const projectNames$ = http.get<string[]>('/api/workspace');
-  const currentWorkspacePath = localStorage.getItem(CURRENT_WORKSPACE_PATH);
+  const currentWorkspacePath = sessionStorage.getItem(CURRENT_WORKSPACE_PATH);
 
   return projectNames$.pipe(
     // Save projects to state
@@ -34,7 +34,7 @@ export const currentWorkspaceGuard = (): Observable<boolean> => {
 
       // if path saved in local storage is invalid somehow (maybe deleted workspace)
       // remove it from local storage so on 2nd retry cycle user will be navigated to workspace connection screen
-      localStorage.removeItem(CURRENT_WORKSPACE_PATH);
+      sessionStorage.removeItem(CURRENT_WORKSPACE_PATH);
 
       // Connect to workspace using local storage path and retry to get projectNames
       return connectWorkspaceService

@@ -12,7 +12,7 @@ export class ConnectWorkspaceService {
   connectWorkspace(path: string): Observable<void> {
     return this.http.post<void>('/api/workspace/connect', { path }).pipe(
       tap(() => {
-        localStorage.setItem(CURRENT_WORKSPACE_PATH, path);
+        sessionStorage.setItem(CURRENT_WORKSPACE_PATH, path);
         this.router.navigate(['']);
       })
     );

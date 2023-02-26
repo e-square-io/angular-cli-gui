@@ -5,7 +5,7 @@ export class GenerateComponentDto implements IGenerateComponentArgs {
   @IsString({ message: 'Name is mandatory' })
   name!: string;
 
-  @IsBoolean()
   @IsOptional()
+  @IsBoolean()
   dryRun!: boolean;
 }

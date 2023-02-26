@@ -181,6 +181,16 @@ importers:
       '@angular/core': 15.1.5_rxjs@7.5.7+zone.js@0.11.8
       tslib: 2.5.0
 
+  libs/shared/components:
+    specifiers:
+      '@angular/common': ^15.1.0
+      '@angular/core': ^15.1.0
+      tslib: ^2.3.0
+    dependencies:
+      '@angular/common': 15.1.5_w2a4ar2ssyezibn6c65i4snjzu
+      '@angular/core': 15.1.5_rxjs@7.5.7+zone.js@0.11.8
+      tslib: 2.5.0
+
   libs/shared/data:
     specifiers:
       '@angular/common': ^15.1.0

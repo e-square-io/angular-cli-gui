@@ -1,9 +1,9 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <formly-form
     [model]="formData"
-    [formFields]="fields"
-    [formOptions]="options"
+    [fields]="formFields"
+    [options]="formOptions"
     [form]="form"
   ></formly-form>
+  <button mat-button type="submit">Submit</button>
 </form>
-<button mat-button type="submit">Submit</button>

@@ -6,23 +6,34 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { IFormData, IFormFields } from '@angular-cli-gui/shared/data';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import {
+  IFormData,
+  IFormFields,
+  IFormOptions,
+} from '@angular-cli-gui/shared/data';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
 
 @Component({
   selector: 'cli-form-builder',
   standalone: true,
-  imports: [CommonModule, FormlyModule, FormlyMaterialModule, FormGroup],
+  imports: [
+    CommonModule,
+    FormlyModule,
+    FormlyMaterialModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+  ],
   templateUrl: './form-builder.component.html',
   styleUrls: ['./form-builder.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormBuilderComponent {
-  @Input() formData: IFormData;
-  @Input() formFields: IFormFields;
-  @Input() formOptions: IFormOptions;
+  @Input() formData: IFormData = {};
+  @Input() formFields: IFormFields = [];
+  @Input() formOptions: IFormOptions = {};
 
   form = new FormGroup({});
 

@@ -9,7 +9,10 @@
       "executor": "@nrwl/angular:ng-packagr-lite",
       "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "options": {
-        "project": "libs/workspace-manager/ng-package.json"
+        "project": "libs/workspace-manager/ng-package.json",
+        "stylePreprocessorOptions": {
+          "includePaths": ["apps/cli-gui/src/styles"]
+        }
       },
       "configurations": {
         "production": {

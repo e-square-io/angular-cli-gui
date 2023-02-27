@@ -19,7 +19,7 @@
         "styles": ["apps/cli-gui/src/styles.scss"],
         "scripts": [],
         "stylePreprocessorOptions": {
-          "includePaths": ["apps/cli-gui/src/styles"]
+          "includePaths": ["libs/ui/src/lib"]
         }
       },
       "configurations": {

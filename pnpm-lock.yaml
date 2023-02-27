@@ -158,7 +158,7 @@ importers:
       tslib: ^2.3.0
     dependencies:
       '@angular/common': 15.1.5_bj7gay3f2iqhd2jhj4xbvfa7uq
-      '@angular/core': 15.1.5_rxjs@7.8.0+zone.js@0.11.8
+      '@angular/core': 15.1.5_rxjs@7.5.7+zone.js@0.11.8
       tslib: 2.5.0
 
   libs/executors:
@@ -168,7 +168,7 @@ importers:
       tslib: ^2.3.0
     dependencies:
       '@angular/common': 15.1.5_bj7gay3f2iqhd2jhj4xbvfa7uq
-      '@angular/core': 15.1.5_rxjs@7.8.0+zone.js@0.11.8
+      '@angular/core': 15.1.5_rxjs@7.5.7+zone.js@0.11.8
       tslib: 2.5.0
 
   libs/generators:
@@ -178,7 +178,7 @@ importers:
       tslib: ^2.3.0
     dependencies:
       '@angular/common': 15.1.5_bj7gay3f2iqhd2jhj4xbvfa7uq
-      '@angular/core': 15.1.5_rxjs@7.8.0+zone.js@0.11.8
+      '@angular/core': 15.1.5_rxjs@7.5.7+zone.js@0.11.8
       tslib: 2.5.0
 
   libs/shared/data:
@@ -188,7 +188,7 @@ importers:
       tslib: ^2.3.0
     dependencies:
       '@angular/common': 15.1.5_bj7gay3f2iqhd2jhj4xbvfa7uq
-      '@angular/core': 15.1.5_rxjs@7.8.0+zone.js@0.11.8
+      '@angular/core': 15.1.5_rxjs@7.5.7+zone.js@0.11.8
       tslib: 2.5.0
 
   libs/ui:
@@ -198,7 +198,7 @@ importers:
       tslib: ^2.3.0
     dependencies:
       '@angular/common': 15.1.5_bj7gay3f2iqhd2jhj4xbvfa7uq
-      '@angular/core': 15.1.5_rxjs@7.8.0+zone.js@0.11.8
+      '@angular/core': 15.1.5_rxjs@7.5.7+zone.js@0.11.8
       tslib: 2.5.0
 
   libs/workspace-manager:
@@ -208,7 +208,7 @@ importers:
       tslib: ^2.3.0
     dependencies:
       '@angular/common': 15.1.5_bj7gay3f2iqhd2jhj4xbvfa7uq
-      '@angular/core': 15.1.5_rxjs@7.8.0+zone.js@0.11.8
+      '@angular/core': 15.1.5_rxjs@7.5.7+zone.js@0.11.8
       tslib: 2.5.0
 
 packages:
@@ -536,8 +536,8 @@ packages:
       '@angular/core': 15.1.5
       rxjs: ^6.5.3 || ^7.4.0
     dependencies:
-      '@angular/core': 15.1.5_rxjs@7.8.0+zone.js@0.11.8
-      rxjs: 7.8.0
+      '@angular/core': 15.1.5_rxjs@7.5.7+zone.js@0.11.8
+      rxjs: 7.5.7
       tslib: 2.5.0
     dev: false
 

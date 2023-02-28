@@ -33,13 +33,13 @@ describe('WorkspaceManagerController', () => {
   });
 
   describe('getDirectory', () => {
-    it('Should call workspaceManagerService.getDirectoriesInPath', async () => {
+    it('should call workspaceManagerService.getDirectoriesInPath', async () => {
       await controller.getDirectory('abc');
       expect(workspaceManagerMock.getDirectoriesInPath).toHaveBeenCalledWith(
         'abc'
       );
     });
-    it('Should throw InternalServerErrorException when workspaceManagerService.getDirectoriesInPath throws error', async () => {
+    it('should throw InternalServerErrorException when workspaceManagerService.getDirectoriesInPath throws error', async () => {
       workspaceManagerMock.getDirectoriesInPath.mockImplementationOnce(() => {
         throw new Error();
       });

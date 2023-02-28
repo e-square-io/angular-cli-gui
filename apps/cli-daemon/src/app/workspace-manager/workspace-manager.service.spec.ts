@@ -51,26 +51,26 @@ describe('WorkspaceManagerService', () => {
   });
 
   describe('getDirectoriesInPath', () => {
-    it('Should call fs.readdir', () => {
+    it('should call fs.readdir', () => {
       service.getDirectoriesInPath('mock path');
       expect(fs.readdir).toHaveBeenCalledWith('mock path', {
         withFileTypes: true,
       });
     });
 
-    it('Should return list of directories from a provided path', async () => {
+    it('should return list of directories from a provided path', async () => {
       const directories = await service.getDirectoriesInPath('mock path');
       expect(directories).toEqual([new DirectoryDto('a', false)]);
     });
 
-    it('Should call readdir with root path when not provided a path', async () => {
+    it('should call readdir with root path when not provided a path', async () => {
       await service.getDirectoriesInPath();
       expect(fs.readdir).toHaveBeenCalledWith('users/home', {
         withFileTypes: true,
       });
     });
 
-    it('Should throw BadRequestException when called with invalid path', async () => {
+    it('should throw BadRequestException when called with invalid path', async () => {
       try {
         await service.getDirectoriesInPath('error path');
       } catch (err) {

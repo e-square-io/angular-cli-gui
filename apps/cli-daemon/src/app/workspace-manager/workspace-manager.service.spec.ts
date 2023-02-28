@@ -6,6 +6,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 
 import { SessionService } from '../session/session.service';
 
+import { DirectoryDto } from './dto/directory.dto';
 import { NOT_VALID_PATH_EXCEPTION } from './entities';
 import { WorkspaceManagerService } from './workspace-manager.service';
 
@@ -59,12 +60,7 @@ describe('WorkspaceManagerService', () => {
 
     it('Should return list of directories from a provided path', async () => {
       const directories = await service.getDirectoriesInPath('mock path');
-      expect(directories).toEqual([
-        {
-          name: 'a',
-          isNG: false,
-        },
-      ]);
+      expect(directories).toEqual([new DirectoryDto('a', false)]);
     });
 
     it('Should call readdir with root path when not provided a path', async () => {

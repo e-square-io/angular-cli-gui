@@ -1,0 +1,9 @@
+.connect-workspace-form {
+  display: grid;
+  place-content: center;
+  height: 100%;
+
+  .workspace-path-field {
+    min-width: 350px;
+  }
+}

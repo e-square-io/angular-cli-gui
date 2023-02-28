@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
@@ -19,6 +19,7 @@ import { Link, LINKS } from './workspace-manager.consts';
   ],
   templateUrl: './workspace-manager.component.html',
   styleUrls: ['./workspace-manager.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WorkspaceManagerComponent {
   readonly links = LINKS;

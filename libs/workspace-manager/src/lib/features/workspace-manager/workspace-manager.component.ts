@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { NgForOf } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -10,12 +10,12 @@ import { Link, LINKS } from './workspace-manager.consts';
   selector: 'cli-workspace-manager',
   standalone: true,
   imports: [
-    CommonModule,
     RouterOutlet,
     RouterLink,
     MatButtonModule,
     MatIconModule,
     RouterLinkActive,
+    NgForOf,
   ],
   templateUrl: './workspace-manager.component.html',
   styleUrls: ['./workspace-manager.component.scss'],

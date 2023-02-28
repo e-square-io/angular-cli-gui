@@ -1,3 +1,4 @@
+import { InternalServerErrorException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 
 import { WorkspaceManagerController } from './workspace-manager.controller';
@@ -32,11 +33,21 @@ describe('WorkspaceManagerController', () => {
   });
 
   describe('getDirectory', () => {
-    it('Should call workspaceManagerService.getDirectory when path arg provided', async () => {
+    it('Should call workspaceManagerService.getDirectoriesInPath', async () => {
       await controller.getDirectory('abc');
       expect(workspaceManagerMock.getDirectoriesInPath).toHaveBeenCalledWith(
         'abc'
       );
+    });
+    it('Should throw InternalServerErrorException when workspaceManagerService.getDirectoriesInPath throws error', async () => {
+      workspaceManagerMock.getDirectoriesInPath.mockImplementationOnce(() => {
+        throw new Error();
+      });
+      try {
+        await controller.getDirectory('');
+      } catch (err) {
+        expect(err).toEqual(new InternalServerErrorException());
+      }
     });
   });
 });

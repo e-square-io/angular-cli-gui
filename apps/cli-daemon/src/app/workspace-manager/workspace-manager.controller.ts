@@ -14,7 +14,7 @@ export class WorkspaceManagerController {
     private readonly workspaceManagerService: WorkspaceManagerService
   ) {}
 
-  @Get('dir?:path')
+  @Get('dir')
   public async getDirectory(
     @Query('path') path: string
   ): Promise<DirectoryDto[]> {

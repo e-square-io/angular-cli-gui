@@ -1,10 +1,10 @@
-import { IsNotEmpty, IsOptional } from 'class-validator';
+import { IsBoolean, IsOptional, IsString } from 'class-validator';
 
 export class DirectoryDto {
-  @IsNotEmpty()
+  @IsString()
   name: string;
 
-  @IsNotEmpty()
+  @IsBoolean()
   isNG: boolean;
 
   @IsOptional()

@@ -1,30 +1,45 @@
 import { Dirent } from 'fs';
 import fs from 'fs/promises';
-import path from 'path';
 
-import { InternalServerErrorException } from '@nestjs/common';
+import { BadRequestException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 
-import { NOT_VALID_PATH } from './entities';
+import { SessionService } from '../session/session.service';
+
+import { NOT_VALID_PATH_EXCEPTION } from './entities';
 import { WorkspaceManagerService } from './workspace-manager.service';
+
+jest.mock('fs/promises', () => ({
+  readdir: jest.fn().mockImplementation(
+    (path: string) =>
+      new Promise((resolve, reject) => {
+        if (path === 'error path') reject('invalid');
+        resolve(mockDirectory);
+      })
+  ),
+}));
 
 const mockDirectory: Partial<Dirent>[] = [
   { name: 'a', isDirectory: () => true },
   { name: 'b', isDirectory: () => false },
 ];
 
-jest.mock('fs/promises', () => ({
-  readdir: jest
-    .fn()
-    .mockImplementation(() => new Promise((resolve) => resolve(mockDirectory))),
-}));
+type SessionServiceMock = Partial<Record<keyof SessionService, jest.Mock>>;
 
 describe('WorkspaceManagerService', () => {
   let service: WorkspaceManagerService;
+  let sessionServiceMock: SessionServiceMock;
 
   beforeEach(async () => {
+    sessionServiceMock = {
+      cwd: jest.fn().mockReturnValue('users/home')(),
+    };
+
     const module: TestingModule = await Test.createTestingModule({
-      providers: [WorkspaceManagerService],
+      providers: [
+        WorkspaceManagerService,
+        { provide: SessionService, useValue: sessionServiceMock },
+      ],
     }).compile();
 
     service = module.get<WorkspaceManagerService>(WorkspaceManagerService);
@@ -34,43 +49,37 @@ describe('WorkspaceManagerService', () => {
     expect(service).toBeDefined();
   });
 
-  describe('getDirectory', () => {
+  describe('getDirectoriesInPath', () => {
     it('Should call fs.readdir', () => {
-      service.getDirectory('mock path');
+      service.getDirectoriesInPath('mock path');
       expect(fs.readdir).toHaveBeenCalledWith('mock path', {
         withFileTypes: true,
       });
     });
 
     it('Should return list of directories from a provided path', async () => {
-      try {
-        const directories = await service.getDirectory('mock path');
-        expect(directories).toEqual([
-          {
-            name: 'a',
-            isNG: false,
-          },
-        ]);
-      } catch (err) {
-        console.log(err);
-        expect(err).toEqual(
-          new InternalServerErrorException(`${NOT_VALID_PATH}: mock path`)
-        );
-      }
+      const directories = await service.getDirectoriesInPath('mock path');
+      expect(directories).toEqual([
+        {
+          name: 'a',
+          isNG: false,
+        },
+      ]);
     });
-  });
 
-  describe('getRootDirectory', () => {
-    it('Should call getDirectory with file-system root path', async () => {
+    it('Should call readdir with root path when not provided a path', async () => {
+      await service.getDirectoriesInPath();
+      expect(fs.readdir).toHaveBeenCalledWith('users/home', {
+        withFileTypes: true,
+      });
+    });
+
+    it('Should throw BadRequestException when called with invalid path', async () => {
       try {
-        const getDirectorySpy = jest.spyOn(service, 'getDirectory');
-        await service.getRootDirectory();
-        expect(getDirectorySpy).toHaveBeenCalledWith(
-          path.parse(process.cwd()).root
-        );
+        await service.getDirectoriesInPath('error path');
       } catch (err) {
         expect(err).toEqual(
-          new InternalServerErrorException(`${NOT_VALID_PATH}: mock path`)
+          new BadRequestException(`${NOT_VALID_PATH_EXCEPTION}: error path`)
         );
       }
     });

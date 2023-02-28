@@ -1,1 +1,1 @@
-export const NOT_VALID_PATH = 'Not a valid path';
+export const NOT_VALID_PATH_EXCEPTION = 'Not a valid path';

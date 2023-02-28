@@ -17,9 +17,7 @@ export class WorkspaceManagerController {
   @Get('dir?:path')
   public async getDirectory(@Query('path') path: string): Promise<Directory[]> {
     try {
-      return path
-        ? this.workspaceManagerService.getDirectory(path)
-        : this.workspaceManagerService.getRootDirectory();
+      return this.workspaceManagerService.getDirectoriesInPath(path);
     } catch (err) {
       throw new InternalServerErrorException();
     }

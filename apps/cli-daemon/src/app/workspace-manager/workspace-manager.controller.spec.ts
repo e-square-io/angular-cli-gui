@@ -39,6 +39,7 @@ describe('WorkspaceManagerController', () => {
         'abc'
       );
     });
+
     it('should throw InternalServerErrorException when workspaceManagerService.getDirectoriesInPath throws error', async () => {
       workspaceManagerMock.getDirectoriesInPath.mockImplementationOnce(() => {
         throw new Error();

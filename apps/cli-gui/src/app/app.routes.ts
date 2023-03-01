@@ -1,11 +1,10 @@
 import { Routes } from '@angular/router';
 
-import { currentWorkspaceGuard } from './guards/current-workspace.guard';
 
 export const APP_ROUTES: Routes = [
   {
     path: '',
-    canActivate: [currentWorkspaceGuard],
+    canActivate: [],
     children: [
       {
         path: '',
@@ -14,10 +13,7 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: 'generators',
-        loadComponent: () =>
-          import('@angular-cli-gui/generators').then(
-            (m) => m.GeneratorsComponent
-          ),
+        loadChildren: () => import('./generators/generators.routes'),
       },
       {
         path: 'configuration',

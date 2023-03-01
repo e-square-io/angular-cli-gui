@@ -1,12 +1,11 @@
 import fs from 'fs/promises';
+import os from 'os';
 
 import { NodeJsSyncHost } from '@angular-devkit/core/node';
 import { createWorkspaceHost } from '@angular-devkit/core/src/workspace';
 import { readWorkspace as devKitReadWorkspace } from '@angular-devkit/core/src/workspace/core';
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { isDefined } from 'class-validator';
-
-import { SessionService } from '../session/session.service';
 
 import { DirectoryDto } from './dto/directory.dto';
 import { NOT_VALID_PATH_EXCEPTION } from './entities';
@@ -15,10 +14,8 @@ import { NOT_VALID_PATH_EXCEPTION } from './entities';
 export class WorkspaceManagerService {
   private readonly pathDirectoriesCache = new Map<string, DirectoryDto[]>();
 
-  constructor(private sessionService: SessionService) {}
-
   public async getDirectoriesInPath(
-    path: string = this.sessionService.cwd
+    path: string = this.getHomeDir()
   ): Promise<DirectoryDto[]> {
     const cachedPathDirectories: DirectoryDto[] | undefined =
       this.pathDirectoriesCache.get(path);
@@ -47,6 +44,10 @@ export class WorkspaceManagerService {
     } catch (e) {
       throw new BadRequestException(`${NOT_VALID_PATH_EXCEPTION}: ${path}`);
     }
+  }
+
+  public getHomeDir(): string {
+    return os.homedir();
   }
 
   private async isAngularWorkspace(

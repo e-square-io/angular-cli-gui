@@ -1,10 +1,9 @@
 import { Dirent } from 'fs';
 import fs from 'fs/promises';
+import os from 'os';
 
 import { BadRequestException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
-
-import { SessionService } from '../session/session.service';
 
 import { DirectoryDto } from './dto/directory.dto';
 import { NOT_VALID_PATH_EXCEPTION } from './entities';
@@ -20,27 +19,21 @@ jest.mock('fs/promises', () => ({
   ),
 }));
 
+jest.mock('os', () => ({
+  homedir: jest.fn().mockReturnValue('home'),
+}));
+
 const mockDirectory: Partial<Dirent>[] = [
   { name: 'a', isDirectory: () => true },
   { name: 'b', isDirectory: () => false },
 ];
 
-type SessionServiceMock = Partial<Record<keyof SessionService, jest.Mock>>;
-
 describe('WorkspaceManagerService', () => {
   let service: WorkspaceManagerService;
-  let sessionServiceMock: SessionServiceMock;
 
   beforeEach(async () => {
-    sessionServiceMock = {
-      cwd: jest.fn().mockReturnValue('users/home')(),
-    };
-
     const module: TestingModule = await Test.createTestingModule({
-      providers: [
-        WorkspaceManagerService,
-        { provide: SessionService, useValue: sessionServiceMock },
-      ],
+      providers: [WorkspaceManagerService],
     }).compile();
 
     service = module.get<WorkspaceManagerService>(WorkspaceManagerService);
@@ -63,9 +56,9 @@ describe('WorkspaceManagerService', () => {
       expect(directories).toEqual([new DirectoryDto('a', false)]);
     });
 
-    it('should call readdir with root path when not provided a path', async () => {
+    it('should call readdir with home directory when not provided a path', async () => {
       await service.getDirectoriesInPath();
-      expect(fs.readdir).toHaveBeenCalledWith('users/home', {
+      expect(fs.readdir).toHaveBeenCalledWith('home', {
         withFileTypes: true,
       });
     });
@@ -78,6 +71,18 @@ describe('WorkspaceManagerService', () => {
           new BadRequestException(`${NOT_VALID_PATH_EXCEPTION}: error path`)
         );
       }
+    });
+  });
+
+  describe('getHomeDir', () => {
+    it('should call os.homedir', () => {
+      service.getHomeDir();
+      expect(os.homedir).toHaveBeenCalled();
+    });
+
+    it('should return the homedir path', () => {
+      const homedir = service.getHomeDir();
+      expect(homedir).toMatch('home');
     });
   });
 });

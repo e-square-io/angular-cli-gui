@@ -10,6 +10,7 @@ type WorkspaceManagerServiceMock = Record<
 >;
 const workspaceManagerMock: WorkspaceManagerServiceMock = {
   getDirectoriesInPath: jest.fn(),
+  getHomeDir: jest.fn(),
 };
 
 describe('WorkspaceManagerController', () => {
@@ -49,6 +50,13 @@ describe('WorkspaceManagerController', () => {
       } catch (err) {
         expect(err).toEqual(new InternalServerErrorException());
       }
+    });
+  });
+
+  describe('getHomeDirectory', () => {
+    it('should call workspaceManagerService.getHomeDir', () => {
+      controller.getHomeDirectory();
+      expect(workspaceManagerMock.getHomeDir).toHaveBeenCalled();
     });
   });
 });

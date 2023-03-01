@@ -58,7 +58,10 @@ export class GeneratorsService {
   private getArgsFromParams(params: Record<string, any>): string[] {
     return Object.entries(params).map(([key, value]) => {
       const convertedKey = convertKeyToArgument(key);
-      return `${convertedKey}=${value}`;
+      if (typeof value === 'string' || typeof value === 'number') {
+        return `${convertedKey}=${value}`;
+      }
+      return `${convertedKey}`;
     });
   }
 }

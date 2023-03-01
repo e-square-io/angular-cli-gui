@@ -25,7 +25,7 @@ export class WorkspaceManagerController {
     }
   }
 
-  @Get('home')
+  @Get('homedir')
   public getHomeDirectory(): string {
     return this.workspaceManagerService.getHomeDir();
   }

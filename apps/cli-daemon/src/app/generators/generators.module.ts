@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 
-import { ComponentController } from './component/component.controller';
+import { GeneratorsController } from './generators.controller';
 import { GeneratorsService } from './generators.service';
 
 @Module({
-  controllers: [ComponentController],
+  controllers: [GeneratorsController],
   providers: [GeneratorsService],
   exports: [GeneratorsService],
 })

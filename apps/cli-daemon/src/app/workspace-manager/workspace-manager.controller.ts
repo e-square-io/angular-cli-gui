@@ -24,4 +24,9 @@ export class WorkspaceManagerController {
       throw new InternalServerErrorException();
     }
   }
+
+  @Get('homedir')
+  public getHomeDirectory(): string {
+    return this.workspaceManagerService.getHomeDir();
+  }
 }

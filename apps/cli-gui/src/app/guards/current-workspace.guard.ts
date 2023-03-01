@@ -32,11 +32,11 @@ export const currentWorkspaceGuard = (): Observable<boolean> => {
         return of(false);
       }
 
-      // if path saved in local storage is invalid somehow (maybe deleted workspace)
-      // remove it from local storage so on 2nd retry cycle user will be navigated to workspace connection screen
+      // if path saved in storage is invalid somehow (maybe deleted workspace)
+      // remove it from storage so on 2nd retry cycle user will be navigated to workspace connection screen
       sessionStorage.removeItem(CURRENT_WORKSPACE_PATH);
 
-      // Connect to workspace using local storage path and retry to get projectNames
+      // Connect to workspace using storage path and retry to get projectNames
       return connectWorkspaceService
         .connectWorkspace(currentWorkspacePath)
         .pipe(

@@ -1,7 +1,7 @@
 import { NgForOf } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule } from '@angular/material/tabs';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 import { Link, LINKS } from './workspace-manager.consts';
@@ -12,10 +12,10 @@ import { Link, LINKS } from './workspace-manager.consts';
   imports: [
     RouterOutlet,
     RouterLink,
-    MatButtonModule,
     MatIconModule,
     RouterLinkActive,
     NgForOf,
+    MatTabsModule,
   ],
   templateUrl: './workspace-manager.component.html',
   styleUrls: ['./workspace-manager.component.scss'],
@@ -23,7 +23,9 @@ import { Link, LINKS } from './workspace-manager.consts';
 })
 export class WorkspaceManagerComponent {
   readonly links = LINKS;
-  trackBy(index: number, link: Link): Link['href'] {
+  activeLink: Link = this.links[this.links.length - 1];
+
+  trackByHref(index: number, link: Link): Link['href'] {
     return link.href;
   }
 }

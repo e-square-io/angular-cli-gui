@@ -1,15 +1,12 @@
-import {
-  ProjectDefinition,
-  TargetDefinition,
-} from '@angular-devkit/core/src/workspace';
+import { TargetDefinition } from '@angular-devkit/core/src/workspace';
 import {
   Body,
   Controller,
   Get,
   InternalServerErrorException,
   Logger,
-  NotFoundException,
   Param,
+  Patch,
   Post,
 } from '@nestjs/common';
 
@@ -18,7 +15,7 @@ import { GeneratorsService } from '../generators/generators.service';
 import { CREATE_WORKSPACE_COMMAND } from '../ng-commands';
 import { SessionService } from '../session/session.service';
 
-import { WorkspaceConnectDto } from './dto';
+import { ProjectDto, UpdateProjectDto, WorkspaceConnectDto } from './dto';
 import { WorkspaceCreateDto } from './dto/workspace-create.dto';
 import { WorkspaceService } from './workspace.service';
 
@@ -34,9 +31,7 @@ export class WorkspaceController {
 
   @Post('connect')
   async connect(@Body() body: WorkspaceConnectDto): Promise<void> {
-    const path = body.path;
-    await this.workspaceService.readWorkspace(path);
-    this.sessionService.setCwd(path);
+    await this.workspaceService.connect(body.path);
   }
 
   @Post('create')
@@ -60,68 +55,45 @@ export class WorkspaceController {
     return { path: this.sessionService.cwd };
   }
 
-  @Get()
+  @Get('project-names')
   getWorkspaceProjectNames(): Promise<string[]> {
     return this.workspaceService.readWorkspaceProjectNames();
   }
 
-  @Get(':projectName')
+  @Get('project/:projectName')
   async getProject(
     @Param('projectName') projectName: string
-  ): Promise<ProjectDefinition> {
-    let project: ProjectDefinition | undefined;
-
-    try {
-      project = await this.workspaceService.readWorkspaceProject(projectName);
-    } catch (err) {
-      this.logger.error(err);
-
-      throw new InternalServerErrorException();
-    }
-
-    if (!project) {
-      throw new NotFoundException();
-    }
-
-    return project;
+  ): Promise<ProjectDto> {
+    return this.workspaceService.readWorkspaceProject(projectName);
   }
 
-  @Get(':projectName/target-names')
+  @Patch('project/:projectName')
+  async updateProject(
+    @Param('projectName') projectName: string,
+    @Body() updateProjectDto: UpdateProjectDto
+  ): Promise<ProjectDto> {
+    return await this.workspaceService.updateWorkspaceProject(
+      projectName,
+      updateProjectDto
+    );
+  }
+
+  @Get('project/:projectName/target-names')
   getProjectTargetNames(
     @Param('projectName') projectName: string
   ): Promise<string[]> {
-    try {
-      return this.workspaceService.readWorkspaceProjectTargetNames(projectName);
-    } catch (err) {
-      this.logger.error(err);
-
-      throw new InternalServerErrorException();
-    }
+    return this.workspaceService.readWorkspaceProjectTargetNames(projectName);
   }
 
-  @Get(':projectName/target/:targetName')
+  @Get('project/:projectName/target/:targetName')
   async getProjectTarget(
     @Param('projectName') projectName: string,
     @Param('targetName') targetName: string
   ): Promise<TargetDefinition> {
-    let target: TargetDefinition | undefined;
-
-    try {
-      target = await this.workspaceService.readWorkspaceProjectTarget(
-        projectName,
-        targetName
-      );
-    } catch (err) {
-      this.logger.error(err);
-
-      throw new InternalServerErrorException();
-    }
-
-    if (!target) {
-      throw new NotFoundException();
-    }
-
-    return target;
+    return await this.workspaceService.readWorkspaceProjectTarget(
+      projectName,
+      targetName
+    );
   }
 
   private ngNewArgsFromDto({ name, options }: WorkspaceCreateDto): string[] {

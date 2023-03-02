@@ -1,0 +1,24 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.workspace-manager-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 150px;
+  padding: 0 10px;
+
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+}

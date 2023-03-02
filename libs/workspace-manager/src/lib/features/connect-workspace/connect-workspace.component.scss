@@ -1,7 +1,12 @@
+:host {
+  display: flex;
+  flex: 1;
+}
+
 .connect-workspace-form {
   display: grid;
   place-content: center;
-  height: 100%;
+  width: 100%;
 
   .workspace-path-field {
     min-width: 350px;

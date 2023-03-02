@@ -15,7 +15,7 @@ export const WORKSPACE_MANAGER_ROUTES: Routes = [
       {
         path: 'workspaces-list',
         loadComponent: () =>
-          import('./features/workspaces-list/workspaces-list.component').then(
+          import('../workspaces-list/workspaces-list.component').then(
             (m) => m.WorkspacesListComponent
           ),
       },
@@ -23,16 +23,16 @@ export const WORKSPACE_MANAGER_ROUTES: Routes = [
       {
         path: 'create-workspace',
         loadComponent: () =>
-          import('./features/create-workspace/create-workspace.component').then(
+          import('../create-workspace/create-workspace.component').then(
             (m) => m.CreateWorkspaceComponent
           ),
       },
       {
         path: 'connect-workspace',
         loadComponent: () =>
-          import(
-            './features/connect-workspace/connect-workspace.component'
-          ).then((m) => m.ConnectWorkspaceComponent),
+          import('../connect-workspace/connect-workspace.component').then(
+            (m) => m.ConnectWorkspaceComponent
+          ),
       },
     ],
   },

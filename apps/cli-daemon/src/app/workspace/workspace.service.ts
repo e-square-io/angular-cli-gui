@@ -15,10 +15,14 @@ import {
   Logger,
   NotFoundException,
 } from '@nestjs/common';
+import { JSONSchema7 } from 'json-schema';
+import { Draft07 } from 'json-schema-library';
+import * as angularSchema from 'node_modules/@angular/cli/lib/config/schema.json';
 
 import { SessionService } from '../session/session.service';
 
 import { ProjectDto, UpdateProjectDto } from './dto';
+import { SchemaDto } from './dto/schema.dto';
 import {
   ANGULAR_WORKSPACE_NOT_FOUND_EXCEPTION,
   BAD_PATH_EXCEPTION,
@@ -156,5 +160,19 @@ export class WorkspaceService {
         this.logger.error(errorMessage);
         return new InternalServerErrorException(err);
     }
+  }
+
+  getWorkspaceConfiguration(): Partial<JSONSchema7> {
+    const jsonSchema = new Draft07(angularSchema);
+
+    const { root, prefix, sourceRoot } =
+      jsonSchema.getSchema()['definitions']['project']['properties'];
+    const properties = new Draft07({ root, prefix, sourceRoot }).getSchema();
+
+    return new SchemaDto({
+      title: 'Angular CLI Workspace Configuration',
+      description: 'Browser target options',
+      properties: properties,
+    });
   }
 }

@@ -9,6 +9,7 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
+import { JSONSchema7 } from 'json-schema';
 
 import { ExecResult } from '../generators/dto';
 import { GeneratorsService } from '../generators/generators.service';
@@ -58,6 +59,11 @@ export class WorkspaceController {
   @Get('project-names')
   getWorkspaceProjectNames(): Promise<string[]> {
     return this.workspaceService.readWorkspaceProjectNames();
+  }
+
+  @Get('workspace-configuration')
+  async getWorkspaceConfiguration(): Promise<JSONSchema7> {
+    return this.workspaceService.getWorkspaceConfiguration();
   }
 
   @Get('project/:projectName')

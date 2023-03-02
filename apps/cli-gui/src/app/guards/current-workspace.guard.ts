@@ -3,7 +3,16 @@ import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { CURRENT_WORKSPACE_PATH } from '@angular-cli-gui/shared/data';
 import { ConnectWorkspaceService } from '@angular-cli-gui/workspace-manager';
-import { catchError, map, Observable, of, retry, Subject, tap } from 'rxjs';
+import {
+  catchError,
+  map,
+  Observable,
+  of,
+  retry,
+  Subject,
+  switchMap,
+  tap,
+} from 'rxjs';
 
 import { CoreService } from '../core/core.service';
 
@@ -13,19 +22,26 @@ export const currentWorkspaceGuard = (): Observable<boolean> => {
   const connectWorkspaceService = inject(ConnectWorkspaceService);
   const core = inject(CoreService);
   const retrySubject = new Subject<void>();
-  const projectNames$ = http.get<string[]>('/api/workspace');
+  const projectNames$ = http.get<string[]>('/api/workspace/project-names');
   const currentWorkspacePath = sessionStorage.getItem(CURRENT_WORKSPACE_PATH);
+  const connectWorkspace$ = http.post('/api/workspace/connect', {
+    path: currentWorkspacePath,
+  });
 
-  return projectNames$.pipe(
-    // Save projects to state
-    tap((projectNames) => {
-      core.update({
-        projectNames,
-        currentProjectName: projectNames?.[0],
-      });
-    }),
-    // Map to true to allow navigation
-    map(() => true),
+  return connectWorkspace$.pipe(
+    switchMap(() =>
+      projectNames$.pipe(
+        // Save projects to state
+        tap((projectNames) => {
+          core.update({
+            projectNames,
+            currentProjectName: projectNames?.[0],
+          });
+        }),
+        // Map to true to allow navigation
+        map(() => true)
+      )
+    ),
     catchError(() => {
       if (!currentWorkspacePath) {
         router.navigate(['workspace-manager', 'connect-workspace']);

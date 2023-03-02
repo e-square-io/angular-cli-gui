@@ -7,9 +7,7 @@ const capitalize = (s: string): string => s[0].toUpperCase() + s.slice(1);
 const formatSchemaName = (name: string): string => {
   const splitName = name.split('-');
   if (splitName.length > 1) {
-    return (
-      capitalize(splitName[0]) + capitalize(splitName[splitName.length - 1])
-    );
+    return splitName.map((name) => capitalize(name)).join('');
   }
   return capitalize(splitName[0]);
 };
@@ -38,8 +36,12 @@ export const getGeneratorNames = (path: string): string[] =>
     .map((directoryName) => directoryName.split(path + '/')[1]);
 
 export const convertKeyToArgument = (key: string): string => {
+  // Getting all capital letters -> 'inlineStyle' -> ['S']
   const letters = key.match(/[A-Z]/g) || [];
   if (letters.length) {
+    // if there's capital letters means its camel case
+    // then switching every capital letter to lower case with -
+    // 'inlineStyle' -> '--inline-style'
     return letters.reduce((acc, letter) => {
       acc = acc.replace(letter, `-${letter.toLowerCase()}`);
       return acc;

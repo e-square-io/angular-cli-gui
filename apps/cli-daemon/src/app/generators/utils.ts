@@ -37,12 +37,12 @@ export const getGeneratorNames = (path: string): string[] =>
 
 export const convertKeyToArgument = (key: string): string => {
   // Getting all capital letters -> 'inlineStyle' -> ['S']
-  const letters = key.match(/[A-Z]/g) || [];
+  const letters: string[] = key.match(/[A-Z]/g) || [];
   if (letters.length) {
     // if there's capital letters means its camel case
     // then switching every capital letter to lower case with -
     // 'inlineStyle' -> '--inline-style'
-    return letters.reduce((acc, letter) => {
+    return letters.reduce((acc: string, letter: string) => {
       acc = acc.replace(letter, `-${letter.toLowerCase()}`);
       return acc;
     }, `--${key}`);

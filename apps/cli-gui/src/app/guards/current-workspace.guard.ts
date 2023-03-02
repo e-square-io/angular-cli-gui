@@ -24,7 +24,7 @@ export const currentWorkspaceGuard = (): Observable<boolean> => {
   const retrySubject = new Subject<void>();
   const projectNames$ = http.get<string[]>('/api/workspace/project-names');
   const currentWorkspacePath = sessionStorage.getItem(CURRENT_WORKSPACE_PATH);
-  const connectWorkspace$ = http.post('/api/workspace/connect', {
+  const connectWorkspace$ = http.post<void>('/api/workspace/connect', {
     path: currentWorkspacePath,
   });
 

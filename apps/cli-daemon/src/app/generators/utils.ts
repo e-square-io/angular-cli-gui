@@ -5,11 +5,10 @@ import { GeneratorDefinition, Schema } from './generators.interface';
 
 const capitalize = (s: string): string => s[0].toUpperCase() + s.slice(1);
 const formatSchemaName = (name: string): string => {
-  const splitName = name.split('-');
-  if (splitName.length > 1) {
-    return splitName.map((name) => capitalize(name)).join('');
-  }
-  return capitalize(splitName[0]);
+  return name
+    .split('-')
+    .map((name) => capitalize(name))
+    .join('');
 };
 export const getGeneratorDefinition = (
   generatorName: string,

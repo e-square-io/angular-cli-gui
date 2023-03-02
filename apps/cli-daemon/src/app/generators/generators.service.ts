@@ -1,5 +1,4 @@
 import { spawnSync, SpawnSyncOptionsWithBufferEncoding } from 'child_process';
-import { readFileSync } from 'fs';
 import { resolve as pathResolve } from 'path';
 
 import { Injectable, Logger } from '@nestjs/common';
@@ -11,8 +10,8 @@ import { ExecResult } from './dto';
 import { GeneratorDefinition, Schema } from './generators.interface';
 import {
   convertKeyToArgument,
-  getGeneratorDefinition,
-  getGeneratorNames,
+  formatJsonToJs,
+  getGeneratorsDefinition,
 } from './utils';
 
 @Injectable()
@@ -36,15 +35,12 @@ export class GeneratorsService {
   }
 
   getAllGenerators(): GeneratorDefinition[] {
-    const schemasPath = pathResolve(
-      this.sessionService.cwd,
-      'node_modules/@schematics/angular'
+    return getGeneratorsDefinition(
+      pathResolve(
+        this.sessionService.cwd,
+        'node_modules/@schematics/angular/collection.json'
+      )
     );
-    const generatorNames = getGeneratorNames(schemasPath);
-    const generators = generatorNames
-      .map((name) => getGeneratorDefinition(name, schemasPath))
-      .filter(Boolean);
-    return generators as GeneratorDefinition[];
   }
 
   getSchema(schemaName: string): Schema {
@@ -52,7 +48,7 @@ export class GeneratorsService {
       this.sessionService.cwd,
       `node_modules/@schematics/angular/${schemaName}/schema.json`
     );
-    return JSON.parse(readFileSync(schemaPath, 'utf-8'));
+    return formatJsonToJs<Schema>(schemaPath);
   }
 
   private getArgsFromParams(params: Record<string, any>): string[] {

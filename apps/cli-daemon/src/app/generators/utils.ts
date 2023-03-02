@@ -1,7 +1,7 @@
-import { readdirSync, readFileSync } from 'fs';
-import { join } from 'path';
+import { readFileSync } from 'fs';
+import * as process from 'process';
 
-import { GeneratorDefinition, Schema } from './generators.interface';
+import { GeneratorDefinition, SchemaCollection } from './generators.interface';
 
 const capitalize = (s: string): string => s[0].toUpperCase() + s.slice(1);
 const formatSchemaName = (name: string): string => {
@@ -10,29 +10,22 @@ const formatSchemaName = (name: string): string => {
     .map((name) => capitalize(name))
     .join('');
 };
-export const getGeneratorDefinition = (
-  generatorName: string,
+export const formatJsonToJs = <T>(path: string): T =>
+  JSON.parse(readFileSync(path, 'utf-8'));
+export const getGeneratorsDefinition = (
   path: string
-): GeneratorDefinition | null => {
-  try {
-    const schema: Schema = JSON.parse(
-      readFileSync(`${path}/${generatorName}/schema.json`, 'utf-8')
-    );
-    const displayName = formatSchemaName(generatorName);
+): GeneratorDefinition[] => {
+  const collection = formatJsonToJs<{ schematics: SchemaCollection[] }>(path);
+  return collection.schematics.map((schemaCollection) => {
+    const splitBy = process.platform === 'win32' ? '.\\' : './';
+    const originalName = schemaCollection.factory.split(splitBy)[1];
     return {
-      displayName,
-      originalName: generatorName,
-      description: schema.description,
+      originalName,
+      description: schemaCollection.description,
+      displayName: formatSchemaName(originalName),
     };
-  } catch (e) {
-    console.log(`There is no schema for ${generatorName}`);
-    return null;
-  }
+  });
 };
-export const getGeneratorNames = (path: string): string[] =>
-  readdirSync(path)
-    .map((name) => join(path, name))
-    .map((directoryName) => directoryName.split(path + '/')[1]);
 
 export const convertKeyToArgument = (key: string): string => {
   // Getting all capital letters -> 'inlineStyle' -> ['S']

@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, UrlTree } from '@angular/router';
 import { CURRENT_WORKSPACE_PATH } from '@angular-cli-gui/shared/data';
-import { ConnectWorkspaceService } from '@angular-cli-gui/workspace-manager';
 import {
   catchError,
   map,
@@ -16,10 +15,9 @@ import {
 
 import { CoreService } from '../core/core.service';
 
-export const currentWorkspaceGuard = (): Observable<boolean> => {
+export const currentWorkspaceGuard = (): Observable<boolean | UrlTree> => {
   const router = inject(Router);
   const http = inject(HttpClient);
-  const connectWorkspaceService = inject(ConnectWorkspaceService);
   const core = inject(CoreService);
   const retrySubject = new Subject<void>();
   const projectNames$ = http.get<string[]>('/api/workspace/project-names');
@@ -27,41 +25,36 @@ export const currentWorkspaceGuard = (): Observable<boolean> => {
   const connectWorkspace$ = http.post<void>('/api/workspace/connect', {
     path: currentWorkspacePath,
   });
-
-  return connectWorkspace$.pipe(
-    switchMap(() =>
-      projectNames$.pipe(
-        // Save projects to state
-        tap((projectNames) => {
-          core.update({
-            projectNames,
-            currentProjectName: projectNames?.[0],
-          });
-        }),
-        // Map to true to allow navigation
-        map(() => true)
-      )
-    ),
-    catchError(() => {
-      if (!currentWorkspacePath) {
-        router.navigate(['workspace-manager', 'connect-workspace']);
-        return of(false);
-      }
-
-      // if path saved in storage is invalid somehow (maybe deleted workspace)
-      // remove it from storage so on 2nd retry cycle user will be navigated to workspace connection screen
-      sessionStorage.removeItem(CURRENT_WORKSPACE_PATH);
-
-      // Connect to workspace using storage path and retry to get projectNames
-      return connectWorkspaceService
-        .connectWorkspace(currentWorkspacePath)
-        .pipe(
-          map(() => {
-            retrySubject.next();
-            return false;
-          })
-        );
-    }),
-    retry({ delay: () => retrySubject })
+  const fallbackUrl$: Observable<UrlTree> = of(
+    router.parseUrl('workspace-manager/connect-workspace')
   );
+
+  return !currentWorkspacePath
+    ? fallbackUrl$
+    : connectWorkspace$.pipe(
+        switchMap(() =>
+          projectNames$.pipe(
+            // Save projects to state
+            tap((projectNames) => {
+              core.update({
+                projectNames,
+                currentProjectName: projectNames?.[0],
+              });
+            }),
+            map(() => true)
+          )
+        ),
+        catchError(() => {
+          // if path saved in storage is invalid somehow (maybe deleted workspace)
+          // remove it from storage so on 2nd retry cycle user will be navigated to workspace connection screen
+          sessionStorage.removeItem(CURRENT_WORKSPACE_PATH);
+
+          return fallbackUrl$.pipe(
+            tap(() => {
+              retrySubject.next();
+            })
+          );
+        }),
+        retry({ delay: () => retrySubject })
+      );
 };

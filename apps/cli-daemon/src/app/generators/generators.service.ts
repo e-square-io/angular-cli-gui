@@ -1,5 +1,6 @@
 import { spawnSync, SpawnSyncOptionsWithBufferEncoding } from 'child_process';
 import { resolve as pathResolve } from 'path';
+import * as process from 'process';
 
 import { Injectable, Logger } from '@nestjs/common';
 
@@ -17,6 +18,8 @@ import {
 @Injectable()
 export class GeneratorsService {
   private readonly logger = new Logger(GeneratorsService.name);
+  private readonly separator = process.platform === 'win32' ? '\\' : '/';
+  private readonly basePath = `node_modules${this.separator}@schematics${this.separator}angular`;
 
   constructor(private readonly sessionService: SessionService) {}
 
@@ -35,19 +38,12 @@ export class GeneratorsService {
   }
 
   getAllGenerators(): GeneratorDefinition[] {
-    return getGeneratorsDefinition(
-      pathResolve(
-        this.sessionService.cwd,
-        'node_modules/@schematics/angular/collection.json'
-      )
-    );
+    const collectionPath = this.getPath(['collection.json']);
+    return getGeneratorsDefinition(collectionPath);
   }
 
   getSchema(schemaName: string): Schema {
-    const schemaPath = pathResolve(
-      this.sessionService.cwd,
-      `node_modules/@schematics/angular/${schemaName}/schema.json`
-    );
+    const schemaPath = this.getPath([schemaName, 'schema.json']);
     return formatJsonToJs<Schema>(schemaPath);
   }
 
@@ -56,5 +52,12 @@ export class GeneratorsService {
       const convertedKey = convertKeyToArgument(key);
       return `${convertedKey}=${value}`;
     });
+  }
+
+  private getPath(extension: string[]): string {
+    return pathResolve(
+      this.sessionService.cwd,
+      `${this.basePath}${this.separator}${extension.join(this.separator)}`
+    );
   }
 }

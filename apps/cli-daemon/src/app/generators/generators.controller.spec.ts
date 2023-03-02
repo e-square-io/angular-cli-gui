@@ -1,21 +1,20 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
-import { GeneratorsService } from '../generators.service';
+import { GeneratorsController } from './generators.controller';
+import { GeneratorsService } from './generators.service';
 
-import { ComponentController } from './component.controller';
-
-describe('ComponentController', () => {
-  let controller: ComponentController;
+describe('GeneratorsController', () => {
+  let controller: GeneratorsController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [ComponentController],
+      controllers: [GeneratorsController],
       providers: [
         { provide: GeneratorsService, useValue: { execSync: jest.fn() } },
       ],
     }).compile();
 
-    controller = module.get<ComponentController>(ComponentController);
+    controller = module.get<GeneratorsController>(GeneratorsController);
   });
 
   it('should be defined', () => {

@@ -15,8 +15,11 @@ export const formatJsonToJs = <T>(path: string): T =>
 export const getGeneratorsDefinition = (
   path: string
 ): GeneratorDefinition[] => {
-  const collection = formatJsonToJs<{ schematics: SchemaCollection[] }>(path);
-  return collection.schematics.map((schemaCollection) => {
+  const collection = formatJsonToJs<{
+    schematics: Record<string, SchemaCollection>;
+  }>(path);
+  console.log('collection:', collection);
+  return Object.values(collection.schematics).map((schemaCollection) => {
     const splitBy = process.platform === 'win32' ? '.\\' : './';
     const originalName = schemaCollection.factory.split(splitBy)[1];
     return {

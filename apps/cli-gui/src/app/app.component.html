@@ -2,7 +2,7 @@
   <header class="primary-background light-primary-text">
     <h2 class="light-primary-text">
       <img src="https://angular.io/assets/images/logos/angular/angular.svg" />
-      Workspace Manager
+      <span>{{ title$ | async }}</span>
     </h2>
     <div class="project-selector" *ngIf="coreState.projectNames?.length">
       <mat-select name="project-selector" id="project-selector">

@@ -1,11 +1,12 @@
 import { Routes } from '@angular/router';
 
+import { currentWorkspaceGuard } from './guards/current-workspace.guard';
 
 export const APP_ROUTES: Routes = [
   {
     path: '',
     title: 'Home',
-    // canActivate: [currentWorkspaceGuard],
+    canActivate: [currentWorkspaceGuard],
     children: [
       {
         path: '',

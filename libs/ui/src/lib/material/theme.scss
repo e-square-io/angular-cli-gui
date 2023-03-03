@@ -12,18 +12,3 @@ $theme: mat.define-light-theme(
     density: 0,
   )
 );
-
-.primary-background {
-  background-color: mat.get-color-from-palette($primary);
-}
-
-.light-primary-text {
-  color: mat.get-color-from-palette($primary, '300-contrast');
-}
-
-.light-secondary-text {
-  color: transparentize(
-    mat.get-color-from-palette($primary, '300-contrast'),
-    0.7
-  );
-}

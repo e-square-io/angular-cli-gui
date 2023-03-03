@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { Title } from '@angular/platform-browser';
 import {
   NavigationEnd,
@@ -28,6 +29,7 @@ import { CoreService } from './core/core.service';
     MatListModule,
     RouterLink,
     MenuComponent,
+    MatToolbarModule,
   ],
   selector: 'cli-root',
   templateUrl: './app.component.html',

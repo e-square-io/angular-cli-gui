@@ -1,9 +1,7 @@
 <ng-container *ngIf="core.coreState$ | async as coreState">
-  <header class="primary-background light-primary-text">
-    <h2 class="light-primary-text">
-      <img src="https://angular.io/assets/images/logos/angular/angular.svg" />
-      <span>{{ title$ | async }}</span>
-    </h2>
+  <mat-toolbar color="primary" class="header">
+    <img src="https://angular.io/assets/images/logos/angular/angular.svg" />
+    <h2>{{ title$ | async }}</h2>
     <div class="project-selector" *ngIf="coreState.projectNames?.length">
       <mat-select name="project-selector" id="project-selector">
         <mat-option
@@ -14,7 +12,7 @@
         </mat-option>
       </mat-select>
     </div>
-  </header>
+  </mat-toolbar>
   <mat-sidenav-container class="sidenav">
     <mat-sidenav opened="true" mode="side">
       <cli-menu [menuItems]="menuItems"></cli-menu>

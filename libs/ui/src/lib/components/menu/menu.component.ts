@@ -1,12 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterLink } from '@angular/router';
 
+import { MenuItem } from './menu.models';
+
 @Component({
-  selector: 'cli-generators-menu',
+  selector: 'cli-menu',
   standalone: true,
   imports: [
     CommonModule,
@@ -15,10 +17,10 @@ import { RouterLink } from '@angular/router';
     MatButtonModule,
     RouterLink,
   ],
-  templateUrl: './generators-menu.component.html',
-  styleUrls: ['./generators-menu.component.scss'],
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GeneratorsMenuComponent {
-  public menuItems = ['component', 'directive', 'module', 'pipe'];
+export class MenuComponent {
+  @Input() menuItems: MenuItem[] = [];
 }

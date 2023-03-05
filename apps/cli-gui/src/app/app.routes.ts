@@ -5,6 +5,7 @@ import { currentWorkspaceGuard } from './guards/current-workspace.guard';
 export const APP_ROUTES: Routes = [
   {
     path: '',
+    title: 'Home',
     canActivate: [currentWorkspaceGuard],
     children: [
       {
@@ -34,6 +35,7 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: 'workspace-manager',
+    title: 'Workspace Manager',
     loadChildren: () =>
       import('@angular-cli-gui/workspace-manager').then(
         (m) => m.WORKSPACE_MANAGER_ROUTES

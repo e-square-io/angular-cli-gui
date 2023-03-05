@@ -3,7 +3,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterOutlet } from '@angular/router';
 import { MenuComponent } from '@angular-cli-gui/ui';
 
-import { MAIN_MENU_ITEMS } from '../app.consts';
+import { HOME_MENU_ITEMS } from './home.consts';
 
 @Component({
   selector: 'cli-home',
@@ -14,5 +14,5 @@ import { MAIN_MENU_ITEMS } from '../app.consts';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {
-  menuItems = MAIN_MENU_ITEMS;
+  menuItems = HOME_MENU_ITEMS;
 }

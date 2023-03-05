@@ -6,7 +6,7 @@ export const APP_ROUTES: Routes = [
   {
     path: '',
     title: 'Home',
-    canActivate: [currentWorkspaceGuard()],
+    canActivate: [currentWorkspaceGuard],
     loadChildren: () => import('./home/home.routes'),
   },
   {

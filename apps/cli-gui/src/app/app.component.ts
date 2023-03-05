@@ -1,5 +1,7 @@
 import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Title } from '@angular/platform-browser';
@@ -23,6 +25,8 @@ import { CoreService } from './core/core.service';
     NgForOf,
     RouterLink,
     MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
   ],
   selector: 'cli-root',
   templateUrl: './app.component.html',

@@ -12,6 +12,15 @@
         </mat-option>
       </mat-select>
     </div>
+    <button
+      class="home-button"
+      mat-icon-button
+      aria-label="Home"
+      [disabled]="!core.currentWorkspacePath"
+      routerLink="/"
+    >
+      <mat-icon>home</mat-icon>
+    </button>
   </mat-toolbar>
   <router-outlet></router-outlet>
 </ng-container>

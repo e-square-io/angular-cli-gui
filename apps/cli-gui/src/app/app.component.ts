@@ -1,8 +1,6 @@
 import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Title } from '@angular/platform-browser';
 import {
@@ -11,10 +9,8 @@ import {
   RouterLink,
   RouterOutlet,
 } from '@angular/router';
-import { MenuComponent } from '@angular-cli-gui/ui';
 import { delay, filter, map, startWith } from 'rxjs';
 
-import { MAIN_MENU_ITEMS } from './app.consts';
 import { CoreService } from './core/core.service';
 
 @Component({
@@ -25,10 +21,7 @@ import { CoreService } from './core/core.service';
     RouterOutlet,
     MatSelectModule,
     NgForOf,
-    MatSidenavModule,
-    MatListModule,
     RouterLink,
-    MenuComponent,
     MatToolbarModule,
   ],
   selector: 'cli-root',
@@ -43,8 +36,6 @@ export class AppComponent {
     delay(0),
     map(() => this.title.getTitle())
   );
-
-  menuItems = MAIN_MENU_ITEMS;
 
   constructor(
     readonly core: CoreService,

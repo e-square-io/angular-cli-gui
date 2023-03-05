@@ -1,0 +1,14 @@
+$list-item-hover: rgba(222, 222, 222, 0.7);
+
+:host {
+  .list-wrapper {
+    overflow: auto;
+    margin-top: 16px;
+    max-height: 100%;
+  }
+
+  mat-list-item:hover {
+    background: $list-item-hover;
+    cursor: pointer;
+  }
+}

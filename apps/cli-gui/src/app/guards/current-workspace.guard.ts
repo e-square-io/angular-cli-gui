@@ -21,15 +21,14 @@ export const currentWorkspaceGuard = (): Observable<boolean | UrlTree> => {
   const core = inject(CoreService);
   const retrySubject = new Subject<void>();
   const projectNames$ = http.get<string[]>('/api/workspace/project-names');
-  const currentWorkspacePath = sessionStorage.getItem(CURRENT_WORKSPACE_PATH);
   const connectWorkspace$ = http.post<void>('/api/workspace/connect', {
-    path: currentWorkspacePath,
+    path: core.currentWorkspacePath,
   });
   const fallbackUrl$: Observable<UrlTree> = of(
     router.parseUrl('workspace-manager/connect-workspace')
   );
 
-  return !currentWorkspacePath
+  return !core.currentWorkspacePath
     ? fallbackUrl$
     : connectWorkspace$.pipe(
         switchMap(() =>

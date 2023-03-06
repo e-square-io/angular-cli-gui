@@ -11,6 +11,7 @@ import {
   RouterLink,
   RouterOutlet,
 } from '@angular/router';
+import { SidenavService } from '@angular-cli-gui/ui';
 import { delay, filter, map, startWith } from 'rxjs';
 
 import { CoreService } from './core/core.service';
@@ -43,6 +44,7 @@ export class AppComponent {
 
   constructor(
     readonly core: CoreService,
+    readonly sidenavService: SidenavService,
     private readonly router: Router,
     private readonly title: Title
   ) {}

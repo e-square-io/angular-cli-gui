@@ -1,3 +1,6 @@
-<cli-sidenav [menuItems]="menuItems">
+<cli-sidenav
+  [menuItems]="menuItems"
+  [isExpanded]="(sidenavService.isExpanded$ | async)!"
+>
   <router-outlet></router-outlet>
 </cli-sidenav>

@@ -1,7 +1,4 @@
-:host {
-  .menu-item {
-    justify-content: left;
-    text-transform: capitalize;
-    width: var(--menu-item-width);
-  }
+.menu-item {
+  justify-content: left;
+  text-transform: capitalize;
 }

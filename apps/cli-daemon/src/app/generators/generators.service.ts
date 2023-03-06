@@ -18,8 +18,6 @@ import {
 @Injectable()
 export class GeneratorsService {
   private readonly logger = new Logger(GeneratorsService.name);
-  private readonly separator = process.platform === 'win32' ? '\\' : '/';
-  private readonly basePath = `node_modules${this.separator}@schematics${this.separator}angular`;
 
   constructor(private readonly sessionService: SessionService) {}
 
@@ -55,9 +53,13 @@ export class GeneratorsService {
   }
 
   private getPath(extension: string[]): string {
+    console.log('this.sessionService.cwd:', this.sessionService.cwd);
     return pathResolve(
       this.sessionService.cwd,
-      `${this.basePath}${this.separator}${extension.join(this.separator)}`
+      'node_modules',
+      '@schematics',
+      'angular',
+      ...extension
     );
   }
 }

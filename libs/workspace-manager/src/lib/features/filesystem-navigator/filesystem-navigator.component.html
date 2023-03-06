@@ -5,7 +5,7 @@
 
 <div class="list-wrapper">
   <mat-list>
-    <ng-container *ngFor="let dir of directories$ | async">
+    <ng-container *ngFor="let dir of directories">
       <mat-list-item (click)="onDirClicked(dir)">
         <mat-icon matListItemIcon>folder</mat-icon>
 

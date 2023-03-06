@@ -1,0 +1,25 @@
+@use '@angular/material' as mat;
+@use './typography' as typogrpahy;
+@use '../core/variables' as variables;
+
+@mixin cli-sidenav() {
+  $icon-size: mat.font-size(typogrpahy.$typography, 'headline-6');
+
+  .mat-mdc-list-base a.mdc-button {
+    width: 100%;
+    height: 100%;
+    font-size: mat.font-size(typogrpahy.$typography, 'subtitle-1');
+    padding: 16px;
+    min-width: var(--cli-sidenav-min-width);
+
+    &:not(.collapsed) {
+      justify-content: start;
+    }
+
+    .mat-icon {
+      font-size: $icon-size;
+      width: $icon-size;
+      height: $icon-size;
+    }
+  }
+}

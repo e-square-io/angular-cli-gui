@@ -1,0 +1,13 @@
+@use '@angular/material' as mat;
+
+@mixin cli-buttons($theme) {
+  // have margin between icon & label only if label appear.
+  .mat-mdc-button.mat-mdc-button-base > .mat-icon {
+    margin: 0;
+
+    & + .mdc-button__label:not(:empty) {
+      margin-left: 8px;
+      margin-right: 0;
+    }
+  }
+}

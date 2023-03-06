@@ -1,4 +1,4 @@
-import { NgForOf, NgIf } from '@angular/common';
+import { NgClass, NgForOf, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -19,6 +19,7 @@ import { MenuItem } from './menu.models';
     MatButtonModule,
     RouterLink,
     MatIconModule,
+    NgClass,
   ],
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],

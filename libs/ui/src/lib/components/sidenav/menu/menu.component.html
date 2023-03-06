@@ -2,8 +2,9 @@
   <div mat-list-item *ngFor="let menuItem of menuItems">
     <a
       mat-button
-      class="menu-item"
+      disableRipple
       color="primary"
+      [ngClass]="{ collapsed: !isExpanded }"
       [routerLink]="[menuItem.url]"
     >
       <mat-icon *ngIf="menuItem.icon">{{ menuItem.icon }}</mat-icon>

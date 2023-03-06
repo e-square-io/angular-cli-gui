@@ -12,12 +12,13 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { Directory } from '@angular-cli-gui/shared/data';
-import { BehaviorSubject, Observable, of, switchMap, take } from 'rxjs';
+import { BehaviorSubject, map, Observable, of, switchMap, take } from 'rxjs';
 
+import { ANGULAR_LOGO_IMG_SRC } from '../../consts';
 import { WorkspaceManagerApiService } from '../../data-access/workspace-manager-api.service';
+import { extractDirnameFromPath, getParentPath } from '../../utils';
 
 import { FilesystemNavigatorToolbarComponent } from './filesystem-navigator-toolbar/filesystem-navigator-toolbar.component';
-import { FilesystemNavigatorUtilsService } from './services/filesystem-navigator-utils.service';
 
 @Component({
   selector: 'cli-filesystem-navigator',
@@ -36,9 +37,6 @@ import { FilesystemNavigatorUtilsService } from './services/filesystem-navigator
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FilesystemNavigatorComponent implements OnChanges {
-  private readonly fsNavigatorUtilsService = inject(
-    FilesystemNavigatorUtilsService
-  );
   private readonly workspaceManagerApiService = inject(
     WorkspaceManagerApiService
   );
@@ -47,14 +45,14 @@ export class FilesystemNavigatorComponent implements OnChanges {
 
   @Output() pathChange = new EventEmitter<string>();
 
-  private readonly _isAngularWorkspace$ = new BehaviorSubject<boolean>(false);
-  readonly isAngularWorkspace$ = this._isAngularWorkspace$.asObservable();
-  directories$: Observable<Directory[]> = of([]);
+  readonly isAngularWorkspace$ = new BehaviorSubject<boolean>(false);
+  readonly directories$ = new BehaviorSubject<Directory[]>([]);
+  readonly angularLogoSrc = ANGULAR_LOGO_IMG_SRC;
 
   ngOnChanges(): void {
     if (this.path) {
-      this.directories$ = this.workspaceManagerApiService.getDirectoriesInPath(
-        this.path
+      this.getDirectoriesInPath(this.path).subscribe((directories) =>
+        this.directories$.next(directories)
       );
     }
   }
@@ -63,17 +61,9 @@ export class FilesystemNavigatorComponent implements OnChanges {
     this.directories$
       .pipe(
         take(1),
-        switchMap((directories: Directory[]) => {
-          const dirname =
-            this.fsNavigatorUtilsService.extractDirNameFromPath(path);
-          const directory = directories.find((dir) => dir.name === dirname);
-          return directory
-            ? of(directory)
-            : this.fsNavigatorUtilsService.getDirectoryFromParentPath(
-                path,
-                dirname
-              );
-        })
+        switchMap((directories: Directory[]) =>
+          this.findDirectory(path, directories)
+        )
       )
       .subscribe((directory) => {
         !!directory && this.setIsAngularWorkspaceDirectory(directory.isNG);
@@ -87,11 +77,36 @@ export class FilesystemNavigatorComponent implements OnChanges {
     this.setIsAngularWorkspaceDirectory(directory.isNG);
   }
 
+  private getDirectoriesInPath(path: string): Observable<Directory[]> {
+    return this.workspaceManagerApiService.getDirectoriesInPath(path);
+  }
+
+  private findDirectory(
+    path: string,
+    directories: Directory[]
+  ): Observable<Directory | undefined> {
+    const dirname = extractDirnameFromPath(path);
+    const directory = directories.find((dir) => dir.name === dirname);
+    return directory
+      ? of(directory)
+      : this.getDirectoryFromParentPath(path, dirname);
+  }
+
   private emitPathChangeEvent(path: string): void {
     this.pathChange.emit(path);
   }
 
   private setIsAngularWorkspaceDirectory(isAngularWorkspace: boolean): void {
-    this._isAngularWorkspace$.next(isAngularWorkspace);
+    this.isAngularWorkspace$.next(isAngularWorkspace);
+  }
+
+  private getDirectoryFromParentPath(
+    path: string,
+    dirname: string
+  ): Observable<Directory | undefined> {
+    const parentPath = getParentPath(path);
+    return this.getDirectoriesInPath(parentPath).pipe(
+      map((directories) => directories.find((d) => d.name === dirname))
+    );
   }
 }

@@ -4,11 +4,17 @@ $list-item-hover: rgba(222, 222, 222, 0.7);
   .list-wrapper {
     overflow: auto;
     margin-top: 16px;
+    height: inherit;
     max-height: 100%;
   }
 
   mat-list-item:hover {
     background: $list-item-hover;
     cursor: pointer;
+  }
+
+  .angular-logo {
+    width: 20px;
+    height: 20px;
   }
 }

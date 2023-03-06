@@ -1,4 +1,4 @@
-import { AsyncPipe, NgClass } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
@@ -8,7 +8,7 @@ import { MenuItem } from './menu/menu.models';
 @Component({
   selector: 'cli-sidenav',
   standalone: true,
-  imports: [MatSidenavModule, MenuComponent, AsyncPipe, NgClass],
+  imports: [MatSidenavModule, MenuComponent, AsyncPipe],
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -11,7 +11,8 @@ import {
   RouterLink,
   RouterOutlet,
 } from '@angular/router';
-import { delay, filter, map, startWith } from 'rxjs';
+import { SidenavService } from '@angular-cli-gui/ui';
+import { delay, filter, map, Observable, startWith } from 'rxjs';
 
 import { CoreService } from './core/core.service';
 
@@ -33,7 +34,7 @@ import { CoreService } from './core/core.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title$ = this.router.events.pipe(
+  title$: Observable<string> = this.router.events.pipe(
     startWith(this.title.getTitle()),
     filter((event) => event instanceof NavigationEnd),
     // The title is set after the last router event, so we need to wait until the next application cycle
@@ -41,8 +42,13 @@ export class AppComponent {
     map(() => this.title.getTitle())
   );
 
+  sidenavIcon$: Observable<string> = this.sidenavService.isExpanded$.pipe(
+    map((isExpanded) => (isExpanded ? 'menu' : 'menu_open'))
+  );
+
   constructor(
     readonly core: CoreService,
+    readonly sidenavService: SidenavService,
     private readonly router: Router,
     private readonly title: Title
   ) {}

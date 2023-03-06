@@ -1,2 +1,3 @@
-export * from './menu/menu.component';
-export * from './menu/menu.models';
+export * from './sidenav/sidenav.component';
+export * from './sidenav/menu/menu.models';
+export * from './sidenav/services/sidenav.service';

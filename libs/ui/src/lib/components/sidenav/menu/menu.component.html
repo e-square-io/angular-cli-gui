@@ -5,7 +5,9 @@
       class="menu-item"
       color="primary"
       [routerLink]="[menuItem.url]"
-      >{{ menuItem.displayName }}</a
     >
+      <mat-icon *ngIf="menuItem.icon">{{ menuItem.icon }}</mat-icon>
+      <span *ngIf="isExpanded">{{ menuItem.displayName }}</span>
+    </a>
   </div>
 </mat-nav-list>

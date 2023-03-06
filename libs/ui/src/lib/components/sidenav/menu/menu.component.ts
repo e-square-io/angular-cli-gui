@@ -1,6 +1,7 @@
-import { CommonModule } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterLink } from '@angular/router';
@@ -11,11 +12,13 @@ import { MenuItem } from './menu.models';
   selector: 'cli-menu',
   standalone: true,
   imports: [
-    CommonModule,
+    NgIf,
+    NgForOf,
     MatListModule,
     MatSidenavModule,
     MatButtonModule,
     RouterLink,
+    MatIconModule,
   ],
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
@@ -23,4 +26,5 @@ import { MenuItem } from './menu.models';
 })
 export class MenuComponent {
   @Input() menuItems: MenuItem[] = [];
+  @Input() isExpanded = true;
 }

@@ -1,9 +1,7 @@
 <ng-container *ngIf="core.coreState$ | async as coreState">
   <mat-toolbar color="primary" class="header">
     <button mat-icon-button (click)="sidenavService.toggle()">
-      <mat-icon>{{
-        (sidenavService.isExpanded$ | async) ? 'menu' : 'menu_open'
-      }}</mat-icon>
+      <mat-icon>{{ sidenavIcon$ | async }}</mat-icon>
     </button>
     <img src="https://angular.io/assets/images/logos/angular/angular.svg" />
     <h2>{{ title$ | async }}</h2>

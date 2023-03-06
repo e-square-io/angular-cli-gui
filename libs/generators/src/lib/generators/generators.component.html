@@ -1,8 +1,3 @@
-<mat-sidenav-container class="container">
-  <mat-sidenav opened="true" mode="side">
-    <cli-menu [menuItems]="menuItems"></cli-menu>
-  </mat-sidenav>
-  <mat-sidenav-content class="content">
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<cli-sidenav [menuItems]="menuItems">
+  <router-outlet></router-outlet>
+</cli-sidenav>

@@ -1,5 +1,8 @@
 <ng-container *ngIf="core.coreState$ | async as coreState">
   <mat-toolbar color="primary" class="header">
+    <button mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
     <img src="https://angular.io/assets/images/logos/angular/angular.svg" />
     <h2>{{ title$ | async }}</h2>
     <div class="project-selector" *ngIf="coreState.projectNames?.length">

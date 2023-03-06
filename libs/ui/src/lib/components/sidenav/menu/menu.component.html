@@ -1,14 +1,13 @@
 <mat-nav-list>
-  <div mat-list-item *ngFor="let menuItem of menuItems">
-    <a
-      mat-button
-      disableRipple
-      color="primary"
-      [ngClass]="{ collapsed: !isExpanded }"
-      [routerLink]="[menuItem.url]"
-    >
-      <mat-icon *ngIf="menuItem.icon">{{ menuItem.icon }}</mat-icon>
-      <span *ngIf="isExpanded">{{ menuItem.displayName }}</span>
-    </a>
-  </div>
+  <mat-list-item
+    *ngFor="let menuItem of menuItems"
+    [routerLink]="menuItem.url"
+    [routerLinkActiveOptions]="{ exact: menuItem.url === '' }"
+    routerLinkActive="mdc-list-item--activated"
+  >
+    <a matListItemTitle>{{ menuItem.displayName }}</a>
+    <mat-icon matListItemIcon *ngIf="menuItem.icon">{{
+      menuItem.icon
+    }}</mat-icon>
+  </mat-list-item>
 </mat-nav-list>

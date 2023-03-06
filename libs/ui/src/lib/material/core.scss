@@ -2,7 +2,6 @@
 @use './theme' as theme;
 @use './typography' as typogrpahy;
 @use './sidenav' as sidenav;
-@use './buttons' as buttons;
 
 @mixin material-theme() {
   // material
@@ -11,5 +10,4 @@
 
   // material override
   @include sidenav.cli-sidenav();
-  @include buttons.cli-buttons(theme.$theme);
 }

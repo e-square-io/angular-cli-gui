@@ -1,25 +1,43 @@
 @use '@angular/material' as mat;
-@use './typography' as typogrpahy;
-@use '../core/variables' as variables;
+@use './colors' as colors;
 
 @mixin cli-sidenav() {
-  $icon-size: mat.font-size(typogrpahy.$typography, 'headline-6');
+  .mat-mdc-list-item.mat-primary {
+    $color: mat.get-color-from-palette(colors.$primary);
+    --mdc-theme-text-primary-on-background: #{$color};
+    --mdc-theme-text-icon-on-background: #{$color};
+    background-color: mat.get-color-from-palette(colors.$primary);
+  }
 
-  .mat-mdc-list-base a.mdc-button {
-    width: 100%;
-    height: 100%;
-    font-size: mat.font-size(typogrpahy.$typography, 'subtitle-1');
-    padding: 16px;
-    min-width: var(--cli-sidenav-min-width);
+  // icon
 
-    &:not(.collapsed) {
-      justify-content: start;
+  .mdc-list-item--with-leading-icon .mat-icon.mdc-list-item__start {
+    margin-left: 30px;
+    margin-right: 16px;
+  }
+
+  // drawer
+
+  .mat-drawer {
+    width: var(--cli-sidenav-max-width);
+    transition: width 200ms ease-in-out;
+
+    &.collapsed {
+      width: var(--cli-sidenav-min-width);
     }
+  }
 
-    .mat-icon {
-      font-size: $icon-size;
-      width: $icon-size;
-      height: $icon-size;
-    }
+  // content
+
+  .mat-sidenav-content {
+    transition: margin 200ms ease-in-out;
+  }
+
+  .mat-drawer ~ .mat-sidenav-content {
+    margin-left: var(--cli-sidenav-max-width) !important;
+  }
+
+  .mat-drawer.collapsed ~ .mat-sidenav-content {
+    margin-left: var(--cli-sidenav-min-width) !important;
   }
 }

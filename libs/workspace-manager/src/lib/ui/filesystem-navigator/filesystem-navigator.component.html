@@ -12,7 +12,11 @@
         <div matListItemTitle>
           {{ dir.name }}
 
-          <img *ngIf="dir.isNG" class="angular-logo" [src]="angularLogoSrc" />
+          <img
+            *ngIf="dir.isNG"
+            class="angular-logo"
+            src="/assets/angular.svg"
+          />
         </div>
       </mat-list-item>
 

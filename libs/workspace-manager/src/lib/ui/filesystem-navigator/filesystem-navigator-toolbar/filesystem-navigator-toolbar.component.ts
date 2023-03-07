@@ -31,7 +31,7 @@ export class FilesystemNavigatorToolbarComponent implements OnChanges {
   }
 
   onPartClicked(pathPart: string): void {
-    const index = this.pathParts.findIndex((part) => part === pathPart);
+    const index = this.pathParts.indexOf(pathPart);
     const newPath = this.pathParts
       .slice(0, index + 1)
       .join(this.separator as string);

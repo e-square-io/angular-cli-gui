@@ -34,6 +34,7 @@ import { FilesystemNavigatorToolbarComponent } from './filesystem-navigator-tool
 export class FilesystemNavigatorComponent {
   @Input() path: string | null = null;
   @Input() directories: Directory[] | null = [];
+  @Input() separator: string | null = '';
 
   @Output() pathChange = new EventEmitter<string>();
 
@@ -44,7 +45,7 @@ export class FilesystemNavigatorComponent {
   }
 
   onDirClicked(directory: Directory): void {
-    const path = `${this.path}/${directory.name}`;
+    const path = `${this.path}${this.separator}${directory.name}`;
     this.onPathChanged(path);
   }
 

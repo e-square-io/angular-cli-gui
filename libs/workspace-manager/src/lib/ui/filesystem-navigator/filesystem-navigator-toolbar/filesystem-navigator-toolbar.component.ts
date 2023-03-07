@@ -19,19 +19,22 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class FilesystemNavigatorToolbarComponent implements OnChanges {
   @Input() path: string | null = null;
+  @Input() separator: string | null = '';
   @Output() pathChange = new EventEmitter<string>();
 
   pathParts: string[] = [];
 
   ngOnChanges(): void {
-    if (typeof this.path === 'string') {
-      this.pathParts = this.path.split('/').filter((v) => !!v);
-    }
+    this.pathParts = (this.path as string)
+      .split(this.separator as string)
+      .filter((v) => !!v);
   }
 
   onPartClicked(pathPart: string): void {
     const index = this.pathParts.findIndex((part) => part === pathPart);
-    const newPath = this.pathParts.slice(0, index + 1).join('/');
+    const newPath = this.pathParts
+      .slice(0, index + 1)
+      .join(this.separator as string);
     this.pathChange.emit(`/${newPath}`);
   }
 }

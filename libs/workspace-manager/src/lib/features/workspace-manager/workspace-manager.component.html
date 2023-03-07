@@ -1,26 +1,20 @@
-<header class="workspace-manager-header primary-background light-primary-text">
-  <h2 class="light-primary-text">
-    <img src="https://angular.io/assets/images/logos/angular/angular.svg" />
-    Workspace Manager
-  </h2>
-  <nav
-    mat-tab-nav-bar
-    backgroundColor="primary"
-    color="primary"
-    [tabPanel]="tabPanel"
+<nav
+  mat-tab-nav-bar
+  backgroundColor="primary"
+  color="primary"
+  [tabPanel]="tabPanel"
+>
+  <a
+    mat-tab-link
+    *ngFor="let link of links; trackBy: trackByHref"
+    (click)="activeLink = link"
+    [routerLink]="link.href"
+    [active]="activeLink.href === link.href"
   >
-    <a
-      mat-tab-link
-      *ngFor="let link of links; trackBy: trackByHref"
-      (click)="activeLink = link"
-      [routerLink]="link.href"
-      [active]="activeLink.href === link.href"
-    >
-      <mat-icon>{{ link.icon }}</mat-icon> &nbsp;
-      {{ link.displayName }}
-    </a>
-  </nav>
-</header>
+    <mat-icon>{{ link.icon }}</mat-icon> &nbsp;
+    {{ link.displayName }}
+  </a>
+</nav>
 <mat-tab-nav-panel #tabPanel>
   <router-outlet></router-outlet>
 </mat-tab-nav-panel>

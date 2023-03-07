@@ -1,6 +1,11 @@
 <ng-container *ngIf="core.coreState$ | async as coreState">
-  <header class="main-header" *ngIf="coreState.projectNames?.length">
-    <div class="project-selector">
+  <mat-toolbar color="primary" class="header">
+    <button mat-icon-button (click)="sidenavService.toggle()">
+      <mat-icon>{{ sidenavIcon$ | async }}</mat-icon>
+    </button>
+    <img src="https://angular.io/assets/images/logos/angular/angular.svg" />
+    <h2>{{ title$ | async }}</h2>
+    <div class="project-selector" *ngIf="coreState.projectNames?.length">
       <mat-select name="project-selector" id="project-selector">
         <mat-option
           *ngFor="let project of coreState.projectNames"
@@ -10,8 +15,15 @@
         </mat-option>
       </mat-select>
     </div>
-  </header>
-  <main class="container">
-    <router-outlet></router-outlet>
-  </main>
+    <button
+      class="home-button"
+      mat-icon-button
+      aria-label="Home"
+      [disabled]="!core.currentWorkspacePath"
+      routerLink="/"
+    >
+      <mat-icon>home</mat-icon>
+    </button>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
 </ng-container>

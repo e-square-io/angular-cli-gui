@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { CURRENT_WORKSPACE_PATH } from '@angular-cli-gui/shared/data';
 import { BehaviorSubject } from 'rxjs';
 
 export interface CoreState {
@@ -15,10 +16,12 @@ export class CoreService {
 
   readonly coreState$ = this.coreStateSubject$.asObservable();
 
-  // constructor() {}
-
   update(state: Partial<CoreState>): void {
     this.coreState = { ...this.coreState, ...state };
     this.coreStateSubject$.next(this.coreState);
+  }
+
+  get currentWorkspacePath(): string | null {
+    return sessionStorage.getItem(CURRENT_WORKSPACE_PATH);
   }
 }

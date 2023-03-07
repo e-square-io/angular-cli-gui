@@ -1,7 +1,13 @@
 @use '@angular/material' as mat;
-@import './theme';
+@use './theme' as theme;
+@use './typography' as typogrpahy;
+@use './sidenav' as sidenav;
 
 @mixin material-theme() {
+  // material
   @include mat.core();
-  @include mat.all-component-themes($theme);
+  @include mat.all-component-themes(theme.$theme);
+
+  // material override
+  @include sidenav.cli-sidenav();
 }

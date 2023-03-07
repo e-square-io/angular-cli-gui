@@ -1,18 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { GeneratorsMenuComponent } from './generators-menu.component';
+import { HomeComponent } from './home.component';
 
-describe('GeneratorsMenuComponent', () => {
-  let component: GeneratorsMenuComponent;
-  let fixture: ComponentFixture<GeneratorsMenuComponent>;
+describe('HomeComponent', () => {
+  let component: HomeComponent;
+  let fixture: ComponentFixture<HomeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [GeneratorsMenuComponent, RouterTestingModule],
+      imports: [HomeComponent, RouterTestingModule, NoopAnimationsModule],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(GeneratorsMenuComponent);
+    fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

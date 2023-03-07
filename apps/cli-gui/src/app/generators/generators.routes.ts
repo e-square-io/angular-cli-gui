@@ -5,6 +5,7 @@ const GENERATOR_ROUTES: Routes = [
   {
     path: '',
     component: GeneratorsComponent,
+    title: 'Generators',
     children: [
       {
         path: 'component',

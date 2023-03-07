@@ -1,0 +1,43 @@
+@use '@angular/material' as mat;
+@use './colors' as colors;
+
+@mixin cli-sidenav() {
+  .mat-mdc-list-item.mat-primary {
+    $color: mat.get-color-from-palette(colors.$primary);
+    --mdc-theme-text-primary-on-background: #{$color};
+    --mdc-theme-text-icon-on-background: #{$color};
+    background-color: mat.get-color-from-palette(colors.$primary);
+  }
+
+  // icon
+
+  .mdc-list-item--with-leading-icon .mat-icon.mdc-list-item__start {
+    margin-left: 30px;
+    margin-right: 16px;
+  }
+
+  // drawer
+
+  .mat-drawer {
+    width: var(--cli-sidenav-max-width);
+    transition: width 200ms ease-in-out;
+
+    &.collapsed {
+      width: var(--cli-sidenav-min-width);
+    }
+  }
+
+  // content
+
+  .mat-sidenav-content {
+    transition: margin 200ms ease-in-out;
+  }
+
+  .mat-drawer ~ .mat-sidenav-content {
+    margin-left: var(--cli-sidenav-max-width) !important;
+  }
+
+  .mat-drawer.collapsed ~ .mat-sidenav-content {
+    margin-left: var(--cli-sidenav-min-width) !important;
+  }
+}

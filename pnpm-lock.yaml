@@ -41,6 +41,7 @@ specifiers:
   '@nrwl/webpack': 15.7.2
   '@nrwl/workspace': 15.7.2
   '@types/jest': 28.1.1
+  '@types/json-schema': ^7.0.11
   '@types/node': 18.7.1
   '@typescript-eslint/eslint-plugin': ^5.36.1
   '@typescript-eslint/parser': ^5.36.1
@@ -57,6 +58,7 @@ specifiers:
   jest: 28.1.1
   jest-environment-jsdom: 28.1.1
   jest-preset-angular: ~12.2.3
+  json-schema-library: ^7.4.7
   lint-staged: ^13.1.2
   ng-packagr: ~15.1.0
   nx: 15.7.2
@@ -95,6 +97,7 @@ dependencies:
   axios: 1.3.4
   class-transformer: 0.5.1
   class-validator: 0.14.0
+  json-schema-library: 7.4.7
   reflect-metadata: 0.1.13
   rxjs: 7.5.7
   tslib: 2.5.0
@@ -124,6 +127,7 @@ devDependencies:
   '@nrwl/webpack': 15.7.2_gnj634kz7simk4gp67pdosa6te
   '@nrwl/workspace': 15.7.2_xbutml5teg6536gsdu4z5mzgvm
   '@types/jest': 28.1.1
+  '@types/json-schema': 7.0.11
   '@types/node': 18.7.1
   '@typescript-eslint/eslint-plugin': 5.53.0_on2hokawovhpujayhfxxzorgmi
   '@typescript-eslint/parser': 5.53.0_hx5tgzcbd2ycqgjduqhliuc3jm
@@ -5517,6 +5521,17 @@ packages:
       rollup: 3.17.3
     dev: true
 
+  /@sagold/json-pointer/5.0.1:
+    resolution: {integrity: sha512-cKY4N+3YC7CHUW28lOgqH6020EMqFS5nW9cT+/MBdUNXWEmLWeTsOtiaHxXuixL5jCJNv4AFqtGi4dQIYGG8XQ==}
+    dev: false
+
+  /@sagold/json-query/6.0.0:
+    resolution: {integrity: sha512-fk9BimvNrzlhXiy+dvlwyA97W2N6GmPWCJo/2kwKEtU9oc93cVKamca9NcnjKx1hhjECjPfu30NQ8Tg2JGv/pA==}
+    dependencies:
+      '@sagold/json-pointer': 5.0.1
+      ebnf: 1.9.0
+    dev: false
+
   /@schematics/angular/15.1.6:
     resolution: {integrity: sha512-y2kIQ1wJL0wR6v/LM5+PFJUivrYtdaIJVRdOXLLWl0AB5aLwObiWgLzAuBsbGm/9//WPPhw9PglS5EFFxTBDzg==}
     engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
@@ -7951,7 +7966,6 @@ packages:
   /deepmerge/4.3.0:
     resolution: {integrity: sha512-z2wJZXrmeHdvYJp/Ux55wIjqo81G5Bp4c+oELTW+7ar6SogWHajt5a9gO3s3IDaGSAXjDk0vlQKN3rms8ab3og==}
     engines: {node: '>=0.10.0'}
-    dev: true
 
   /default-gateway/6.0.3:
     resolution: {integrity: sha512-fwSOJsbbNzZ/CUFpqFBqYfYNLj1NbMPm8MMCIzHjC83iSJRBEGmDUxU+WP661BaBQImeC2yHwXtz+P/O9o+XEg==}
@@ -8137,6 +8151,11 @@ packages:
   /eastasianwidth/0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
+
+  /ebnf/1.9.0:
+    resolution: {integrity: sha512-LKK899+j758AgPq00ms+y90mo+2P86fMKUWD28sH0zLKUj7aL6iIH2wy4jejAMM9I2BawJ+2kp6C3mMXj+Ii5g==}
+    hasBin: true
+    dev: false
 
   /ee-first/1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
@@ -10746,6 +10765,16 @@ packages:
     resolution: {integrity: sha512-iZbGHafX/59r39gPwVPRBGw0QQKnA7tte5pSMrhWOW7swGsVvVTjmfyAV9pNqk8YGT7tRCdxRu8uzcgZwoDooA==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dev: true
+
+  /json-schema-library/7.4.7:
+    resolution: {integrity: sha512-m7MzIVbwDH6L0RzrPjQAZfpEffaa0wUyyJ049xK5YWX9yXQfOh89ER4WqiFGA+6OPK8dlCPGLmFb3q12FkeriQ==}
+    dependencies:
+      '@sagold/json-pointer': 5.0.1
+      '@sagold/json-query': 6.0.0
+      deepmerge: 4.3.0
+      fast-deep-equal: 3.1.3
+      valid-url: 1.0.9
+    dev: false
 
   /json-schema-traverse/0.4.1:
     resolution: {integrity: sha512-xbbCH5dCYU5T8LcEhhuh7HJ88HXuW3qsI3Y0zOZFKfZEHcpWiHU/Jxzk629Brsab/mMiHQti9wMP+845RPe3Vg==}
@@ -14851,6 +14880,10 @@ packages:
       '@types/istanbul-lib-coverage': 2.0.4
       convert-source-map: 1.9.0
     dev: true
+
+  /valid-url/1.0.9:
+    resolution: {integrity: sha512-QQDsV8OnSf5Uc30CKSwG9lnhMPe6exHtTXLRYX8uMwKENy640pU+2BgBL0LRbDh/eYRahNCS7aewCx0wf3NYVA==}
+    dev: false
 
   /validate-npm-package-license/3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}

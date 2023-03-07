@@ -27,7 +27,7 @@ describe('FilesystemNavigatorComponent', () => {
   });
 
   describe('onPathChanged', () => {
-    it('Should emit path changed event', () => {
+    it('should emit path changed event', () => {
       const pathChangeEmitSpy = jest.spyOn(component.pathChange, 'emit');
       component.onPathChanged('new/path');
       expect(pathChangeEmitSpy).toHaveBeenCalledWith('new/path');

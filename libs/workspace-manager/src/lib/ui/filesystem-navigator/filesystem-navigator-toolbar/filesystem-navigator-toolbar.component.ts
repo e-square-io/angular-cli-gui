@@ -35,6 +35,6 @@ export class FilesystemNavigatorToolbarComponent implements OnChanges {
     const newPath = this.pathParts
       .slice(0, index + 1)
       .join(this.separator as string);
-    this.pathChange.emit(`/${newPath}`);
+    this.pathChange.emit(`${this.separator}${newPath}`);
   }
 }

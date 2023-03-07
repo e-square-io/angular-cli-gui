@@ -11,8 +11,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { Directory } from '@angular-cli-gui/shared/data';
 
-import { ANGULAR_LOGO_IMG_SRC } from '../../consts';
-
 import { FilesystemNavigatorToolbarComponent } from './filesystem-navigator-toolbar/filesystem-navigator-toolbar.component';
 
 @Component({
@@ -38,8 +36,6 @@ export class FilesystemNavigatorComponent {
   @Input() separator: string | null = '';
 
   @Output() pathChange = new EventEmitter<string>();
-
-  readonly angularLogoSrc = ANGULAR_LOGO_IMG_SRC;
 
   onPathChanged(path: string): void {
     this.emitPathChangeEvent(path);

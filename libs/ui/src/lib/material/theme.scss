@@ -1,14 +1,14 @@
 @use '@angular/material' as mat;
-@import './colors';
-@import './typography';
+@use './colors' as colors;
+@use './typography' as typogrpahy;
 
 $theme: mat.define-light-theme(
   (
     color: (
-      primary: $primary,
-      accent: $accent,
+      primary: colors.$primary,
+      accent: colors.$accent,
     ),
-    typography: $typography,
+    typography: typogrpahy.$typography,
     density: 0,
   )
 );

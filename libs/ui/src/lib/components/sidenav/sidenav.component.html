@@ -1,6 +1,6 @@
 <mat-sidenav-container class="sidenav" autosize>
-  <mat-sidenav opened="true" mode="side">
-    <cli-menu [menuItems]="menuItems" [isExpanded]="isExpanded"></cli-menu>
+  <mat-sidenav opened="true" mode="side" [class.collapsed]="!isExpanded">
+    <cli-menu [menuItems]="menuItems"></cli-menu>
   </mat-sidenav>
   <mat-sidenav-content class="content">
     <ng-content></ng-content>

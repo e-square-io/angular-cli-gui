@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 import { MenuItem } from './menu.models';
 
@@ -19,6 +19,7 @@ import { MenuItem } from './menu.models';
     MatButtonModule,
     RouterLink,
     MatIconModule,
+    RouterLinkActive,
   ],
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
@@ -26,5 +27,4 @@ import { MenuItem } from './menu.models';
 })
 export class MenuComponent {
   @Input() menuItems: MenuItem[] = [];
-  @Input() isExpanded = true;
 }

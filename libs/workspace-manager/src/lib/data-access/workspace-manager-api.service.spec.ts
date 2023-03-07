@@ -24,7 +24,7 @@ describe('WorkspaceManagerApiService', () => {
   });
 
   describe('getHomeDir', () => {
-    it('Should call the get homedir api', () => {
+    it('should call the get homedir api', () => {
       service.getHomeDir().subscribe();
       const request = http.expectOne('/api/workspace-manager/homedir');
       expect(request.request.method).toEqual('GET');

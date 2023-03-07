@@ -17,8 +17,12 @@ export class WorkspaceManagerApiService {
   }
 
   getDirectoriesInPath(path: string): Observable<Directory[]> {
-    const params = path ? `path=${path}` : null;
-    const url = `${this.API_URL}/dir?${params ? params : ''}`;
-    return this.http.get<Directory[]>(url);
+    return this.http.get<Directory[]>(`${this.API_URL}/dir`, {
+      params: { path },
+    });
+  }
+
+  getPathSeparator(): Observable<string> {
+    return this.http.get(`${this.API_URL}/path-sep`, { responseType: 'text' });
   }
 }

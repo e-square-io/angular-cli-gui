@@ -1,4 +1,4 @@
-import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
+import { AsyncPipe, NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -26,6 +26,7 @@ import { FilesystemNavigatorToolbarComponent } from './filesystem-navigator-tool
     MatIconModule,
     FilesystemNavigatorToolbarComponent,
     AsyncPipe,
+    NgTemplateOutlet,
   ],
   templateUrl: './filesystem-navigator.component.html',
   styleUrls: ['./filesystem-navigator.component.scss'],

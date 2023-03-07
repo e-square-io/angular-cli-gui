@@ -8,16 +8,14 @@
   <mat-list>
     <ng-container *ngFor="let dir of directories">
       <mat-list-item (click)="onDirClicked(dir)">
-        <mat-icon matListItemIcon>folder</mat-icon>
+        <div matListItemIcon>
+          <ng-container
+            [ngTemplateOutlet]="dir.isNG ? angularIcon : folderIcon"
+          ></ng-container>
+        </div>
 
         <div matListItemTitle>
           {{ dir.name }}
-
-          <img
-            *ngIf="dir.isNG"
-            class="angular-logo"
-            src="/assets/angular.svg"
-          />
         </div>
       </mat-list-item>
 
@@ -25,3 +23,11 @@
     </ng-container>
   </mat-list>
 </div>
+
+<ng-template #folderIcon>
+  <mat-icon>folder</mat-icon>
+</ng-template>
+
+<ng-template #angularIcon>
+  <img class="angular-logo" src="/assets/angular.svg" />
+</ng-template>

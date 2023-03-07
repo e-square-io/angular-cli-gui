@@ -30,7 +30,7 @@ describe('FilesystemNavigatorToolbarComponent', () => {
   });
 
   describe('onPathClicked', () => {
-    it('Should emit path changed event with the new path', () => {
+    it('should emit path changed event with the new path', () => {
       component.ngOnChanges();
       const pathChangeEventSpy = jest.spyOn(component.pathChange, 'emit');
       component.onPartClicked('mock');

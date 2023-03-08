@@ -1,4 +1,4 @@
-$list-item-hover: rgba(222, 222, 222, 0.7);
+@use '@material/theme' as theme;
 
 :host {
   .list-wrapper {
@@ -9,7 +9,7 @@ $list-item-hover: rgba(222, 222, 222, 0.7);
   }
 
   mat-list-item:hover {
-    background: $list-item-hover;
+    background: theme.$grey-100;
     cursor: pointer;
   }
 

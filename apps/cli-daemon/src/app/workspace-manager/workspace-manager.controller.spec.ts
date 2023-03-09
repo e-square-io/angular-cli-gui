@@ -13,6 +13,10 @@ const workspaceManagerMock: WorkspaceManagerServiceMock = {
   getHomeDir: jest.fn(),
 };
 
+jest.mock('path', () => ({
+  sep: 'mock-separator',
+}));
+
 describe('WorkspaceManagerController', () => {
   let controller: WorkspaceManagerController;
 
@@ -57,6 +61,12 @@ describe('WorkspaceManagerController', () => {
     it('should call workspaceManagerService.getHomeDir', () => {
       controller.getHomeDirectory();
       expect(workspaceManagerMock.getHomeDir).toHaveBeenCalled();
+    });
+  });
+
+  describe('getPathSeparator', () => {
+    it('should return path separator', () => {
+      expect(controller.getPathSeparator()).toMatch('mock-separator');
     });
   });
 });

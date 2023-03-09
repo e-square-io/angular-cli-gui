@@ -1,3 +1,5 @@
+import path from 'path';
+
 import {
   Controller,
   Get,
@@ -28,5 +30,10 @@ export class WorkspaceManagerController {
   @Get('homedir')
   public getHomeDirectory(): string {
     return this.workspaceManagerService.getHomeDir();
+  }
+
+  @Get('path-sep')
+  public getPathSeparator(): string {
+    return path.sep;
   }
 }

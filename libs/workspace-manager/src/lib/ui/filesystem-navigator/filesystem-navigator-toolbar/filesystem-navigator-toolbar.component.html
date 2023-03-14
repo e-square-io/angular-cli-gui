@@ -1,0 +1,13 @@
+<div class="path">
+  <div *ngFor="let part of pathParts" class="path-part">
+    <button
+      *ngIf="part"
+      mat-button
+      class="path-part-button"
+      (click)="onPartClicked(part)"
+    >
+      {{ part }}
+    </button>
+    <div>{{ separator }}</div>
+  </div>
+</div>

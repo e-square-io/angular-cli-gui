@@ -1,6 +1,6 @@
 import { spawnSync, SpawnSyncOptionsWithBufferEncoding } from 'child_process';
-import { readFileSync } from 'fs';
 import { resolve as pathResolve } from 'path';
+import * as process from 'process';
 
 import { Injectable, Logger } from '@nestjs/common';
 
@@ -11,8 +11,8 @@ import { ExecResult } from './dto';
 import { GeneratorDefinition, Schema } from './generators.interface';
 import {
   convertKeyToArgument,
-  getGeneratorDefinition,
-  getGeneratorNames,
+  formatJsonToJs,
+  getGeneratorsDefinition,
 } from './utils';
 
 @Injectable()
@@ -36,23 +36,13 @@ export class GeneratorsService {
   }
 
   getAllGenerators(): GeneratorDefinition[] {
-    const schemasPath = pathResolve(
-      this.sessionService.cwd,
-      'node_modules/@schematics/angular'
-    );
-    const generatorNames = getGeneratorNames(schemasPath);
-    const generators = generatorNames
-      .map((name) => getGeneratorDefinition(name, schemasPath))
-      .filter(Boolean);
-    return generators as GeneratorDefinition[];
+    const collectionPath = this.getPath(['collection.json']);
+    return getGeneratorsDefinition(collectionPath);
   }
 
   getSchema(schemaName: string): Schema {
-    const schemaPath = pathResolve(
-      this.sessionService.cwd,
-      `node_modules/@schematics/angular/${schemaName}/schema.json`
-    );
-    return JSON.parse(readFileSync(schemaPath, 'utf-8'));
+    const schemaPath = this.getPath([schemaName, 'schema.json']);
+    return formatJsonToJs<Schema>(schemaPath);
   }
 
   private getArgsFromParams(params: Record<string, any>): string[] {
@@ -60,5 +50,16 @@ export class GeneratorsService {
       const convertedKey = convertKeyToArgument(key);
       return `${convertedKey}=${value}`;
     });
+  }
+
+  private getPath(extension: string[]): string {
+    console.log('this.sessionService.cwd:', this.sessionService.cwd);
+    return pathResolve(
+      this.sessionService.cwd,
+      'node_modules',
+      '@schematics',
+      'angular',
+      ...extension
+    );
   }
 }

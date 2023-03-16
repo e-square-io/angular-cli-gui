@@ -1,5 +1,4 @@
 import { readFileSync } from 'fs';
-import * as process from 'process';
 
 import { GeneratorDefinition, SchemaCollection } from './generators.interface';
 
@@ -18,10 +17,8 @@ export const getGeneratorsDefinition = (
   const collection = formatJsonToJs<{
     schematics: Record<string, SchemaCollection>;
   }>(path);
-  console.log('collection:', collection);
   return Object.values(collection.schematics).map((schemaCollection) => {
-    const splitBy = process.platform === 'win32' ? '.\\' : './';
-    const originalName = schemaCollection.factory.split(splitBy)[1];
+    const originalName = schemaCollection.factory.split('./')[1];
     return {
       originalName,
       description: schemaCollection.description,

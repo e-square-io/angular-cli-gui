@@ -1,0 +1,33 @@
+<cli-filesystem-navigator-toolbar
+  [path]="path"
+  [separator]="separator"
+  (pathChange)="onPathChanged($event)"
+></cli-filesystem-navigator-toolbar>
+
+<div class="list-wrapper">
+  <mat-list>
+    <ng-container *ngFor="let dir of directories">
+      <mat-list-item (click)="onDirClicked(dir)">
+        <div matListItemIcon>
+          <ng-container
+            [ngTemplateOutlet]="dir.isNG ? angularIcon : folderIcon"
+          ></ng-container>
+        </div>
+
+        <div matListItemTitle>
+          {{ dir.name }}
+        </div>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+    </ng-container>
+  </mat-list>
+</div>
+
+<ng-template #folderIcon>
+  <mat-icon>folder</mat-icon>
+</ng-template>
+
+<ng-template #angularIcon>
+  <img class="angular-logo" src="/assets/angular.svg" />
+</ng-template>

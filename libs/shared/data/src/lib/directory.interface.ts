@@ -1,5 +1,5 @@
 export interface Directory {
   name: string;
-  isNG?: boolean;
+  isNG: boolean;
   isFavorite?: boolean;
 }

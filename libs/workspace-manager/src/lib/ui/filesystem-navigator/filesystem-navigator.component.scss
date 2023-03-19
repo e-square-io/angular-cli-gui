@@ -1,0 +1,17 @@
+:host {
+  .list-wrapper {
+    overflow: auto;
+    margin-top: 16px;
+    height: inherit;
+    max-height: 100%;
+  }
+
+  mat-list-item:hover {
+    cursor: pointer;
+  }
+
+  .angular-logo {
+    width: 25px;
+    height: 25px;
+  }
+}

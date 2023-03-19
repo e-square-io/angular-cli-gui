@@ -1,9 +1,16 @@
 type PropertyTypes = 'string' | 'boolean' | 'integer' | 'number';
+
 interface Property {
   type: PropertyTypes;
   format: string;
   description: string;
   default: string | Record<string, any>;
+}
+
+export interface SchemaCollection {
+  factory: string;
+  schema: string;
+  description: string;
 }
 
 export interface Schema {

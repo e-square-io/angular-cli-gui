@@ -119,23 +119,21 @@ describe('ConnectWorkspaceComponent', () => {
   });
 
   describe('onPathChanged', () => {
-    const newPathMock = '/new/path';
-    let pathNextSpy: jest.SpyInstance;
-
     beforeEach(() => {
-      pathNextSpy = jest.spyOn(component.path$, 'next');
       fixture.detectChanges();
     });
 
-    it('should call path$ subject next with new path when new path is different than current path', () => {
-      component.onPathChanged(newPathMock);
-      expect(pathNextSpy).toHaveBeenCalledWith(newPathMock);
+    it('should not call path$ subject next when new path equals current path', () => {
+      const pathNextSpy = jest.spyOn(component.path$, 'next');
+      component.onPathChanged(HOMEDIR_PATH_MOCK);
+      expect(pathNextSpy).not.toHaveBeenCalled();
     });
 
-    it('should not call path$ subject next when new path equals current path', () => {
-      component.path$.next(newPathMock);
+    it('should call path$ subject next with new path when new path is different than current path', () => {
+      const newPathMock = '/new/path/1';
+      const pathNextSpy = jest.spyOn(component.path$, 'next');
       component.onPathChanged(newPathMock);
-      expect(pathNextSpy).not.toHaveBeenCalledTimes(1);
+      expect(pathNextSpy).toHaveBeenCalledWith(newPathMock);
     });
   });
 });

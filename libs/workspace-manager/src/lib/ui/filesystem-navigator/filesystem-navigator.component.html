@@ -2,7 +2,9 @@
   [path]="path"
   [separator]="separator"
   (pathChange)="onPathChanged($event)"
-></cli-filesystem-navigator-toolbar>
+>
+  <ng-content actions select="[actions]"></ng-content>
+</cli-filesystem-navigator-toolbar>
 
 <div class="list-wrapper">
   <mat-list>

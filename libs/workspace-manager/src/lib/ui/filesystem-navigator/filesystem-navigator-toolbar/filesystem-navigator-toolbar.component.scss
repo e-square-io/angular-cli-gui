@@ -1,12 +1,18 @@
-.path {
-  display: flex;
-}
-
-.path-part {
+:host {
   display: flex;
   align-items: center;
-}
 
-.path-part-button {
-  margin-left: 2px;
+  .path {
+    display: flex;
+    flex: 2;
+
+    .path-part {
+      display: flex;
+      align-items: center;
+
+      .path-part-button {
+        margin-left: 2px;
+      }
+    }
+  }
 }

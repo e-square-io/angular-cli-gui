@@ -1,12 +1,24 @@
-<form
-  [formGroup]="form"
-  class="connect-workspace-form"
-  (ngSubmit)="connectWorkspace()"
->
-  <h2 class="mat-title">Connect your Angular workspace</h2>
-  <mat-form-field class="workspace-path-field" appearance="outline">
-    <mat-label>The absolute path to your workspace</mat-label>
-    <input formControlName="path" matInput type="text" />
-  </mat-form-field>
-  <button mat-raised-button color="primary" type="submit">Connect</button>
-</form>
+<div class="fs-navigator-wrapper">
+  <cli-filesystem-navigator
+    [directories]="directories$ | async"
+    [separator]="pathSeparator$ | async"
+    [path]="path$ | async"
+    (pathChange)="onPathChanged($event)"
+  >
+    <ng-container
+      actions
+      [ngTemplateOutlet]="fsNavigatorActions"
+    ></ng-container>
+  </cli-filesystem-navigator>
+</div>
+
+<ng-template #fsNavigatorActions>
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="(isAngularWorkspace$ | async) === false"
+    (click)="connectWorkspace()"
+  >
+    Connect
+  </button>
+</ng-template>

@@ -25,9 +25,11 @@ export class FilesystemNavigatorToolbarComponent implements OnChanges {
   pathParts: string[] = [];
 
   ngOnChanges(): void {
-    this.pathParts = (this.path as string)
-      .split(this.separator as string)
-      .filter((v) => !!v);
+    if (this.path) {
+      this.pathParts = (this.path as string)
+        .split(this.separator as string)
+        .filter(Boolean);
+    }
   }
 
   onPartClicked(pathPart: string): void {

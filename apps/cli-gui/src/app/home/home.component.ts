@@ -1,7 +1,7 @@
 import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { SidenavComponent, SidenavService } from '@angular-cli-gui/ui';
+import { SidenavComponent, SidenavService } from '@angular-cli-gui/ui/sidenav';
 
 import { HOME_MENU_ITEMS } from './home.consts';
 

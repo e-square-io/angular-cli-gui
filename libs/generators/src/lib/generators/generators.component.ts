@@ -1,7 +1,7 @@
 import { AsyncPipe, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MenuItem, SidenavComponent } from '@angular-cli-gui/ui';
+import { MenuItem, SidenavComponent } from '@angular-cli-gui/ui/sidenav';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 

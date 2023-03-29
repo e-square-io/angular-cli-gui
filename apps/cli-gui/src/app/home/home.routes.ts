@@ -15,7 +15,8 @@ const HOME_ROUTES: Routes = [
       },
       {
         path: 'generators',
-        loadChildren: () => import('../generators/generators.routes'),
+        loadChildren: () =>
+          import('@angular-cli-gui/generators').then((m) => m.GENERATOR_ROUTES),
       },
       {
         path: 'configuration',

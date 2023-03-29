@@ -1,0 +1,15 @@
+@import './core/reset';
+@import './core/variables';
+@import './material/core';
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+@include material-theme();

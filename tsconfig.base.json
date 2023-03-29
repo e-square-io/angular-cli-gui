@@ -19,7 +19,8 @@
       "@angular-cli-gui/executors": ["libs/executors/src/index.ts"],
       "@angular-cli-gui/generators": ["libs/generators/src/index.ts"],
       "@angular-cli-gui/shared/data": ["libs/shared/data/src/index.ts"],
-      "@angular-cli-gui/ui": ["libs/ui/src/index.ts"],
+      "@angular-cli-gui/ui/formly": ["libs/ui/formly/src/index.ts"],
+      "@angular-cli-gui/ui/sidenav": ["libs/ui/sidenav/src/index.ts"],
       "@angular-cli-gui/workspace-manager": [
         "libs/workspace-manager/src/index.ts"
       ]

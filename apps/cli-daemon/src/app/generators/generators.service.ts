@@ -53,7 +53,6 @@ export class GeneratorsService {
   }
 
   private getPath(extension: string[]): string {
-    console.log('this.sessionService.cwd:', this.sessionService.cwd);
     return pathResolve(
       this.sessionService.cwd,
       'node_modules',

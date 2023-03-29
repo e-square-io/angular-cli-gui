@@ -1,4 +1,4 @@
-import { MenuItem } from '@angular-cli-gui/ui';
+import { MenuItem } from '@angular-cli-gui/ui/sidenav';
 
 export const HOME_MENU_ITEMS: MenuItem[] = [
   {

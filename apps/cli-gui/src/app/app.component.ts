@@ -11,7 +11,7 @@ import {
   RouterLink,
   RouterOutlet,
 } from '@angular/router';
-import { SidenavService } from '@angular-cli-gui/ui';
+import { SidenavService } from '@angular-cli-gui/ui/sidenav';
 import { delay, filter, map, Observable, startWith } from 'rxjs';
 
 import { CoreService } from './core/core.service';

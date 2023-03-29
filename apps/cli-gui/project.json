@@ -16,10 +16,10 @@
         "tsConfig": "apps/cli-gui/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": ["apps/cli-gui/src/favicon.ico", "apps/cli-gui/src/assets"],
-        "styles": ["apps/cli-gui/src/styles.scss"],
+        "styles": ["libs/ui/styles/src/index.scss"],
         "scripts": [],
         "stylePreprocessorOptions": {
-          "includePaths": ["libs/ui/src/lib"]
+          "includePaths": ["libs/ui/styles/src/lib"]
         }
       },
       "configurations": {
